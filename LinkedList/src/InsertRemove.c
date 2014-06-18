@@ -1,25 +1,29 @@
 
 #include "ListStruct.h"
 
-void		insert(t_list *list, int pos, void *data)
+bool		insert(t_list *list, int pos, void *data)
 {
   t_node	*node;
   t_node	*tmp;
 
-  node = create_node(data);
+  if (!(node = create_node(data)))
+      return (false);
   tmp = list->nodes;
   if (pos < 0)
     pos = 0;
   else if (pos > list->size)
     pos = list->size;
-  while (pos > 0)
+  while (--pos > 1)
+    tmp = tmp->next;
+  if (tmp)
     {
-      tmp = tmp->next;
-      --pos;
+      node->next = tmp->next;
+      tmp->next = node;
     }
-  node->next = tmp->next;
-  tmp->next = node;
+  else
+    list->nodes = node;
   ++list->size;
+  return (true);
 }
 
 void		remove(t_list *list, void *data)

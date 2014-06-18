@@ -1,14 +1,16 @@
 
 #include "ListStruct.h"
 
-void		push_front(t_list *list, void *data)
+bool		push_front(t_list *list, void *data)
 {
   t_node	*node;
 
-  node = create_node(data);
+  if (!(node = create_node(data)))
+    return (false);
   node->next = list->nodes;
   list->nodes = node;
   ++list->size;
+  return (true);
 }
 
 void	pop_front(t_list *list)

@@ -2,6 +2,7 @@
 # define	LISTSTRUCT_H_
 
 # include	<stdlib.h>
+# include	<stdbool.h>
 
 typedef struct	s_node
 {
@@ -21,16 +22,23 @@ typedef struct	s_list
 */
 t_node	*create_node(void *data);
 void	destroy_node(t_node *node);
+
+/*
+** CreateDestroyList.c
+*/
+t_list	*create_list(void);
+void	destroy_list(t_list *list);
+
 /*
 ** PushPopFront.c
 */
-void	push_front(t_list *list, void *data);
+bool	push_front(t_list *list, void *data);
 void	pop_front(t_list *list);
 
 /*
 ** InsertRemove.c
 */
-void	insert(t_list *list, int pos, void *data);
+bool	insert(t_list *list, int pos, void *data);
 void	remove(t_list *list, void *data);
 
 /*
