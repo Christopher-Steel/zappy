@@ -19,3 +19,14 @@ void		printf_log(char *format, ...)
   va_end(vargs);
   fprintf(stderr, "\n");
 }
+
+void		printf_log_i(bool tag, char *format, ...)
+{
+  va_list	vargs;
+
+  if (tag)
+    fprintf(stderr, "%s", LOG_TAG);
+  va_start(vargs, format);
+  vfprintf(stderr, format, vargs);
+  va_end(vargs);
+}

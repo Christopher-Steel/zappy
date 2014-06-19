@@ -7,7 +7,10 @@
 
 bool		print_error(char *err);
 bool		print_perror(char *err);
+
 bool		printf_error(char *format, ...)
   __attribute__ ((format(printf, 1, 2)));
+bool		printf_error_i(bool tag, char *format, ...)
+  __attribute__ ((format(printf, 2, 3)));
 
 #endif		/* PRINT_ERROR_H_ */

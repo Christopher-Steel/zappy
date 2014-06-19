@@ -29,3 +29,15 @@ bool	printf_error(char *format, ...)
   fprintf(stderr, "\n");
   return (false);
 }
+
+bool	printf_error_i(bool tag, char *format, ...)
+{
+  va_list	vargs;
+
+  if (tag)
+    fprintf(stderr, "%s", ERROR_TAG);
+  va_start(vargs, format);
+  vfprintf(stderr, format, vargs);
+  va_end(vargs);
+  return (false);
+}
