@@ -1,5 +1,5 @@
 
-#include "ListStruct.h"
+#include "list.h"
 
 bool		insert(t_list *list, int pos, void *data)
 {
@@ -7,7 +7,7 @@ bool		insert(t_list *list, int pos, void *data)
   t_node	*tmp;
 
   if (!(node = create_node(data)))
-      return (false);
+    return (false);
   tmp = list->nodes;
   if (pos < 0)
     pos = 0;
@@ -31,7 +31,8 @@ void		remove(t_list *list, void *data)
   t_node	*tmp;
   t_node	*to_remove;
 
-  for (tmp = list->nodes; tmp->next != NULL && tmp->next->data != data; tmp = tmp->next);
+  for (tmp = list->nodes; tmp->next != NULL
+	 && tmp->next->data != data; tmp = tmp->next);
   to_remove = tmp->next;
   tmp->next = tmp->next->next;
   destroy_node(to_remove);

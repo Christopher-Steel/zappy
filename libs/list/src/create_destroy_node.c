@@ -1,5 +1,5 @@
 
-#include "ListStruct.h"
+#include "list.h"
 
 t_node		*create_node(void *data)
 {

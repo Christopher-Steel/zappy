@@ -1,11 +1,10 @@
-M_DIR		:=	$(dir $(lastword $(MAKEFILE_LIST)))
-
-M_SRCDIR	=	src/
+TEST_DIR	:=	$(dir $(lastword $(MAKEFILE_LIST)))
 
 ############################################################
 
-M_SRC		=	$(M_SRCDIR)test.c		\
+TEST		=	$(SRC_FOLDER)test.c
 
 ############################################################
 
-SRC		+=	$(addprefix $(M_DIR), $(M_SRC))
+INCPATH		+=	$(addprefix $(TEST_DIR), $(INC_FOLDER))
+SRC		+=	$(addprefix $(TEST_DIR), $(TEST))

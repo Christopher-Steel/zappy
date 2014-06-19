@@ -1,5 +1,5 @@
 
-#include "ListStruct.h"
+#include "list.h"
 
 void		for_each(t_list *list, void (*fcn)(void *))
 {
@@ -9,7 +9,8 @@ void		for_each(t_list *list, void (*fcn)(void *))
     fcn(tmp->data);
 }
 
-void		for_each_arg(t_list *list, void (*fcn)(void *, void *), void* param)
+void		for_each_arg(t_list *list, void (*fcn)(void *, void *),
+			     void* param)
 {
   t_node	*tmp;
 

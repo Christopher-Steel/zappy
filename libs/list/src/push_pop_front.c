@@ -1,5 +1,5 @@
 
-#include "ListStruct.h"
+#include "list.h"
 
 bool		push_front(t_list *list, void *data)
 {

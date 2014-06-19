@@ -1,10 +1,11 @@
 #!/usr/bin/python2.7
-## Make by duponc_j@epitech.net
-# Version: 1.2.1
+## Made by duponc_j@epitech.net
+## Modified by steel_c@epitech.net
+# Version: 1.3
 #
 
 '''
-An Epitech norme checker
+An Epitech norm checker
 
 Usage: python norme.py <dir to scan> [-nocheat] [-verbose] [-score] [-libc]
 

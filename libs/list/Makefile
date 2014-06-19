@@ -1,10 +1,22 @@
 NAME		=	liblist.a
 
+ROOT		=	../../
+
 LOCAL		=	src/
 
-SRC		=	$(LOCAL)test.c
+INC		=	inc/				\
+			$(ROOT)common/inc/
+
+SRC		=	$(LOCAL)create_destroy_list.c	\
+			$(LOCAL)create_destroy_node.c	\
+			$(LOCAL)insert_remove.c		\
+			$(LOCAL)push_pop_front.c	\
+			$(LOCAL)for_each.c
 
 OBJ		=	$(SRC:.c=.o)
+
+CFLAGS		+=	-Wall -Wextra -Werror -pedantic	\
+			$(addprefix -I, $(INC))
 
 LDFLAGS		=
 

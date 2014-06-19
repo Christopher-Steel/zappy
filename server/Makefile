@@ -7,10 +7,14 @@ NAME		=	zappy_server
 ROOT		=	../
 
 LDPATH		=	$(ROOT)libs/
-LOCAL		=	./src/
+LOCAL		=	src/
 
-INCPATH		=	./inc			\
-			./$(LDPATH)list/inc
+INC_FOLDER	=	inc/
+SRC_FOLDER	=	src/
+
+INCPATH		=	inc/			\
+			$(LDPATH)list/inc/	\
+			$(ROOT)common/inc/
 
 MODDIR		=	./modules/
 
@@ -18,7 +22,8 @@ MODDIR		=	./modules/
 # Modules
 ###############################################################
 
-MODULE_DIRS	=	$(MODDIR)Test
+MODULE_DIRS	=	$(MODDIR)Test		\
+			$(MODDIR)Vector
 			# $(MODDIR)Event		\
 			# $(MODDIR)Network	\
 			# $(MODDIR)Player		\
@@ -26,7 +31,6 @@ MODULE_DIRS	=	$(MODDIR)Test
 			# $(MODDIR)Startup	\
 			# $(MODDIR)Time		\
 			# $(MODDIR)Utils		\
-			# $(MODDIR)Vector		\
 			# $(MODDIR)World
 
 MODULES		=	$(addsuffix /make_module.mk, $(MODULE_DIRS))
@@ -90,7 +94,7 @@ $(NAME)		:	$(OBJ)
 			@ $(PRINTF) "Binary name is: \033[36m $@\033[m\n"
 			@ $(CC) -o $@ $(OBJ) $(CFLAGS) $(LDFLAGS)
 
-all		:	make_libs $(NAME)
+all		:	$(NAME)
 
 clean		:
 			$(RM) $(OBJ)
@@ -99,9 +103,6 @@ fclean		:	clean
 			$(RM) $(NAME)
 
 re		:	fclean all
-
-make_libs	:	$(LIBS)
-			@ for l in $^; do unset MAKELEVEL; make -C $$l; done
 
 check		:
 			@ $(CHECK) $(LOCAL) inc/ -nocheat -score -printline -return -noheader
