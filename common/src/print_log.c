@@ -5,19 +5,19 @@
 
 void		print_log(char *log)
 {
-  fprintf(stderr, "%s", LOG_TAG);
-  fprintf(stderr, "%s\n", log);
+  printf("%s", LOG_TAG);
+  printf("%s\n", log);
 }
 
 void		printf_log(char *format, ...)
 {
   va_list	vargs;
 
-  fprintf(stderr, "%s", LOG_TAG);
+  printf("%s", LOG_TAG);
   va_start(vargs, format);
-  vfprintf(stderr, format, vargs);
+  vprintf(format, vargs);
   va_end(vargs);
-  fprintf(stderr, "\n");
+  printf("\n");
 }
 
 void		printf_log_i(bool tag, char *format, ...)
@@ -25,8 +25,8 @@ void		printf_log_i(bool tag, char *format, ...)
   va_list	vargs;
 
   if (tag)
-    fprintf(stderr, "%s", LOG_TAG);
+    printf("%s", LOG_TAG);
   va_start(vargs, format);
-  vfprintf(stderr, format, vargs);
+  vprintf(format, vargs);
   va_end(vargs);
 }
