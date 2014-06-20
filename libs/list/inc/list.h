@@ -21,16 +21,16 @@ typedef struct	s_list
 t_node	*create_node(void *data);
 void	destroy_node(t_node *node);
 
-t_list	*create_list(void);
-void	destroy_list(t_list *list);
+t_list	*list_create(void);
+void	list_destroy(t_list *list);
 
-bool	push_front(t_list *list, void *data);
-void	pop_front(t_list *list);
+bool	list_push_front(t_list *list, void *data);
+void	list_pop_front(t_list *list);
 
-bool	insert(t_list *list, int pos, void *data);
-void	remove(t_list *list, void *data);
+bool	list_insert(t_list *list, int pos, void *data);
+void	list_remove(t_list *list, void *data);
 
-void	for_each(t_list *list, void (*fcn)(void *));
-void	for_each_arg(t_list *list, void (*fcn)(void *, void *), void *param);
+void	list_for_each(t_list *list, void (*fcn)(void *));
+void	list_for_each_arg(t_list *list, void (*fcn)(void *, void *), void *param);
 
 #endif		/* !LIST_H_ */

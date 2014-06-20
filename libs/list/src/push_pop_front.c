@@ -1,7 +1,7 @@
 
 #include "list.h"
 
-bool		push_front(t_list *list, void *data)
+bool		list_push_front(t_list *list, void *data)
 {
   t_node	*node;
 
@@ -13,7 +13,7 @@ bool		push_front(t_list *list, void *data)
   return (true);
 }
 
-void	pop_front(t_list *list)
+void	list_pop_front(t_list *list)
 {
   void	*tmp;
 

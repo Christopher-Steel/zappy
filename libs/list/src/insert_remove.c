@@ -1,7 +1,7 @@
 
 #include "list.h"
 
-bool		insert(t_list *list, int pos, void *data)
+bool		list_insert(t_list *list, int pos, void *data)
 {
   t_node	*node;
   t_node	*tmp;
@@ -26,7 +26,7 @@ bool		insert(t_list *list, int pos, void *data)
   return (true);
 }
 
-void		remove(t_list *list, void *data)
+void		list_remove(t_list *list, void *data)
 {
   t_node	*tmp;
   t_node	*to_remove;

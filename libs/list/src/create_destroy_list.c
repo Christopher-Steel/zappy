@@ -2,7 +2,7 @@
 
 #include "list.h"
 
-t_list		*create_list()
+t_list		*list_create()
 {
   t_list	*tmp;
 
@@ -16,7 +16,7 @@ t_list		*create_list()
   return (tmp);
 }
 
-void		destroy_list(t_list *list)
+void		list_destroy(t_list *list)
 {
   t_node	*tmp;
   t_node	*node;
