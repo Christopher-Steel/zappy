@@ -19,9 +19,9 @@ MODDIR		=	./modules/
 # Modules
 
 MODULE_DIRS	=	$(MODDIR)Test		\
+			$(MODDIR)Network	\
 			$(MODDIR)Vector
 			# $(MODDIR)Event		\
-			# $(MODDIR)Network	\
 			# $(MODDIR)Player		\
 			# $(MODDIR)Protocol	\
 			# $(MODDIR)Startup	\
