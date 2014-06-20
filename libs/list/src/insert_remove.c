@@ -1,4 +1,4 @@
-
+7
 #include "list.h"
 
 bool		list_insert(t_list *list, int pos, void *data)

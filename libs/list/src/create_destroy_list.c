@@ -7,10 +7,7 @@ t_list		*list_create()
   t_list	*tmp;
 
   if (!(tmp = malloc(sizeof(t_list))))
-    {
-      perror("malloc");
-      return (NULL);
-    }
+    print_perror("malloc");
   tmp->size = 0;
   tmp->nodes = NULL;
   return (tmp);
