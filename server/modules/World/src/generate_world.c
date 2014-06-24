@@ -17,6 +17,7 @@ static void	init_ressource(t_cell *cell, const unsigned int size)
 	    cell[i].res[j] = rand() % NBR_SPAWN;
 	  ++j;
 	}
+      cell[i].list_player = NULL;
       ++i;
     }
 }
@@ -24,6 +25,7 @@ static void	init_ressource(t_cell *cell, const unsigned int size)
 bool	generate_world(const unsigned int height,
 		       const unsigned int width)
 {
+  printf("Start to generate map\n");
   if ((g_server.world = malloc(sizeof(t_world))) == NULL)
     return (false);
   g_server.world->height = height;
@@ -33,5 +35,6 @@ bool	generate_world(const unsigned int height,
 				     * sizeof(t_cell))) == NULL)
     return (false);
   init_ressource(g_server.world->cell, g_server.world->size);
+  printf("generate map done\n");
   return (true);
 }
