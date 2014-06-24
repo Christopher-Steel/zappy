@@ -1,7 +1,15 @@
 #include <stdio.h>
 
-int	main(void)
+#include "server.h"
+#include "world.h"
+#include "team.h"
+#include "parse_parameter.h"
+#include "set_parameter.h"
+
+int	main(int ac, char **av)
 {
-  printf("print de test %d", 0);
+  parse_param(ac, av);
+
+  printf("end parsing parameters\n");
   return (0);
 }

@@ -4,16 +4,25 @@
 /*
 ** INCLUDE
 */
+# include	"list.h"
 # include	"world.h"
 
 /*
 ** STRUCTURE
 */
 
-struct	s_world;
+struct			s_world;
+
+typedef struct		s_info
+{
+  int			tick_delay;
+  int			port;
+}			t_info;
 
 typedef struct		s_server
 {
+  t_info		info;
+  t_list		*team_list;
   struct s_world	*world;
 }			t_server;
 

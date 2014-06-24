@@ -3,10 +3,12 @@
 
 void		list_world(void)
 {
+  int		j;
   unsigned int	i;
   t_player	*my_player;
 
   i = 0;
+  my_player = NULL;
   printf("height = %d and width = %d\n",
 	 g_server.world->height, g_server.world->width);
   while (i < g_server.world->size)
@@ -29,7 +31,7 @@ void		list_world(void)
   put_down_object(my_player, "SIBUR");
   show_inventory(my_player, "toot");
 
-  for (int j = 0; j < 1000; j++)
+  for (j = 0; j < 1000; j++)
     {
       i = 0;
       printf("height = %d and width = %d\n",
