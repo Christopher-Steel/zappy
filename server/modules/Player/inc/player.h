@@ -9,6 +9,7 @@
 # include	<stdbool.h>
 
 # include	"vector.h"
+# include	"list.h"
 
 /*
 ** TYPEDEF
@@ -45,19 +46,13 @@ typedef struct	s_player
   int		id;
 }		t_player;
 
-typedef struct	s_list_player
-{
-  t_player		*player;
-  struct s_list_player	*next;
-}		t_list_player;
-
 /*
 ** FUNCTIONS
 */
 t_player	*create_player(const t_vector pos, const enum e_ori ori,
 			       const t_sock socket, const int id);
 void		set_orientation(t_player *player, const enum e_ori ori);
-void		show_list_player(t_list_player *list);
+void		show_list_player(t_list *list);
 void		move_right(t_player *player, char *cmd);
 void		move_left(t_player *player, char *cmd);
 bool		take_object(t_player *player, char *res);

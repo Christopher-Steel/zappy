@@ -8,6 +8,7 @@
 
 # include	"server.h"
 # include	"player.h"
+# include	"list.h"
 
 /*
 ** DEFINE
@@ -37,7 +38,7 @@ enum	e_ressource
 typedef struct	s_cell
 {
   unsigned int	res[7];
-  t_list_player	*list_player;
+  t_list	*list_player;
 }		t_cell;
 
 typedef struct	s_world
@@ -57,6 +58,6 @@ void		spawn_ressource(t_world *world);
 bool		spawn_player(const t_sock socket, const int id);
 void		remove_player(const int id, const int position);
 bool		add_player(t_player *player, const int pos);
-unsigned int	listlen(t_list_player *list);
+void		list_world(void);
 
 #endif		/* !WORLD_H_ */

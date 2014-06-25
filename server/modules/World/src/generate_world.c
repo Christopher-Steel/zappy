@@ -17,7 +17,7 @@ static void	init_ressource(t_cell *cell, const unsigned int size)
 	    cell[i].res[j] = rand() % NBR_SPAWN;
 	  ++j;
 	}
-      cell[i].list_player = NULL;
+      cell[i].list_player = list_create();
       ++i;
     }
 }

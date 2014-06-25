@@ -2,22 +2,26 @@
 
 static void   	remove_last(const int id, const int position)
 {
-  if (g_server.world->cell[position].list_player->player->id == id)
+  t_node	*nodes;
+
+  nodes = g_server.world->cell[position].list_player->nodes;
+  if (((t_player *)nodes->data)->id == id)
     {
-      free(g_server.world->cell[position].list_player);
-      g_server.world->cell[position].list_player = NULL;
+      free(g_server.world->cell[position].list_player->nodes);
+      g_server.world->cell[position].list_player->nodes = NULL;
+      --g_server.world->cell[position].list_player->size;
     }
 }
 
 void		remove_player(const int id, const int position)
 {
   unsigned int	nbr;
-  t_list_player	*tmp;
-  t_list_player	*free_node;
+  t_node	*tmp;
+  t_node	*free_node;
 
 
-  tmp = g_server.world->cell[position].list_player;
-  nbr = listlen(tmp);
+  tmp = g_server.world->cell[position].list_player->nodes;
+  nbr = g_server.world->cell[position].list_player->size;
   if(nbr == 0)
     return ;
   else if (nbr == 1)
@@ -26,12 +30,13 @@ void		remove_player(const int id, const int position)
     {
       while (tmp->next != NULL)
 	{
-	  if (tmp->player->id == id)
+	  if (((t_player *)(tmp->data))->id == id)
 	    {
 	      free_node = tmp;
 	      tmp = tmp->next->next;
 	      free(free_node);
 	      free_node = NULL;
+	      --g_server.world->cell[position].list_player->size;
 	    }
 	  else
 	    tmp = tmp->next;
