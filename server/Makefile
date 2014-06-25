@@ -6,6 +6,7 @@ ROOT		=	../
 
 LDPATH		=	$(ROOT)libs/
 LOCAL		=	src/
+COMMON		=	$(ROOT)common/src/
 
 INC_FOLDER	=	inc/
 SRC_FOLDER	=	src/
@@ -20,20 +21,27 @@ MODDIR		=	./modules/
 
 MODULE_DIRS	=	$(MODDIR)Test		\
 			$(MODDIR)Network	\
-			$(MODDIR)Vector
-			# $(MODDIR)Event		\
-			# $(MODDIR)Player		\
+			$(MODDIR)Vector		\
+			$(MODDIR)Parameters	\
+			$(MODDIR)Server		\
+			$(MODDIR)World		\
+			$(MODDIR)Player		\
+			$(MODDIR)Event		\
+			$(MODDIR)Team
 			# $(MODDIR)Protocol	\
 			# $(MODDIR)Startup	\
 			# $(MODDIR)Time		\
 			# $(MODDIR)Utils		\
-			# $(MODDIR)World
 
 MODULES		=	$(addsuffix /make_module.mk, $(MODULE_DIRS))
 
 # Sources
 
-SRC		=	$(LOCAL)test.c		\
+SRC		=	$(COMMON)print_error.c		\
+			$(COMMON)print_warning.c	\
+			$(COMMON)print_log.c		\
+			$(COMMON)print_debug.c		\
+			$(LOCAL)test.c
 
 include $(MODULES)
 
@@ -81,10 +89,12 @@ $(NAME)		:	$(OBJ)
 all		:	$(NAME)
 
 clean		:
-			$(RM) $(OBJ)
+			@ $(PRINTF) "\033[36mRemoved all object files.\033[m\n"
+			@ $(RM) $(OBJ)
 
 fclean		:	clean
-			$(RM) $(NAME)
+			@ $(PRINTF) "\033[36mRemoved binaries.\033[m\n"
+			@ $(RM) $(NAME)
 
 re		:	fclean all
 
