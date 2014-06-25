@@ -55,7 +55,6 @@ bool		generate_world(const unsigned int height,
 			       const unsigned int width);
 void		spawn_ressource(t_world *world);
 bool		spawn_player(const t_sock socket, const int id);
-void		list_world(void);
 void		remove_player(const int id, const int position);
 bool		add_player(t_player *player, const int pos);
 unsigned int	listlen(t_list_player *list);
