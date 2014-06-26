@@ -12,8 +12,9 @@ t_node		*create_node(void *data)
   return (node);
 }
 
-void	destroy_node(t_node *node)
+void	destroy_node(t_node *node, bool free_data)
 {
-  free(node->data);
+  if (free_data)
+    free(node->data);
   free(node);
 }

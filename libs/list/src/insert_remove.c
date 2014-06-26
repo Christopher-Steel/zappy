@@ -26,7 +26,7 @@ bool		list_insert(t_list *list, int pos, void *data)
   return (true);
 }
 
-void		list_remove(t_list *list, void *data)
+void		list_remove(t_list *list, void *data, bool free_data)
 {
   t_node	*tmp;
   t_node	*to_remove;
@@ -35,6 +35,6 @@ void		list_remove(t_list *list, void *data)
 	 && tmp->next->data != data; tmp = tmp->next);
   to_remove = tmp->next;
   tmp->next = tmp->next->next;
-  destroy_node(to_remove);
+  destroy_node(to_remove, free_data);
   --list->size;
 }

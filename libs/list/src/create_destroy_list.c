@@ -13,7 +13,7 @@ t_list		*list_create()
   return (tmp);
 }
 
-void		list_destroy(t_list *list)
+void		list_destroy(t_list *list, bool free_data)
 {
   t_node	*tmp;
   t_node	*node;
@@ -22,7 +22,7 @@ void		list_destroy(t_list *list)
   while (node)
     {
       tmp = node->next;
-      destroy_node(node);
+      destroy_node(node, free_data);
       node = tmp;
     }
   free(list);
