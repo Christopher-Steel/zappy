@@ -25,6 +25,8 @@ void	destroy_node(t_node *node, bool free_data);
 t_list	*list_create(void);
 void	list_destroy(t_list *list, bool free_data);
 
+int	list_size(t_list *list);
+
 void	*list_front(t_list *list);
 
 bool	list_push_front(t_list *list, void *data);
