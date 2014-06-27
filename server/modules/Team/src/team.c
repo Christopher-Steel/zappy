@@ -26,15 +26,15 @@ t_team		*team_create(int id, char *name)
   team->members = list_create();
   team->eggs = list_create();
   team->max_level = 0;
-  team->free_slots = g_param.slots;
+  team->free_slots = g_server.param.slots;
   list_push_front(g_server.team_list, team);
   return (team);
 };
 
 void		team_destroy(t_team *team)
 {
-  list_destroy(team->members);
-  list_destroy(team->eggs);
+  list_destroy(team->members, true);
+  list_destroy(team->eggs, true);
   free(team->name);
   free(team);
 }

@@ -21,4 +21,5 @@ void	team_add_player(t_player *player, char *team_name)
 
   team = find_team(team_name);
   list_push_front(team->members, player);
+  player->team = team;
 }

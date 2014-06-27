@@ -17,14 +17,15 @@ void	set_n(int ac, char **av)
     {
       while (optind < ac && strncmp(av[optind], "-", 1) != 0)
 	{
-	  if (g_param.team_names && !strstr(g_param.team_names, av[optind]))
+	  if (g_server.param.team_names
+	      && !strstr(g_server.param.team_names, av[optind]))
 	    {
-	      asprintf(&tmp, "%s%s\n", g_param.team_names,av[optind]);
-	      free(g_param.team_names);
-	      g_param.team_names = tmp;
+	      asprintf(&tmp, "%s%s\n", g_server.param.team_names,av[optind]);
+	      free(g_server.param.team_names);
+	      g_server.param.team_names = tmp;
 	    }
-	  else if (!g_param.team_names)
-	    asprintf(&g_param.team_names, "%s\n", av[optind]);
+	  else if (!g_server.param.team_names)
+	    asprintf(&g_server.param.team_names, "%s\n", av[optind]);
 	  ++optind;
 	}
     }

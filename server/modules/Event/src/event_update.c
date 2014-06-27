@@ -1,18 +1,21 @@
 
 #include "event.h"
 
-void	event_update(t_event **event_tab)
+void		event_update(t_list *events)
 {
-  int	i;
+  t_node	*node;
+  t_event	*event;
 
-  i = 0;
-  while (i > 10)
+  node = events->nodes;
+  while (node)
     {
-      if (event_tab[i]->timestamp >= time)
+      event = (t_event *)(node->data);
+      node = node->next;
+      --(event->timestamp);
+      if (event->timestamp <= 0)
 	{
-	  event_tab[i]->func(event_tab[i]->player, event_tab[i]->arg);
-	  event_destroy(event_tab[i]);
+	  event->func(event->player, event->arg);
+	  list_remove(events, event, false);
 	}
     }
-  event_ordered(event_tab);
 }

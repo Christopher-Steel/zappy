@@ -13,17 +13,6 @@
 # define	DEFAULT_C	1
 # define	DEFAULT_T	100
 
-typedef struct	s_param
-{
-  int		width;
-  int		height;
-  int		team_max_id;
-  int		slots;
-  char		*team_names;
-}		t_param;
-
-t_param		g_param;
-
 void		set_p(int ac, char **av);
 void		set_x(int ac, char **av);
 void		set_y(int ac, char **av);

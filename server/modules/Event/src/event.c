@@ -2,8 +2,8 @@
 #include "print_error.h"
 #include "event.h"
 
-t_event		*event_create(t_player *player, func_ptr func, uint timestamp,
-			      void *arg)
+t_event		*event_create(t_player *player, func_ptr func,
+			      long double timestamp, void *arg)
 {
   t_event	*event;
 
