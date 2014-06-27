@@ -8,7 +8,10 @@ t_event		*event_create(t_player *player, func_ptr func,
   t_event	*event;
 
   if (!(event = malloc(sizeof(t_event))))
-    print_perror("malloc");
+    {
+      print_perror("malloc");
+      return (NULL);
+    }
   event->player = player;
   event->func = func;
   event->timestamp = timestamp;
