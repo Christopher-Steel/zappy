@@ -24,8 +24,11 @@ typedef struct		s_param
 
 typedef struct		s_info
 {
+  long double		time;
+  long double		dtime;
   int			tick_delay;
   int			port;
+  int			nb_clients;
 }			t_info;
 
 typedef struct		s_server
@@ -42,6 +45,8 @@ typedef struct		s_server
 unsigned int	gs_get_map_width(void);
 unsigned int	gs_get_map_height(void);
 unsigned int	gs_get_map_size(void);
+
+void		time_update(void);
 
 /*
 ** GLOBALE
