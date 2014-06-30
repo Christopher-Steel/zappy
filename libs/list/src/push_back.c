@@ -3,16 +3,6 @@
 
 #include <stdio.h>
 
-t_node		*end_list(t_list *list)
-{
-  t_node	*node;
-
-  node = list->nodes;
-  while (node && node->next)
-    node = node->next;
-  return (node);
-}
-
 bool		list_push_back(t_list *list, void *data)
 {
   t_node	*node;
@@ -22,7 +12,8 @@ bool		list_push_back(t_list *list, void *data)
   if (list->size == 0)
     list->nodes = node;
   else
-    end_list(list)->next = node;
+    list->last->next = node;
+  list->last = node;
   ++list->size;
   return (true);
 }

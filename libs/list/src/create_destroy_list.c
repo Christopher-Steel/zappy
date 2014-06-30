@@ -10,6 +10,7 @@ t_list		*list_create()
     print_perror("malloc");
   tmp->size = 0;
   tmp->nodes = NULL;
+  tmp->last = NULL;
   return (tmp);
 }
 

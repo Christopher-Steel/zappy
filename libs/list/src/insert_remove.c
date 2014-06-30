@@ -22,6 +22,8 @@ bool		list_insert(t_list *list, int pos, void *data)
     tmp = tmp->next;
   node->next = tmp->next;
   tmp->next = node;
+  if (!node->next)
+    list->last = node;
   ++list->size;
   return (true);
 }
@@ -43,6 +45,8 @@ void		list_remove(t_list *list, void *data, bool free_data)
 	 && tmp->next->data != data; tmp = tmp->next);
   to_remove = tmp->next;
   tmp->next = tmp->next->next;
+  if (!tmp->next)
+    list->last = tmp;
   destroy_node(to_remove, free_data);
   --list->size;
 }
