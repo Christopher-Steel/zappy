@@ -16,7 +16,6 @@ typedef struct	s_list
 {
   int		size;
   t_node	*nodes;
-
 }		t_list;
 
 t_node	*create_node(void *data) __attribute__ ((nonnull (1)));
