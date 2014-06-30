@@ -30,6 +30,7 @@ void	list_destroy(t_list *list, bool free_data)
 int	list_size(t_list *list) __attribute__ ((nonnull (1)));
 
 void	*list_front(t_list *list) __attribute__ ((nonnull (1)));
+t_node	*list_begin(t_list *list) __attribute__ ((nonnull (1)));
 
 bool	list_push_front(t_list *list, void *data)
   __attribute__ ((nonnull (1, 2)));
