@@ -5,6 +5,7 @@
 ** INCLUDE
 */
 # include	"list.h"
+# include	"network.h"
 # include	"world.h"
 
 /*
@@ -33,6 +34,7 @@ typedef struct		s_server
   t_info		info;
   t_list		*team_list;
   t_param		param;
+  t_network		network;
   struct s_world	*world;
 }			t_server;
 
@@ -44,7 +46,7 @@ unsigned int	gs_get_map_height(void);
 unsigned int	gs_get_map_size(void);
 
 /*
-** GLOBALE
+** GLOBAL
 */
 t_server	g_server;
 
