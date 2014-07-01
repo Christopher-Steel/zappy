@@ -1,15 +1,7 @@
 
 #include "list.h"
 
-t_node		*end_list(t_list *list)
-{
-  t_node	*node;
-
-  node = list->nodes;
-  while (node && node->next)
-    node = node->next;
-  return (node);
-}
+#include <stdio.h>
 
 bool		list_push_back(t_list *list, void *data)
 {
@@ -17,7 +9,11 @@ bool		list_push_back(t_list *list, void *data)
 
   if (!(node = create_node(data)))
     return (false);
-  end_list(list)->next = node;
+  if (list->size == 0)
+    list->nodes = node;
+  else
+    list->last->next = node;
+  list->last = node;
   ++list->size;
   return (true);
 }
