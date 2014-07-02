@@ -203,7 +203,7 @@ class norme:
         self.check_virgule()
         self.check_regex('[ \t]$', 'Espace en fin de ligne')
         if self.creturn == 0:
-            self.check_regex('return( \(\)| ;|;)', 'Mauvais format de return')
+            self.check_regex('return( \(\)|;)', 'Mauvais format de return')
         if self.libc == 0:
             self.check_regex('[^_](printf|atof|atoi|atol|strcmp|strlen|strcat|strncat|strncmp|strcpy|strncpy|fprintf|strstr|strtok|sprintf|asprintf|perror|strtod|strtol|strtoul)(\()', \
                              'Fonction de la lib C')
@@ -255,8 +255,6 @@ class norme:
                                 self.check_line()
                             self.nb_line = self.nb_line + 1
                             fd.close()
-                        if self.header == 0:
-                            print "Attention, vous n'avez pas de headers !"
 
     def get_user(self):
         try:
@@ -332,6 +330,7 @@ def main():
     if '-libc' in sys.argv[1:]:
         moulin.libc = 0
     if '-noheader' in sys.argv[1:]:
+        print "Attention, vous n'avez pas de headers !"
         moulin.header = 0
     if '-malloc' in sys.argv[1:]:
         moulin.malloc = 0

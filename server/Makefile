@@ -19,19 +19,15 @@ MODDIR		=	./modules/
 
 # Modules
 
-MODULE_DIRS	=	$(MODDIR)Test		\
+MODULE_DIRS	=	$(MODDIR)Event		\
+			$(MODDIR)Graphic	\
 			$(MODDIR)Network	\
-			$(MODDIR)Vector		\
 			$(MODDIR)Parameters	\
-			$(MODDIR)Server		\
-			$(MODDIR)World		\
 			$(MODDIR)Player		\
-			$(MODDIR)Event		\
-			$(MODDIR)Team
-			# $(MODDIR)Protocol	\
-			# $(MODDIR)Startup	\
-			# $(MODDIR)Time		\
-			# $(MODDIR)Utils		\
+			$(MODDIR)Server		\
+			$(MODDIR)Team		\
+			$(MODDIR)Vector		\
+			$(MODDIR)World
 
 MODULES		=	$(addsuffix /make_module.mk, $(MODULE_DIRS))
 
@@ -41,7 +37,7 @@ SRC		=	$(COMMON)print_error.c		\
 			$(COMMON)print_warning.c	\
 			$(COMMON)print_log.c		\
 			$(COMMON)print_debug.c		\
-			$(LOCAL)test.c
+			$(LOCAL)network_test.c
 
 include $(MODULES)
 
@@ -72,6 +68,7 @@ CHECK		=	$(ROOT)/tools/norme.py
 
 CFLAGS		+=	-Wall -Wextra -Werror		\
 			-O3 -funroll-loops		\
+			-Wnonnull			\
 			$(addprefix -I, $(INCPATH))
 
 LDFLAGS		+=	$(addprefix -L, $(LIBS))	\
@@ -99,7 +96,7 @@ fclean		:	clean
 re		:	fclean all
 
 check		:
-			@ $(CHECK) $(LOCAL) inc/ -nocheat -score -printline -return -noheader
+			@ $(CHECK) ./ -nocheat -score -printline -return -noheader -malloc
 
 %.o		:	%.c
 			@ $(CC) $(CFLAGS) -o $@ -c $<
