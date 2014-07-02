@@ -28,7 +28,7 @@ static void	orientation_west(t_orientation *player_ori)
   player_ori->vec.y = 0;
 }
 
-void	set_orientation(t_player *player, const enum e_ori ori)
+bool	set_orientation(t_player *player, const enum e_ori ori)
 {
   void	(*fptr[4])(t_orientation *);
 
@@ -37,4 +37,5 @@ void	set_orientation(t_player *player, const enum e_ori ori)
   fptr[2] = &orientation_south;
   fptr[3] = &orientation_west;
   fptr[ori](&(player->orientation));
+  return (true);
 }

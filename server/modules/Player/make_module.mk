@@ -9,7 +9,12 @@ PLAYER		=	$(SRC_FOLDER)create_player.c		\
 			$(SRC_FOLDER)set_orientation.c		\
 			$(SRC_FOLDER)show_inventory.c		\
 			$(SRC_FOLDER)show_list_player.c		\
-			$(SRC_FOLDER)take_or_put_object.c
+			$(SRC_FOLDER)take_or_put_object.c	\
+			$(SRC_FOLDER)look.c			\
+			$(SRC_FOLDER)get_vision_point.c		\
+			$(SRC_FOLDER)send_view.c		\
+			$(SRC_FOLDER)convert_nbr_to_str.c
+
 
 ############################################################
 

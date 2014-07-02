@@ -29,17 +29,15 @@ void		remove_player(const int id, const int position)
   else
     {
       while (tmp->next != NULL)
-	{
-	  if (((t_player *)(tmp->data))->id == id)
-	    {
-	      free_node = tmp;
-	      tmp = tmp->next->next;
-	      free(free_node);
-	      free_node = NULL;
-	      --g_server.world->cell[position].list_player->size;
-	    }
-	  else
-	    tmp = tmp->next;
-	}
+      	{
+      	  if (((t_player *)(tmp->data))->id == id)
+      	    {
+      	      free_node = tmp;
+      	      tmp = tmp->next->next;
+	      destroy_node(free_node, false);
+      	    }
+      	  else
+      	    tmp = tmp->next;
+      	}
     }
 }
