@@ -14,6 +14,7 @@ SRC		=	$(LOCAL)create_destroy_list.c	\
 			$(LOCAL)push_back.c		\
 			$(LOCAL)front_begin.c		\
 			$(LOCAL)size.c			\
+			$(LOCAL)list_clear.c		\
 			$(LOCAL)for_each.c
 
 OBJ		=	$(SRC:.c=.o)

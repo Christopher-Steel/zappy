@@ -27,6 +27,9 @@ t_list	*list_create(void);
 void	list_destroy(t_list *list, bool free_data)
   __attribute__ ((nonnull (1)));
 
+void	list_clear(t_list *list, bool free_data)
+  __attribute__ ((nonnull (1)));
+
 int	list_size(t_list *list) __attribute__ ((nonnull (1)));
 
 void	*list_front(t_list *list) __attribute__ ((nonnull (1)));
