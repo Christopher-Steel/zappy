@@ -5,7 +5,8 @@ WORLD		=	$(SRC_FOLDER)generate_world.c		\
 			$(SRC_FOLDER)add_player.c		\
 			$(SRC_FOLDER)remove_player.c		\
 			$(SRC_FOLDER)spawn_player.c		\
-			# $(SRC_FOLDER)list_world.c
+			$(SRC_FOLDER)wrap_pos.c		\
+			$(SRC_FOLDER)list_world.c
 
 ############################################################
 

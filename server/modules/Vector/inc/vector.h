@@ -2,6 +2,12 @@
 # define	VECTOR_H_
 
 /*
+** INCLUDE
+*/
+
+# include	<stdbool.h>
+
+/*
 ** STRUCTURE
 */
 typedef struct	s_vector
@@ -16,5 +22,6 @@ typedef struct	s_vector
 
 t_vector	sub_vector(t_vector vec1, t_vector vec2);
 t_vector	add_vector(t_vector vec1, t_vector vec2);
+bool		equal_vector(t_vector vec1, t_vector vec2);
 
 #endif		/* !VECTOR_H_ */

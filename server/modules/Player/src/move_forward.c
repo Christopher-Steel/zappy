@@ -22,7 +22,7 @@ static void	wrap_border_map_vertically(t_player *player, t_world *world)
     player->pos.y = 0;
 }
 
-void		move_forward(t_player *player, char *cmd)
+bool		move_forward(t_player *player, char *cmd)
 {
   t_world	*world;
   int		pos_init;
@@ -44,4 +44,5 @@ void		move_forward(t_player *player, char *cmd)
   pos_final = player->pos.x + (player->pos.y * gs_get_map_width());
   remove_player(player->id, pos_init);
   add_player(player, pos_final);
+  return (true);
 }

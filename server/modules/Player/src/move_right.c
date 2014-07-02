@@ -20,7 +20,7 @@ static void	move_right_west(t_player *player)
   set_orientation(player, NORTH);
 }
 
-void	move_right(t_player *player, char *cmd)
+bool	move_right(t_player *player, char *cmd)
 {
   void	(*fptr[4])(t_player *);
 
@@ -30,4 +30,5 @@ void	move_right(t_player *player, char *cmd)
   fptr[2] = &move_right_south;
   fptr[3] = &move_right_west;
   fptr[player->orientation.orientation](player);
+  return (true);
 }

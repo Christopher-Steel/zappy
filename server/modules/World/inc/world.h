@@ -8,7 +8,6 @@
 
 # include	"server.h"
 # include	"player.h"
-# include	"list.h"
 
 /*
 ** DEFINE
@@ -59,5 +58,8 @@ bool		spawn_player(const t_sock socket, const int id);
 void		remove_player(const int id, const int position);
 bool		add_player(t_player *player, const int pos);
 void		list_world(void);
+void		get_vision_point(int *tab, t_player *player);
+t_vector	wrap_horizontal(t_vector vec);
+t_vector	wrap_vertical(t_vector vec);
 
 #endif		/* !WORLD_H_ */
