@@ -13,7 +13,6 @@ void		event_update(t_list *events)
       event = (t_event *)(node->data);
       node = node->next;
       event->timestamp -= g_server.info.dtime;
-      //--(event->timestamp);
       if (event->timestamp <= 0)
 	{
 	  event->func(event->player, event->arg);

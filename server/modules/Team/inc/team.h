@@ -5,6 +5,7 @@
 #include	"zappy_types.h"
 #include	"list.h"
 #include	"player.h"
+#include	"egg.h"
 
 typedef struct	s_team
 {
@@ -21,6 +22,9 @@ void		team_destroy(t_team *team);
 
 void		team_update_max_level(t_team *team);
 
-void		team_add_player(t_player *, char *team_name);
+void		team_add_player(t_player *player, char *team_name);
+void		team_add_egg(t_egg *egg, char *team_name);
+
+void		team_create_player(t_team *team, t_client *client);
 
 #endif		/* !TEAM_H_ */

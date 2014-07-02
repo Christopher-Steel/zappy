@@ -20,7 +20,7 @@ void	set_n(int ac, char **av)
 	  if (g_server.param.team_names
 	      && !strstr(g_server.param.team_names, av[optind]))
 	    {
-	      asprintf(&tmp, "%s%s\n", g_server.param.team_names,av[optind]);
+	      asprintf(&tmp, "%s%s\n", g_server.param.team_names, av[optind]);
 	      free(g_server.param.team_names);
 	      g_server.param.team_names = tmp;
 	    }

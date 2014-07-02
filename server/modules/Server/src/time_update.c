@@ -12,7 +12,5 @@ void			time_update(void)
   time = tv.tv_sec + (tv.tv_usec * 0.000001);
   if (g_server.info.time != 0)
     g_server.info.dtime = time - g_server.info.time;
-  //printf("ctime %Lf\n", time);
-  //printf("dtime %Lf\n", g_server.info.dtime);
   g_server.info.time = time;
 }
