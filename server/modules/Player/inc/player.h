@@ -11,6 +11,7 @@
 # include	"vector.h"
 # include	"list.h"
 # include	"team.h"
+# include	"server.h"
 
 /*
 ** TYPEDEF
@@ -63,7 +64,7 @@ typedef struct	s_player
 ** FUNCTIONS
 */
 t_player	*create_player(const t_vector pos, const enum e_ori ori,
-			       const t_sock socket, const int id);
+			       const t_sock socket);
 bool		set_orientation(t_player *player, const enum e_ori ori);
 void		show_list_player(t_list *list);
 bool		move_right(t_player *player, char *cmd);
