@@ -2,7 +2,9 @@
 #ifndef		EGG_H_
 # define	EGG_H_
 
-# include	"team.h"
+//# include	"team.h"
+
+typedef struct	s_team t_team;
 
 typedef struct	s_egg
 {

@@ -12,16 +12,19 @@ t_team		*find_team(char *team_name)
     node = node->next;
   if (node)
     return (node->data);
-  return (team_create(++g_param.team_max_id, team_name));
+  return (NULL);
 }
 
-void		team_add_player(t_player *player, char *team_name)
+bool		team_add_player(t_player *player, char *team_name)
 {
   t_team	*team;
 
   team = find_team(team_name);
+  if (!team)
+    return (print_error("%s : unknown team name", team_name));
   list_push_front(team->members, player);
   player->team = team;
+  return (true);
 }
 
 void		team_add_egg(t_egg *egg, char *team_name)
