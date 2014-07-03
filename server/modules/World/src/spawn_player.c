@@ -17,7 +17,6 @@ t_player	*spawn_player(t_client *client)
   t_vector	pos;
   t_player	*player;
 
-  (void)socket;
   printf("Start Spawn player\n");
   height = g_server.world->height;
   width = g_server.world->width;

@@ -32,6 +32,7 @@ void		remove_player(const int id, const int position)
       	{
       	  if (((t_player *)(tmp->data))->id == id)
       	    {
+	      --g_server.world->cell[position].list_player->size;
       	      free_node = tmp;
       	      tmp = tmp->next->next;
 	      destroy_node(free_node, false);
