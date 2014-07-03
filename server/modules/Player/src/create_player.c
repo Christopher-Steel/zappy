@@ -26,7 +26,8 @@ static void	player_destroy(t_receiver *rec)
   free(player);
 }
 
-t_player	*create_player(t_client *client)
+t_player	*create_player(t_vector pos, enum e_ori ori,
+			       t_client *client)
 {
   t_player	*pl;
 
@@ -41,10 +42,11 @@ t_player	*create_player(t_client *client)
   pl->level = 1;
   pl->id = g_server.info.nb_clients;
   ++g_server.info.nb_clients;
-  pl->pos.x = rand() % g_server.world->height;
-  pl->pos.y = rand() % g_server.world->width;
+  pl->pos.x = pos.x;
+  pl->pos.y = pos.y;
   pl->client = client;
-  set_orientation(pl, rand() % 4);
+  set_orientation(pl, ori);
+  printf("Player Created\n");
   printf_log("Created new player %d at position %d/%d -> %d.", pl->id,
 	     pl->pos.x, pl->pos.y, pl->orientation.orientation);
   return (pl);

@@ -6,9 +6,10 @@
 # include	<stdbool.h>
 # include	<string.h>
 
+# include	"egg.h"
 # include	"player.h"
 # include	"server.h"
-//# include	"team.h"
+# include	"team.h"
 # include	"vector.h"
 
 /*
@@ -37,10 +38,12 @@ enum	e_ressource
 ** STRUCTURE
 */
 typedef struct	s_player	t_player;
+typedef struct	s_egg		t_egg;
 
 typedef struct	s_cell
 {
   unsigned int	res[7];
+  t_list	*list_egg;
   t_list	*list_player;
 }		t_cell;
 
@@ -55,15 +58,17 @@ typedef struct	s_world
 /*
 ** FONCTION
 */
-bool		generate_world(const unsigned int height,
-			       const unsigned int width);
 void		spawn_ressource(t_world *world);
-bool		spawn_player(const t_sock socket);
 void		remove_player(const int id, const int position);
-bool		add_player(t_player *player, const int pos);
+void		delete_player(t_player *player);
 void		list_world(void);
 void		get_vision_point(int *tab, t_player *player);
+bool		generate_world(const unsigned int height,
+			       const unsigned int width);
+bool		add_player(t_player *player, const int pos);
+bool		add_egg(t_egg *egg, const int pos);
 t_vector	wrap_horizontal(t_vector vec);
 t_vector	wrap_vertical(t_vector vec);
+t_player	*spawn_player(t_client *client);
 
 #endif		/* !WORLD_H_ */

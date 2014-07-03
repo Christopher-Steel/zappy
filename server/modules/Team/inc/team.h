@@ -2,11 +2,11 @@
 #ifndef		TEAM_H_
 # define	TEAM_H_
 
-#include	"zappy_types.h"
-#include	"network_client.h"
-#include	"player.h"
 #include	"egg.h"
 #include	"list.h"
+#include	"network_client.h"
+#include	"player.h"
+#include	"zappy_types.h"
 
 typedef struct	s_player	t_player;
 

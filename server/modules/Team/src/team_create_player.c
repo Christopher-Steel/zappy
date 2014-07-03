@@ -25,7 +25,7 @@ t_player	*team_create_player(char *team_name, t_client *client)
       printf_error("\"%s\" is not a valid team name", team_name);
       return (NULL);
     }
-  if (!(player = create_player(client)))
+  if (!(player = spawn_player(client)))
     return (NULL);
   list_push_front(team->members, player);
   printf_log("Player %d joined team %s\n", player->id, team_name);
