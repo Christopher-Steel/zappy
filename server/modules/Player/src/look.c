@@ -1,3 +1,4 @@
+#include "print_error.h"
 #include "world.h"
 
 static const char	*res_name[] =

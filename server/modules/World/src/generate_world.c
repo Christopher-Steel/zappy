@@ -1,3 +1,4 @@
+#include "print_error.h"
 #include "print_log.h"
 #include "world.h"
 

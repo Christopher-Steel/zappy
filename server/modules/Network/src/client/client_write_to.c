@@ -2,6 +2,7 @@
 
 #include "inject_buffer.h"
 #include "network_client.h"
+#include "print_error.h"
 #include "print_warning.h"
 
 bool		client_write_to(t_client *client, char *message)

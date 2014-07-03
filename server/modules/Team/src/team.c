@@ -5,9 +5,9 @@
 #include <string.h>
 
 #include "list.h"
+#include "print_error.h"
 #include "server.h"
 #include "team.h"
-//#include "set_parameter.h"
 
 t_team		*team_create(int id, char *name)
 {
@@ -21,9 +21,8 @@ t_team		*team_create(int id, char *name)
   team->id = id;
   if (name == NULL)
     asprintf(&team->name, "team%d", id);
-  else
-    if (!(team->name = strdup(name)))
-      print_perror("strdup");
+  else if (!(team->name = strdup(name)))
+    print_perror("strdup");
   team->members = list_create();
   team->eggs = list_create();
   team->max_level = 0;

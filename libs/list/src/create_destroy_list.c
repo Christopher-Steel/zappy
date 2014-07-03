@@ -1,13 +1,14 @@
 #include <stdio.h>
 
 #include "list.h"
+#include "print_error.h"
 
 t_list		*list_create()
 {
   t_list	*tmp;
 
   if (!(tmp = malloc(sizeof(t_list))))
-    print_perror("malloc");
+    print_perror("failed to allocate new list");
   tmp->size = 0;
   tmp->nodes = NULL;
   tmp->last = NULL;
