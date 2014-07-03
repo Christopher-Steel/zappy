@@ -25,7 +25,6 @@ MODULE_DIRS	=	$(MODDIR)Event		\
 			$(MODDIR)Network	\
 			$(MODDIR)Parameters	\
 			$(MODDIR)Player		\
-			$(MODDIR)Server		\
 			$(MODDIR)Team		\
 			$(MODDIR)Vector		\
 			$(MODDIR)World
@@ -38,6 +37,10 @@ SRC		=	$(COMMON)print_error.c		\
 			$(COMMON)print_warning.c	\
 			$(COMMON)print_log.c		\
 			$(COMMON)print_debug.c		\
+			$(LOCAL)gs_get_map_height.c	\
+			$(LOCAL)gs_get_map_size.c	\
+			$(LOCAL)gs_get_map_width.c	\
+			$(LOCAL)time_update.c		\
 			$(LOCAL)main.c
 
 include $(MODULES)
