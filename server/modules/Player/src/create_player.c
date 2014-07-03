@@ -1,9 +1,8 @@
 #include "player.h"
 
-t_player	*create_player(t_client *client)
+t_player	*create_player(t_vector pos, enum e_ori ori,
+			       t_client *client)
 {
-  unsigned int	height;
-  unsigned int	width;
   t_player	*player;
 
   printf("Start create Player\n");
@@ -13,12 +12,10 @@ t_player	*create_player(t_client *client)
   player->level = 1;
   player->id = g_server.info.nb_clients;
   ++g_server.info.nb_clients;
-  height = g_server.world->height;
-  width = g_server.world->width;
-  player->pos.x = rand() % width;
-  player->pos.y = rand() % height;
+  player->pos.x = pos.x;
+  player->pos.y = pos.y;
   player->client = client;
-  set_orientation(player, rand() % 4);
+  set_orientation(player, ori);
   printf("Player Created\n");
   return (player);
 }

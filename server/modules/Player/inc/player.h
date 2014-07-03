@@ -36,6 +36,13 @@ enum	e_ori
 ** STRUCTURES
 */
 
+typedef struct	s_in_view
+{
+  bool		is_player;
+  bool		is_res;
+  bool		is_egg;
+}		t_in_view;
+
 typedef struct	s_vision
 {
   t_vector	start;
@@ -64,17 +71,17 @@ typedef struct	s_player
 /*
 ** FUNCTIONS
 */
-t_player	*create_player(t_client *client);
-bool		set_orientation(t_player *player, const enum e_ori ori);
 void		show_list_player(t_list *list);
+bool		set_orientation(t_player *player, const enum e_ori ori);
 bool		move_right(t_player *player, char *cmd);
 bool		move_left(t_player *player, char *cmd);
 bool		take_object(t_player *player, char *res);
 bool		put_down_object(t_player *player, char *res);
 bool		show_inventory(t_player *player, char *res);
 bool		move_forward(t_player *player, char *cmd);
-char		*convert_nbr_to_str(int nbr);
 bool		look(t_player *player, char *cmd);
 bool		send_view(int len, int *tab_view);
+char		*convert_nbr_to_str(int nbr);
+t_player	*create_player(t_vector pos, enum e_ori ori, t_client *client);
 
 #endif		/* !PLAYER_H_ */
