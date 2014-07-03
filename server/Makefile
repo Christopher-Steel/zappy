@@ -21,14 +21,15 @@ MODDIR		=	./modules/
 
 MODULE_DIRS	=	$(MODDIR)Event		\
 			$(MODDIR)Egg		\
+			$(MODDIR)GraphProtocol	\
 			$(MODDIR)Parameters	\
 			$(MODDIR)Player		\
 			$(MODDIR)Server		\
 			$(MODDIR)Team		\
 			$(MODDIR)Vector		\
 			$(MODDIR)World
-			# $(MODDIR)Network	\
-			# $(MODDIR)Graphic	\
+			#$(MODDIR)Graphic	\
+			$(MODDIR)Network	\
 
 MODULES		=	$(addsuffix /make_module.mk, $(MODULE_DIRS))
 

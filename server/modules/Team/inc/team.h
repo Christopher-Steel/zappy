@@ -3,7 +3,7 @@
 # define	TEAM_H_
 
 #include	"zappy_types.h"
-#include	"player.h"
+#include	"world.h"
 #include	"egg.h"
 #include	"list.h"
 
