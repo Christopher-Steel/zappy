@@ -1,68 +1,95 @@
 #include <stdlib.h>
+#include <string.h>
 
 #include "print_error.h"
 #include "ring_buf.h"
 #include "zappy_types.h"
 
-/* ring->head < ring->tail
-	 || (ring->head == ring->tail && ring->len > 0)
-	 || (ring->tail == 0)*/
-
-static int	ring_buf_simple_pop(t_ring_buf *ring, char *dest)
+static uint	seek_endline(t_ring_buf *ring)
 {
-  uint		index;
+  uint		cursor;
+  uint		count;
 
-  for (index = 0; ring->len > 0; ++ring->head)
-    {
-      if (ring->buf[ring->head] == '\n')
-	{
-	  ++ring->head;
-	  --ring->len;
-	  break ;
-	}
-      dest[index] = ring->buf[ring->head];
-      ++index;
-      --ring->len;
-    }
-  dest[index] = '\0';
-  return (index);
+  count = 0;
+  if (ring->len == 0)
+    return (0);
+  for (cursor = ring->head; cursor >= ring->tail
+	 && cursor < RING_BUF_SIZE
+	 && ring->buf[cursor] != '\n'; ++cursor)
+    ++count;
+  if (ring->buf[cursor] == '\n')
+    return (count);
+  for (cursor = ring->head; cursor < ring->tail
+	 && ring->buf[cursor] != '\n'; ++cursor)
+    ++count;
+  if (ring->buf[cursor] == '\n')
+    return ((ring->buf[cursor - 1] == '\r' ? count - 1 : count));
+  else
+    return (0);
 }
 
-static int	ring_buf_wrap_pop(t_ring_buf *ring, char *dest)
+static void	move_to_next_non_endline(t_ring_buf *ring)
 {
-  uint		index;
-
-  for (index = 0; ring->head < RING_BUF_SIZE; ++ring->head)
+  while (ring->buf[ring->head] == '\n' || ring->buf[ring->head] == '\r')
     {
-      if (ring->buf[ring->head] == '\n')
-	{
-	  ++ring->head;
-	  --ring->len;
-	  break ;
-	}
-      dest[index] = ring->buf[ring->head];
+      ++ring->head;
       --ring->len;
     }
-  return (index + ring_buf_simple_pop(ring, &dest[index]));
+}
+
+static void	transfer_data(t_ring_buf *ring, char *dest, uint len)
+{
+  uint		size;
+
+  if (ring->head + len >= RING_BUF_SIZE)
+    {
+      size = RING_BUF_SIZE - ring->head;
+      memcpy(dest, &ring->buf[ring->head], size);
+      len -= size;
+      ring->len -= size;
+      ring->head = 0;
+      dest += size;
+    }
+  memcpy(dest, &ring->buf[ring->head], len);
+  dest[len] = '\0';
+  ring->len -= len;
+  ring->head += len;
+  move_to_next_non_endline(ring);
 }
 
 int	ring_buf_pop(t_ring_buf *ring, char *dest)
 {
-  if (ring->tail <= ring->head
-      && ring->len && ring->head > 0
-      && ring->tail != 0)
-    return (ring_buf_wrap_pop(ring, dest));
+  uint	len;
+
+  if ((len = seek_endline(ring)) == 0)
+    {
+      move_to_next_non_endline(ring);
+      if (ring->len == RING_BUF_SIZE)
+        ring_buf_ctor(ring);
+      return (0);
+    }
   else
-    return (ring_buf_simple_pop(ring, dest));
+    transfer_data(ring, dest, len);
+  return (len);
 }
 
 int	ring_buf_pop_alloc(t_ring_buf *ring, char **dest)
 {
-  if ((*dest = malloc((ring->len + 1) * sizeof(**dest))) == NULL)
+  uint	len;
+
+  if ((len = seek_endline(ring)) == 0)
+    {
+      move_to_next_non_endline(ring);
+      if (ring->len == RING_BUF_SIZE)
+	ring_buf_ctor(ring);
+      return (0);
+    }
+  if ((*dest = malloc((len + 1) * sizeof(char))) == NULL)
     {
       print_perror("failed to allocate new string");
       return (-1);
     }
   else
-    return (ring_buf_pop(ring, *dest));
+    transfer_data(ring, *dest, len);
+  return (len);
 }

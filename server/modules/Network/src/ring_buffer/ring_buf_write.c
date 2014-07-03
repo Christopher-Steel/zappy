@@ -5,7 +5,6 @@
 
 int		ring_buf_write(t_ring_buf *ring, int fd)
 {
-  int		rc;
   int		len;
 
   if (ring->tail <= ring->head && ring->len)
@@ -16,9 +15,6 @@ int		ring_buf_write(t_ring_buf *ring, int fd)
       ring->head = ((uint)len < RING_BUF_SIZE - ring->head
 		    ? ring->head + len : 0);
       ring->len -= len;
-      if ((rc = ring_buf_write(ring, fd)) == -1)
-	return (-1);
-      len += rc;
     }
   else
     {

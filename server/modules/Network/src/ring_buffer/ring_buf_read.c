@@ -11,29 +11,24 @@ static int	ring_buf_read_part(t_ring_buf *ring, int fd, int space)
   return (pushed);
 }
 
-int		ring_buf_read(t_ring_buf *ring, int fd)
+int	ring_buf_read(t_ring_buf *ring, int fd)
 {
-  int		space;
-  int		pushed;
-  int		total_pushed;
+  int	pushed;
+  uint	size;
 
-  total_pushed = 0;
-  if (ring->head < ring->tail || (ring->head == ring->tail && !ring->len))
+  if (ring->tail >= ring->head)
     {
-      space = RING_BUF_SIZE - ring->tail;
-      if ((pushed = ring_buf_read_part(ring, fd, space)) <= 0)
-	return (pushed);
-      if (pushed == space)
-	ring->tail = 0;
-      else
-	ring->tail += pushed;
-      if (pushed < space)
-	return (pushed);
-      total_pushed += pushed;
+      size = RING_BUF_SIZE - ring->tail;
+      if ((pushed = ring_buf_read_part(ring, fd, size)) == -1)
+	return (-1);
+      ring->tail = ((uint)pushed == size ? 0 : ring->tail + pushed);
     }
-  space = ring->head;
-  if ((pushed = ring_buf_read_part(ring, fd, space)) <= 0)
-    return (pushed);
-  ring->tail += pushed;
-  return (pushed + total_pushed);
+  else
+    {
+      size = ring->head - ring->tail;
+      if ((pushed = ring_buf_read_part(ring, fd, size)) == -1)
+	return (-1);
+      ring->tail += pushed;
+    }
+  return (pushed);
 }

@@ -6,9 +6,10 @@
 # include	<stdbool.h>
 # include	<string.h>
 
+# include	"player.h"
 # include	"server.h"
 //# include	"team.h"
-# include	"player.h"
+# include	"vector.h"
 
 /*
 ** DEFINE

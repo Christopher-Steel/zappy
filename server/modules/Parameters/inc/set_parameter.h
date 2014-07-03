@@ -6,10 +6,12 @@
 
 # include	"server.h"
 
+# define	OPTION_TAGS	"pxyncth"
+
 # define	DEFAULT_P	1337
 # define	DEFAULT_X	10
 # define	DEFAULT_Y	10
-# define	DEFAULT_N	"team%d"
+# define	DEFAULT_N	"trantorians"
 # define	DEFAULT_C	1
 # define	DEFAULT_T	100
 

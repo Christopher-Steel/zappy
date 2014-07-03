@@ -1,24 +1,28 @@
+#include "print_log.h"
+#include "socket_pool.h"
+
 void			sockpool_handle(t_sockpool *pool)
 {
-  t_sockpool_node	*node;
-  uint			handled;
+  t_node		*lnode;
+  t_sockpool_node	*snode;
 
   if (pool->nbset <= 0)
     return ;
-  if (FD_ISSET(pool->listener, pool->read_set))
-    add_client(pool, pool->listener);
-  handled = 0;
-  for (node = pool->nodes; handled < pool->nbset && node; node = node->next)
+  if (FD_ISSET(pool->listener, &pool->read_set))
+    sockpool_add_client(pool, pool->listener);
+  for (lnode = pool->nodes.nodes; pool->nbset > 0 && lnode;
+       lnode = lnode->next)
     {
-      if (FD_ISSET(node->socket, pool->read_set))
+      snode = (t_sockpool_node *)lnode->data;
+      if (FD_ISSET(snode->socket, &pool->read_set))
 	{
-	  handle_read(node);
-	  ++handled;
+	  sockpool_node_read(snode);
+	  --pool->nbset;
 	}
-      if (FD_ISSET(node->socket, pool->write_set))
+      if (FD_ISSET(snode->socket, &pool->write_set))
 	{
-	  handle_write(node);
-	  ++handled;
+	  sockpool_node_write(snode);
+	  --pool->nbset;
 	}
     }
 }

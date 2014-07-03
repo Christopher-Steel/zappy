@@ -6,6 +6,7 @@
 # include	<sys/time.h>
 
 # include	"list.h"
+# include	"receiver.h"
 # include	"ring_buf.h"
 # include	"tcp_socket.h"
 # include	"zappy_types.h"
@@ -16,25 +17,50 @@ typedef struct	s_sockpool
   fd_set	write_set;
   uint		maxfd;
   int		nbset;
+
+  t_list	broadcast;
+
   t_sock	listener;
   t_list	nodes;
 }		t_sockpool;
 
 typedef struct	s_sockpool_node
 {
-  void		*data;
+  t_receiver	*receiver;
   t_sock	socket;
+  char		*ip;
+  int		port;
+
+  bool		closing;
 
   t_ring_buf	read;
   t_ring_buf	write;
+
+  t_list	inbound;
+  t_list	outbound;
 }		t_sockpool_node;
 
 void		sockpool_push(t_sockpool *pool, void *data, t_sock socket)
   __attribute__ ((nonnull(1)));
-
-bool		sockpool_filter(t_sockpool *pool, struct timeval *t)
+void		sockpool_erase(t_sockpool *pool, t_sockpool_node *node)
   __attribute__ ((nonnull));
+
+void		sockpool_fill_sets(t_sockpool *pool)
+  __attribute__ ((nonnull));
+bool		sockpool_filter(t_sockpool *pool, struct timeval *t)
+  __attribute__ ((nonnull(1)));
 void		sockpool_handle(t_sockpool *pool)
+  __attribute__ ((nonnull));
+void		sockpool_update(t_sockpool *pool)
+  __attribute__ ((nonnull));
+
+t_sockpool_node	*sockpool_node_create(t_sock sock);
+
+void		sockpool_add_client(t_sockpool *pool, t_sock listener)
+  __attribute__ ((nonnull(1)));
+void		sockpool_node_read(t_sockpool_node *node)
+  __attribute__ ((nonnull));
+void		sockpool_node_write(t_sockpool_node *node)
   __attribute__ ((nonnull));
 
 #endif		/* SOCKET_POOL_H_ */

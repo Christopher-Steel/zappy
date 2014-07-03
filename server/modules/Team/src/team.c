@@ -4,9 +4,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "team.h"
 #include "list.h"
-#include "set_parameter.h"
+#include "server.h"
+#include "team.h"
+//#include "set_parameter.h"
 
 t_team		*team_create(int id, char *name)
 {
@@ -19,7 +20,7 @@ t_team		*team_create(int id, char *name)
     }
   team->id = id;
   if (name == NULL)
-    asprintf(&team->name, "%s%d", DEFAULT_N, id);
+    asprintf(&team->name, "team%d", id);
   else
     if (!(team->name = strdup(name)))
       print_perror("strdup");

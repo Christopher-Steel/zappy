@@ -21,14 +21,14 @@ MODDIR		=	./modules/
 
 MODULE_DIRS	=	$(MODDIR)Event		\
 			$(MODDIR)Egg		\
+			$(MODDIR)Graphic	\
+			$(MODDIR)Network	\
 			$(MODDIR)Parameters	\
 			$(MODDIR)Player		\
 			$(MODDIR)Server		\
 			$(MODDIR)Team		\
 			$(MODDIR)Vector		\
 			$(MODDIR)World
-			# $(MODDIR)Network	\
-			# $(MODDIR)Graphic	\
 
 MODULES		=	$(addsuffix /make_module.mk, $(MODULE_DIRS))
 
@@ -38,7 +38,7 @@ SRC		=	$(COMMON)print_error.c		\
 			$(COMMON)print_warning.c	\
 			$(COMMON)print_log.c		\
 			$(COMMON)print_debug.c		\
-			$(LOCAL)test.c
+			$(LOCAL)main.c
 
 include $(MODULES)
 

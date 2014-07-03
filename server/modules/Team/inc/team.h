@@ -3,12 +3,12 @@
 # define	TEAM_H_
 
 #include	"zappy_types.h"
+#include	"network_client.h"
 #include	"player.h"
 #include	"egg.h"
 #include	"list.h"
 
 typedef struct	s_player	t_player;
-typedef struct	s_client	t_client;
 
 typedef struct	s_team
 {

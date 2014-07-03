@@ -10,17 +10,17 @@
 #include "list.h"
 #include "team.h"
 
-static const char		*options = "pxyncth";
-
-static const func_opt_ptr	set_opt[] =
-{&set_p,
- &set_x,
- &set_y,
- &set_n,
- &set_c,
- &set_t,
- &print_usage,
- NULL};
+static const func_opt_ptr	g_set_opt[] =
+  {
+    &set_p,
+    &set_x,
+    &set_y,
+    &set_n,
+    &set_c,
+    &set_t,
+    &print_usage,
+    NULL
+  };
 
 void	set_default_param(void)
 {
@@ -45,7 +45,10 @@ void	create_teams()
     }
   free(g_server.param.team_names);
   if (g_server.team_list->size < 1)
-    team_create(++g_server.param.team_max_id, "default_team");
+    {
+      printf_warning("No team names specified, defaulting to \"%s\"", DEFAULT_N);
+      team_create(++g_server.param.team_max_id, DEFAULT_N);
+    }
 }
 
 void	parse_param(int ac, char **av)
@@ -54,12 +57,12 @@ void	parse_param(int ac, char **av)
   char	opt;
 
   set_default_param();
-  while ((opt = getopt(ac, av, options)) != -1)
+  while ((opt = getopt(ac, av, OPTION_TAGS)) != -1)
     {
       i = -1;
-      while (++i < 7 && options[i] != opt);
+      while (++i < 7 && OPTION_TAGS[i] != opt);
       if (i < 7)
-	set_opt[i](ac, av);
+	g_set_opt[i](ac, av);
     }
   generate_world(g_server.param.height, g_server.param.width);
   create_teams();

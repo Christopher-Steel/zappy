@@ -7,19 +7,25 @@
 # include	<stdlib.h>
 # include	<stdio.h>
 
-# include	"zappy_types.h"
-# include	"vector.h"
 # include	"list.h"
-# include	"team.h"
+# include	"network_client.h"
+# include	"receiver.h"
 # include	"server.h"
+# include	"team.h"
+# include	"vector.h"
+# include	"zappy_types.h"
 
 /*
 ** TYPEDEF
 */
 
-typedef int	t_sock;
-typedef struct	s_client	t_client;
 typedef struct	s_team		t_team;
+
+/*
+** DEFINES
+*/
+
+# define	MAX_CLIENT_OUTQ	10
 
 /*
 ** ENUM
@@ -52,6 +58,8 @@ typedef struct	s_orientation
 
 typedef struct	s_player
 {
+  void		(*receive)(t_receiver *rec, char *msg);
+  void		(*destroy)(t_receiver *rec);
   unsigned int	inventory[7];
   unsigned int	level;
   t_vector	pos;

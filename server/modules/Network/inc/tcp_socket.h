@@ -6,6 +6,12 @@
 
 # include	"zappy_types.h"
 
+typedef struct	s_sock_info
+{
+  char		*ip;
+  int		port;
+}		t_sock_info;
+
 t_sock		tcp_sock_create(void);
 struct sockaddr	*tcp_sock_get_addr(struct sockaddr_in *, in_addr_t, int);
 bool		tcp_sock_passive_init(t_sock *, int, int);
