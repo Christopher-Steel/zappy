@@ -1,8 +1,9 @@
 #include "player.h"
 
-t_player	*create_player(const t_vector pos, const enum e_ori ori,
-			       const t_sock socket)
+t_player	*create_player(t_client *client)
 {
+  unsigned int	height;
+  unsigned int	width;
   t_player	*player;
 
   printf("Start create Player\n");
@@ -10,12 +11,14 @@ t_player	*create_player(const t_vector pos, const enum e_ori ori,
     return (NULL);
   player->inventory[0] = 10;
   player->level = 1;
-  player->socket = socket;
   player->id = g_server.info.nb_clients;
   ++g_server.info.nb_clients;
-  player->pos.x = pos.x;
-  player->pos.y = pos.y;
-  set_orientation(player, ori);
+  height = g_server.world->height;
+  width = g_server.world->width;
+  player->pos.x = rand() % width;
+  player->pos.y = rand() % height;
+  player->client = client;
+  set_orientation(player, rand() % 4);
   printf("Player Created\n");
   return (player);
 }

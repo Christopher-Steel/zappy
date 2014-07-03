@@ -7,6 +7,7 @@
 #include	"egg.h"
 #include	"list.h"
 
+typedef struct	s_player	t_player;
 typedef struct	s_client	t_client;
 
 typedef struct	s_team

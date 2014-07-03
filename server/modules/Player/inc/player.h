@@ -6,11 +6,11 @@
 */
 # include	<stdlib.h>
 # include	<stdio.h>
-# include	<stdbool.h>
 
+# include	"zappy_types.h"
 # include	"vector.h"
 # include	"list.h"
-//# include	"team.h"
+# include	"team.h"
 # include	"server.h"
 
 /*
@@ -18,7 +18,8 @@
 */
 
 typedef int	t_sock;
-typedef struct s_team	t_team;
+typedef struct	s_client	t_client;
+typedef struct	s_team		t_team;
 
 /*
 ** ENUM
@@ -55,16 +56,15 @@ typedef struct	s_player
   unsigned int	level;
   t_vector	pos;
   t_orientation	orientation;
-  int		socket;
   int		id;
   t_team	*team;
+  t_client	*client;
 }		t_player;
 
 /*
 ** FUNCTIONS
 */
-t_player	*create_player(const t_vector pos, const enum e_ori ori,
-			       const t_sock socket);
+t_player	*create_player(t_client *client);
 bool		set_orientation(t_player *player, const enum e_ori ori);
 void		show_list_player(t_list *list);
 bool		move_right(t_player *player, char *cmd);

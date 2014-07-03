@@ -1,7 +1,7 @@
 
 #include "team.h"
 
-t_team		*find_team(char *team_name)
+static t_team		*find_team(char *team_name)
 {
   t_node	*node;
 
