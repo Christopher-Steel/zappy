@@ -31,6 +31,7 @@ void	list_clear(t_list *list, bool free_data)
   __attribute__ ((nonnull (1)));
 
 int	list_size(t_list *list) __attribute__ ((nonnull (1)));
+bool	list_empty(t_list *list) __attribute__ ((nonnull (1)));
 
 void	*list_front(t_list *list) __attribute__ ((nonnull (1)));
 t_node	*list_begin(t_list *list) __attribute__ ((nonnull (1)));
