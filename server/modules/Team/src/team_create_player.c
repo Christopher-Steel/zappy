@@ -1,13 +1,31 @@
 
 #include "team.h"
 
-bool		team_create_player(t_team *team, t_client *client)
+t_team		*find_team(char *team_name)
 {
+  t_node	*node;
+
+  node = g_server.team_list->nodes;
+  while (node && strcmp(((t_team *)(node->data))->name, team_name) != 0)
+    node = node->next;
+  if (node)
+    return (node->data);
+  return (NULL);
+}
+
+t_player	*team_create_player(char *team_name, t_client *client)
+{
+  t_team	*team;
   t_player	*player;
 
-  player = create_player(client);
-  if (!player)
-    return (false);
+  if (!(team = find_team(team_name)))
+    {
+      printf_error("%s : unknown team name", team_name);
+      return (NULL);
+    }
+  if (!(player = create_player(client)))
+    return (NULL);
   list_push_front(team->members, player);
   player->team = team;
+  return (player);
 }

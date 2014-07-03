@@ -7,6 +7,7 @@
 # include	<string.h>
 
 # include	"server.h"
+//# include	"team.h"
 # include	"player.h"
 
 /*
@@ -34,6 +35,8 @@ enum	e_ressource
 /*
 ** STRUCTURE
 */
+typedef struct	s_player	t_player;
+
 typedef struct	s_cell
 {
   unsigned int	res[7];
@@ -54,7 +57,7 @@ typedef struct	s_world
 bool		generate_world(const unsigned int height,
 			       const unsigned int width);
 void		spawn_ressource(t_world *world);
-bool		spawn_player(const t_sock socket, const int id);
+bool		spawn_player(const t_sock socket);
 void		remove_player(const int id, const int position);
 bool		add_player(t_player *player, const int pos);
 void		list_world(void);

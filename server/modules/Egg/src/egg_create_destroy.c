@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "egg.h"
+#include "print_error.h"
 
 t_egg	*egg_create(int id, t_team *team)
 {

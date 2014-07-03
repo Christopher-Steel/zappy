@@ -10,7 +10,7 @@
 
 # include	"vector.h"
 # include	"list.h"
-# include	"team.h"
+//# include	"team.h"
 # include	"server.h"
 
 /*

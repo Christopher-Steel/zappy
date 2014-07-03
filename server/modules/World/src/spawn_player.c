@@ -8,7 +8,7 @@ static bool	add_list_player(t_player *player, unsigned int pos)
   return (true);
 }
 
-bool	spawn_player(const t_sock socket, const int id)
+bool	spawn_player(const t_sock socket)
 {
   unsigned int	height;
   unsigned int	width;
@@ -24,7 +24,7 @@ bool	spawn_player(const t_sock socket, const int id)
   pos.y = rand() % height;
   position = pos.x + (width * pos.y);
   ori = rand() % 4;
-  if ((player = create_player(pos, ori, socket, id)) == NULL ||
+  if ((player = create_player(pos, ori, socket)) == NULL ||
       (add_list_player(player, position) == false))
     return (false);
   printf("Spawn player success\n");

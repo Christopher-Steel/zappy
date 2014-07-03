@@ -44,7 +44,7 @@ void	create_teams()
       name = strtok(NULL, "\n");
     }
   free(g_server.param.team_names);
-  if (g_server.team_list.size < 1)
+  if (g_server.team_list->size < 1)
     team_create(++g_server.param.team_max_id, "default_team");
 }
 
