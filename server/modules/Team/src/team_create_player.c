@@ -25,6 +25,12 @@ t_player	*team_create_player(char *team_name, t_client *client)
       printf_error("\"%s\" is not a valid team name", team_name);
       return (NULL);
     }
+  else if (team->free_slots <= 0)
+    {
+      printf_error("team \"%s\" has no free slot for a new player",
+		   team->name);
+      return (NULL);
+    }
   if (!(player = spawn_player(client)))
     return (NULL);
   list_push_front(team->members, player);

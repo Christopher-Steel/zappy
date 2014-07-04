@@ -24,9 +24,13 @@ bool		team_add_player(t_player *player, char *team_name)
   team = find_team(team_name);
   if (!team)
     return (printf_error("\"%s\" is not a valid team name", team_name));
+  else if (team->free_slots <= 0)
+    return (printf_error("team \"%s\" has no free slot for a new player",
+			 team->name));
   list_push_front(team->members, player);
   printf_log("Player %d joined team %s\n", player->id, team_name);
   player->team = team;
+  --(team->free_slots);
   return (true);
 }
 
@@ -37,4 +41,5 @@ void		team_add_egg(t_egg *egg, char *team_name)
   team = find_team(team_name);
   list_push_front(team->eggs, egg);
   egg->team = team;
+  ++(team->free_slots);
 }
