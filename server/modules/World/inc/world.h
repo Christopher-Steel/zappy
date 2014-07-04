@@ -61,7 +61,7 @@ typedef struct	s_world
 void		spawn_ressource(t_world *world);
 void		remove_player(const int id, const int position);
 void		delete_player(t_player *player);
-void		list_world(void);
+void		list_world(t_player *my_player);
 void		get_vision_point(int *tab, t_player *player);
 bool		generate_world(const unsigned int height,
 			       const unsigned int width);

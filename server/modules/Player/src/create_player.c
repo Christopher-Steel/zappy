@@ -46,7 +46,6 @@ t_player	*create_player(t_vector pos, enum e_ori ori,
   pl->pos.y = pos.y;
   pl->client = client;
   set_orientation(pl, ori);
-  printf("Player Created\n");
   printf_log("Created new player %d at position %d/%d -> %d.", pl->id,
 	     pl->pos.x, pl->pos.y, pl->orientation.orientation);
   return (pl);

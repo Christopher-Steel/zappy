@@ -1,6 +1,7 @@
 #include <string.h>
 
 #include "world.h"
+#include "print_error.h"
 
 static const char	*elem_inven[] =
   {
@@ -37,6 +38,7 @@ static char	*inventory_to_str(int size, t_player *player)
 
 bool	show_inventory(t_player *player, char *res)
 {
+  bool	is_succed;
   int	i;
   int	size;
   char	*str;
@@ -54,6 +56,10 @@ bool	show_inventory(t_player *player, char *res)
       free(str);
       ++i;
     }
-  inventory_to_str(size, player);
-  return (true);
+  if ((str = inventory_to_str(size, player)) == NULL)
+    return (print_perror("Error show inventory"));
+  is_succed = true;
+  /* is_succed = client_write_to(player->client, str); */
+  free(str);
+  return (is_succed);
 }

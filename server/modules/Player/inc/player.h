@@ -14,6 +14,7 @@
 # include	"team.h"
 # include	"vector.h"
 # include	"zappy_types.h"
+# include	"egg.h"
 
 /*
 ** TYPEDEF
@@ -88,8 +89,10 @@ bool		put_down_object(t_player *player, char *res);
 bool		show_inventory(t_player *player, char *res);
 bool		move_forward(t_player *player, char *cmd);
 bool		look(t_player *player, char *cmd);
-bool		send_view(int len, int *tab_view);
+bool		send_view(char *str, int *tab_view, t_player *player);
+bool		lay(t_player *player, char *cmd);
 char		*convert_nbr_to_str(int nbr);
+int		size_str_view(int *tab_view);
 t_player	*create_player(t_vector pos, enum e_ori ori, t_client *client);
 
 #endif		/* !PLAYER_H_ */

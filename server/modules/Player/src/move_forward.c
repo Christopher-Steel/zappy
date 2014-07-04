@@ -1,3 +1,5 @@
+#include	"print_error.h"
+#include	"print_log.h"
 #include	"world.h"
 
 static void	wrap_border_map_horizontally(t_player *player, t_world *world)
