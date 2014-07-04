@@ -46,7 +46,8 @@ void	create_teams()
   free(g_server.param.team_names);
   if (g_server.team_list->size < 1)
     {
-      printf_warning("No team names specified, defaulting to \"%s\"", DEFAULT_N);
+      printf_warning("No team names specified, defaulting to \"%s\"",
+		     DEFAULT_N);
       team_create(++g_server.param.team_max_id, DEFAULT_N);
     }
 }

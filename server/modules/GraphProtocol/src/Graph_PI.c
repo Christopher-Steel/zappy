@@ -1,23 +1,20 @@
-#include <stdlib.h>
+
 #include <string.h>
 
-#include "AI_PI.h"
+#include "Graph_PI.h"
 #include "print_error.h"
 
-static t_AI_cmd	g_cmds[] =
+static t_graph_cmd g_cmds[] =
   {
-    AI_CMD(voir, false),
-    AI_CMD(avance, false),
-    AI_CMD(droite, false),
-    AI_CMD(gauche, false),
-    AI_CMD(prend, true),
-    AI_CMD(pose, true),
-    AI_CMD(expulse, false),
-    AI_CMD(broadcast, true),
-    AI_CMD(incantation, false),
-    AI_CMD(fork, false),
-    AI_CMD(connect_nbr, false),
-    AI_CMD(inventaire, false)
+    GRAPH_CMD(msz, false),
+    GRAPH_CMD(bct, true),
+    GRAPH_CMD(mct, false),
+    GRAPH_CMD(tna, false),
+    GRAPH_CMD(ppo, true),
+    GRAPH_CMD(plv, true),
+    GRAPH_CMD(pin, true),
+    GRAPH_CMD(sgt, false),
+    GRAPH_CMD(sst, true)
   };
 
 static int	get_cmd_id(char *cmd)
@@ -37,9 +34,9 @@ static int	get_cmd_id(char *cmd)
   return ((i < cmd_size ? (int)i : -1));
 }
 
-bool	AI_PI(t_player *player, char *cmd)
+bool	graph_PI(t_player *player, char *cmd)
 {
-  char	*args;
+    char	*args;
   int	cmd_id;
 
   if ((cmd_id = get_cmd_id(cmd)) == -1)
