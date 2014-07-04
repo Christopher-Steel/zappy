@@ -11,6 +11,6 @@ bool	AI_PO(t_player *player, char *cmd)
       free(cmd);
       return (true);
     }
-  //free cmd ??
+  free(cmd);
   return (false);
 }

@@ -12,5 +12,4 @@ void		client_close(t_client *client)
 void		client_shutdown(t_client *client)
   __attribute__ ((nonnull));
 
-
 #endif		/* NETWORK_CLIENT_H_ */

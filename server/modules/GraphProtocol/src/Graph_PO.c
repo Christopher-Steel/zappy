@@ -11,6 +11,6 @@ bool	graph_PO(t_player *player, char *cmd)
       free(cmd);
       return (true);
     }
-  //fre cmd ??
+  free(cmd);
   return (false);
 }
