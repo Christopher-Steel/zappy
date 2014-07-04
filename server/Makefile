@@ -19,9 +19,11 @@ MODDIR		=	./modules/
 
 # Modules
 
-MODULE_DIRS	=	$(MODDIR)Event		\
+MODULE_DIRS	=	$(MODDIR)AIProtocol	\
+			$(MODDIR)Event		\
 			$(MODDIR)Egg		\
 			$(MODDIR)Graphic	\
+			$(MODDIR)GraphProtocol	\
 			$(MODDIR)Network	\
 			$(MODDIR)Parameters	\
 			$(MODDIR)Player		\

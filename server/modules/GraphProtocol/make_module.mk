@@ -2,7 +2,8 @@ GI_PI		:=	$(dir $(lastword $(MAKEFILE_LIST)))
 
 ############################################################
 
-GI_PI		=	$(SRC_FOLDER)GI_PI.c
+GI_PI		=	$(SRC_FOLDER)Graph_PI.c	\
+			$(SRC_FOLDER)Graph_PO.c
 
 ############################################################
 
