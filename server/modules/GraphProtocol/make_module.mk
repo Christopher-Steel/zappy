@@ -1,4 +1,4 @@
-GI_PI		:=	$(dir $(lastword $(MAKEFILE_LIST)))
+GI_PI_DIR	:=	$(dir $(lastword $(MAKEFILE_LIST)))
 
 ############################################################
 

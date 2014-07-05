@@ -6,7 +6,7 @@
 
 bool	graph_PO(t_player *player, char *cmd)
 {
-  if (client_write_to(palyer->client, cmd))
+  if (client_write_to(player->client, cmd))
     {
       free(cmd);
       return (true);
