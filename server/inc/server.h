@@ -32,10 +32,18 @@ typedef struct		s_info
   int			nb_clients;
 }			t_info;
 
+typedef struct	s_elevation
+{
+  unsigned int	res[7];
+  unsigned int	nb_player;
+  unsigned int	lvl_min;
+}		t_elevation;
+
 typedef struct		s_server
 {
   t_info		info;
   t_list		*team_list;
+  t_list		*elevation;
   t_param		param;
   t_network		network;
   struct s_world	*world;

@@ -11,6 +11,7 @@
 # include	"server.h"
 # include	"team.h"
 # include	"vector.h"
+# include	"elevation.h"
 
 /*
 ** DEFINE
@@ -67,6 +68,7 @@ bool		generate_world(const unsigned int height,
 			       const unsigned int width);
 bool		add_player(t_player *player, const int pos);
 bool		add_egg(t_egg *egg, const int pos);
+bool		init_elevation_cond(void);
 t_vector	wrap_horizontal(t_vector vec);
 t_vector	wrap_vertical(t_vector vec);
 t_player	*spawn_player(t_client *client);

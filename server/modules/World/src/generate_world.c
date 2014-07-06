@@ -38,6 +38,7 @@ bool	generate_world(const unsigned int height,
 				     * sizeof(t_cell))) == NULL)
     return (print_error("World generation failed."));
   init_ressource(g_server.world->cell, g_server.world->size);
+  init_elevation_cond();
   print_log("World generation done.");
   return (true);
 }

@@ -91,6 +91,7 @@ bool		move_forward(t_player *player, char *cmd);
 bool		look(t_player *player, char *cmd);
 bool		send_view(char *str, int *tab_view, t_player *player);
 bool		lay(t_player *player, char *cmd);
+bool		start_elevation(t_player *player, char *cmd);
 char		*convert_nbr_to_str(int nbr);
 int		size_str_view(int *tab_view);
 t_player	*create_player(t_vector pos, enum e_ori ori, t_client *client);
