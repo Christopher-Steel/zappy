@@ -28,8 +28,24 @@ static bool	check_player_case(char *str, int i, int *tab_view)
   return (false);
 }
 
+static bool	check_egg_case(char *str, int i, int *tab_view,
+			       bool is_player)
+{
+  t_world	*world;
+
+  world = g_server.world;
+  if (is_player)
+    str = strcat(str, "oeuf");
+  if (world->cell[tab_view[i]].list_egg->size > 0)
+    {
+      str = strcat(str, "oeuf");
+      return (true);
+    }
+  return (false);
+}
+
 static bool	check_res_case(char *str, int *tab_view,
-			       int i, bool is_player)
+			       int i, t_in_view view)
 {
   t_world	*world;
   int		j;
@@ -40,7 +56,7 @@ static bool	check_res_case(char *str, int *tab_view,
   world = g_server.world;
   while (res_name[j])
     {
-      if (j == 0 && is_player == true)
+      if (j == 0 && (view.is_player || view.is_egg))
 	str = strcat(str, " ");
       if (world->cell[tab_view[i]].res[j] > 0)
 	{
@@ -54,24 +70,25 @@ static bool	check_res_case(char *str, int *tab_view,
   return (is_res);
 }
 
-bool	send_view(char *str, int *tab_view, t_player *player)
+bool		send_view(char *str, int *tab_view, t_player *player)
 {
-  bool		is_player;
-  bool		is_res;
+  t_in_view	view;
   bool		is_succed;
   int		i;
 
   (void)player;
   i = 0;
-  is_player = false;
-  is_res = false;
+  view.is_player = false;
+  view.is_egg = false;
+  view.is_res = false;
   str = strcat(str, "{");
   while (tab_view[i] != -1)
     {
-      if (is_res || is_player)
+      if (view.is_res || view.is_player || view.is_egg)
       	str = strcat(str, " ");
-      is_player = check_player_case(str, i, tab_view);
-      is_res = check_res_case(str, tab_view, i, is_player);
+      view.is_player = check_player_case(str, i, tab_view);
+      view.is_egg = check_egg_case(str, i, tab_view, view.is_player);
+      view.is_res = check_res_case(str, tab_view, i, view);
       ++i;
       if (tab_view[i] != -1)
   	str = strcat(str, ",");
