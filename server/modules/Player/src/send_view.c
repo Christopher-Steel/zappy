@@ -78,6 +78,6 @@ bool	send_view(char *str, int *tab_view, t_player *player)
     }
   str = strcat(str, "}");
   is_succed = true;
-  is_succed = client_write_to(player->client, str);
+  /* is_succed = client_write_to(player->client, str); */
   return (is_succed);
 }

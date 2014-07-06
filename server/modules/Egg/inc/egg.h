@@ -2,7 +2,8 @@
 #ifndef		EGG_H_
 # define	EGG_H_
 
-//# include	"team.h"
+# include	"team.h"
+# include	"vector.h"
 
 typedef struct	s_team t_team;
 
@@ -10,6 +11,7 @@ typedef struct	s_egg
 {
   int		id;
   t_team	*team;
+  t_vector	pos;
 }		t_egg;
 
 t_egg	*egg_create(int id, t_team* team);

@@ -20,6 +20,7 @@ static void	init_ressource(t_cell *cell, const unsigned int size)
 	  ++j;
 	}
       cell[i].list_player = list_create();
+      cell[i].list_egg = list_create();
       ++i;
     }
 }
