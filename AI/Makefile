@@ -1,22 +1,34 @@
 NAME		=	zappy_AI
 
 LOCAL		=	src/
+INCPATH		=	inc/
+RM		=	rm -f
+CXX		=	g++
 
-SRC		=	$(LOCAL)test.c
+SRC		=	$(LOCAL)main.cpp		\
+			$(LOCAL)network.cpp		\
+			$(LOCAL)drone.cpp		\
+			$(LOCAL)init_drone.cpp		\
+			$(LOCAL)send_actions.cpp	\
+			$(LOCAL)recive_actions.cpp	\
+			$(LOCAL)broadcast.cpp		\
+			$(LOCAL)algorithm.cpp
 
-OBJ		=	$(SRC:.c=.o)
 
-CFLAGS		=	-Wall -Wextra -Werror -pedantic
+OBJ		=	$(SRC:.cpp=.o)
 
-LDFLAGS		=
+CXXFLAGS	=	-W -Wall -Werror		\
+			$(addprefix -I, $(INCPATH))
+
+LDFLAGS		=	-lm
 
 $(NAME)		:	$(OBJ)
-			@ $(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LDFLAGS)
+			@ $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(NAME) $(OBJ)
 
 all		:	$(NAME)
 
 clean		:
-			@ $(RM) $(OBJ)
+			@ $(RM) $(OBJ) error* src/*~
 
 fclean		:	clean
 			@ $(RM) $(NAME)
