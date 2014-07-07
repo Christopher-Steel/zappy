@@ -1,17 +1,30 @@
 
 #include "event.h"
 
+#include "stdio.h"
+
 void		event_add(t_list *events, t_event *event)
 {
-  int		i;
+  bool		added;
   t_node	*node;
 
-  i = 1;
-  node = events->nodes;
-  while (node && ((t_event *)(node->data))->timestamp <= event->timestamp)
+  added = false;
+  for (node = events->nodes; node && node->next
+	 && ((t_event *)node->data)->timestamp <= event->timestamp;
+       node = node->next)
     {
-      node = node->next;
-      ++i;
+      if ( ((t_event *)node->next->data)->timestamp > event->timestamp)
+	{
+	  list_insert_after(events, node, event);
+	  added = true;
+	  break ;
+	}
     }
-  list_insert(events, i, event);
+  if (!added)
+    {
+      if (!node || ((t_event *)node->data)->timestamp > event->timestamp)
+	list_push_front(events, event);
+      else
+	list_insert_after(events, node, event);
+    }
 }
