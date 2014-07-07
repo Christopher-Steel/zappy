@@ -9,6 +9,7 @@ INC		=	inc/				\
 
 SRC		=	$(LOCAL)create_destroy_list.c	\
 			$(LOCAL)create_destroy_node.c	\
+			$(LOCAL)insert_after.c		\
 			$(LOCAL)insert_remove.c		\
 			$(LOCAL)push_pop_front.c	\
 			$(LOCAL)push_back.c		\

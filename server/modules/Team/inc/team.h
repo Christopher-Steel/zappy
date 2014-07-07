@@ -9,6 +9,7 @@
 #include	"zappy_types.h"
 
 typedef struct	s_player	t_player;
+typedef struct	s_egg		t_egg;
 
 typedef struct	s_team
 {

@@ -18,9 +18,3 @@ t_event		*event_create(t_player *player, func_ptr func,
   event->arg = arg;
   return (event);
 }
-
-t_event		*event_destroy(t_event *event)
-{
-  free(event);
-  return (NULL);
-}

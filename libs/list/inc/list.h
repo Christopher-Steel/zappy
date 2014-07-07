@@ -48,6 +48,9 @@ bool	list_insert(t_list *list, int pos, void *data)
 void	list_remove(t_list *list, void *data, bool free_data)
   __attribute__ ((nonnull (1, 2)));
 
+bool	list_insert_after(t_list *list, t_node *node, void *data)
+  __attribute__ ((nonnull (1, 2, 3)));
+
 void	list_for_each(t_list *list, void (*fcn)(void *))
   __attribute__ ((nonnull (1)));
 void	list_for_each_arg(t_list *list, void (*fcn)(void *, void *), void *param);
