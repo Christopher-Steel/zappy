@@ -1,8 +1,6 @@
 
 #include "event.h"
 
-#include "stdio.h"
-
 void		event_add(t_list *events, t_event *event)
 {
   bool		added;

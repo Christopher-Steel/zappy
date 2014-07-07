@@ -2,8 +2,8 @@
 #include <string.h>
 
 #include "graph_PI.h"
-#include "print_error.h"
 #include "network_client.h"
+#include "print_error.h"
 
 static t_graph_cmd g_cmds[] =
   {
