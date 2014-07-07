@@ -1,8 +1,8 @@
 
-#include "server.h"
 #include "list.h"
 #include "print_error.h"
 #include "print_log.h"
+#include "server.h"
 #include "team.h"
 
 static t_team		*find_team(char *team_name)

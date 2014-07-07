@@ -1,7 +1,9 @@
+#define _GNU_SOURCE
+#include <stdio.h>
 #include <string.h>
 
-#include "world.h"
 #include "print_error.h"
+#include "world.h"
 
 static const char	*elem_inven[] =
   {
@@ -78,14 +80,14 @@ bool	show_inventory(t_player *player, __attribute__ ((unused))char *unused)
 	   "phiras %u, "
 	   "thystame %u"
 	   "}",
-	   player->inventaire[0],
-	   player->inventaire[1],
-	   player->inventaire[2],
-	   player->inventaire[3],
-	   player->inventaire[4],
-	   player->inventaire[5],
-	   player->inventaire[6]);
-  rc = write_to_client(player->client, inventory);
+	   player->inventory[FOOD],
+	   player->inventory[LINEMATE],
+	   player->inventory[DERAUMERE],
+	   player->inventory[SIBUR],
+	   player->inventory[MENDIANE],
+	   player->inventory[PHIRAS],
+	   player->inventory[THYSTAME]);
+  rc = client_write_to(player->client, inventory);
   free(inventory);
   return (rc);
 }

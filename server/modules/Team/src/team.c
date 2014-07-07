@@ -15,7 +15,7 @@ t_team		*team_create(int id, char *name)
 
   if ((team = malloc(sizeof(t_team))) == NULL)
     {
-      print_perror("malloc");
+      print_perror("failed to allocate new team");
       return (NULL);
     }
   team->id = id;

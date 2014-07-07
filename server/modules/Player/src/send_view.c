@@ -28,14 +28,13 @@ static bool	check_player_case(char *str, int i, int *tab_view)
   return (false);
 }
 
-static bool	check_egg_case(char *str, int i, int *tab_view,
-			       bool is_player)
+static bool	check_egg_case(char *str, int i, int *tab_view, bool is_player)
 {
   t_world	*world;
 
   world = g_server.world;
   if (is_player)
-    str = strcat(str, "oeuf");
+    str = strcat(str, " ");
   if (world->cell[tab_view[i]].list_egg->size > 0)
     {
       str = strcat(str, "oeuf");

@@ -2,8 +2,8 @@
 #ifndef		GRAPH_PI_H_
 # define	GRAPH_PI_H_
 
-# include	"player.h"
-# include	"zappy_types.h"
+#include	"player.h"
+#include	"zappy_types.h"
 
 /* TODO remove this*/
 bool		graphic_msz(t_graphic *, char *);
@@ -27,5 +27,6 @@ typedef struct	s_graph_cmd
 }		t_graph_cmd;
 
 bool		graph_PI(t_player *player, char *cmd);
+bool		graph_send_to(t_player, char *cmd);
 
 #endif		/* !GRAPH_PI_H_ */
