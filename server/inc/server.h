@@ -12,7 +12,7 @@
 ** STRUCTURE
 */
 
-struct			s_world;
+typedef struct	s_world t_world;
 
 typedef struct		s_param
 {
@@ -32,12 +32,12 @@ typedef struct		s_info
   int			nb_clients;
 }			t_info;
 
-typedef struct	s_elevation
+typedef struct		s_elevation
 {
-  unsigned int	res[7];
-  unsigned int	nb_player;
-  unsigned int	lvl_min;
-}		t_elevation;
+  unsigned int		res[7];
+  int			nb_player;
+  unsigned int		lvl_min;
+}			t_elevation;
 
 typedef struct		s_server
 {

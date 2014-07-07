@@ -68,6 +68,7 @@ typedef struct	s_player
 {
   void		(*receive)(t_receiver *rec, char *msg);
   void		(*destroy)(t_receiver *rec);
+  bool		is_incant;
   unsigned int	inventory[7];
   unsigned int	level;
   t_vector	pos;
@@ -81,17 +82,20 @@ typedef struct	s_player
 ** FUNCTIONS
 */
 void		show_list_player(t_list *list);
-bool		set_orientation(t_player *player, const enum e_ori ori);
-bool		move_right(t_player *player, char *cmd);
-bool		move_left(t_player *player, char *cmd);
-bool		take_object(t_player *player, char *res);
-bool		put_down_object(t_player *player, char *res);
-bool		show_inventory(t_player *player, char *res);
-bool		move_forward(t_player *player, char *cmd);
-bool		look(t_player *player, char *cmd);
-bool		send_view(char *str, int *tab_view, t_player *player);
+bool		expulse(t_player *player, char *cmd);
 bool		lay(t_player *player, char *cmd);
+bool		level_up(t_player *player, char *cmd);
+bool		look(t_player *player, char *cmd);
+bool		move_forward(t_player *player, char *cmd);
+bool		move_left(t_player *player, char *cmd);
+bool		move_right(t_player *player, char *cmd);
+bool		put_down_object(t_player *player, char *res);
+bool		set_orientation(t_player *player, const enum e_ori ori);
+bool		show_inventory(t_player *player, char *res);
+bool		send_view(char *str, int *tab_view, t_player *player);
 bool		start_elevation(t_player *player, char *cmd);
+bool		stop_elevation(t_player *player, char *cmd);
+bool		take_object(t_player *player, char *res);
 char		*convert_nbr_to_str(int nbr);
 int		size_str_view(int *tab_view);
 t_player	*create_player(t_vector pos, enum e_ori ori, t_client *client);

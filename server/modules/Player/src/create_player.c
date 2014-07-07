@@ -38,6 +38,7 @@ t_player	*create_player(t_vector pos, enum e_ori ori,
     }
   pl->receive = &player_receive;
   pl->destroy = &player_destroy;
+  pl->is_incant = false;
   pl->inventory[0] = 10;
   pl->level = 1;
   pl->id = g_server.info.nb_clients;
