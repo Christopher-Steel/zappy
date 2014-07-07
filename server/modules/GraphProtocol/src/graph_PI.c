@@ -1,8 +1,9 @@
 
 #include <string.h>
 
-#include "Graph_PI.h"
+#include "graph_PI.h"
 #include "print_error.h"
+#include "network_client.h"
 
 static t_graph_cmd g_cmds[] =
   {
@@ -50,4 +51,15 @@ bool	graph_PI(t_player *player, char *cmd)
   if ((*args != '\0' && *args != '\n') != (g_cmds[cmd_id].hasArg))
     return (printf_error("%s: invalid arguments", cmd));
   return (g_cmds[cmd_id].fn(player, (*args != '\0' ? args : NULL)));
+}
+
+bool	graph_send_to(t_player *player, char *cmd)
+{
+  if (client_write_to(player->client, cmd))
+    {
+      free(cmd);
+      return (true);
+    }
+  free(cmd);
+  return (false);
 }

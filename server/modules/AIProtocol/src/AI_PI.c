@@ -2,6 +2,7 @@
 #include <string.h>
 
 #include "AI_PI.h"
+#include "network_client.h"
 #include "print_error.h"
 
 static t_AI_cmd	g_cmds[] =
@@ -53,4 +54,15 @@ bool	AI_PI(t_player *player, char *cmd)
   if ((*args != '\0' && *args != '\n') != (g_cmds[cmd_id].hasArg))
     return (printf_error("%s: invalid arguments", cmd));
   return (g_cmds[cmd_id].fn(player, (*args != '\0' ? args : NULL)));
+}
+
+bool	AI_send_to(t_player *player, char *cmd)
+{
+  if (client_write_to(player->client, cmd))
+    {
+      free(cmd);
+      return (true);
+    }
+  free(cmd);
+  return (false);
 }

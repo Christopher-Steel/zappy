@@ -29,5 +29,6 @@ typedef struct	s_AI_cmd
 }		t_AI_cmd;
 
 bool		AI_PI(t_player *, char *);
+bool		AI_send_to(t_player, char *);
 
 #endif		/* AI_PI_H_ */

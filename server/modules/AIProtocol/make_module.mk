@@ -2,8 +2,7 @@ AI_PI_DIR	:=	$(dir $(lastword $(MAKEFILE_LIST)))
 
 ############################################################
 
-AI_PI		=	$(SRC_FOLDER)AI_PI.c	\
-			$(SRC_FOLDER)AI_PO.c
+AI_PI		=	$(SRC_FOLDER)AI_PI.c
 
 ############################################################
 

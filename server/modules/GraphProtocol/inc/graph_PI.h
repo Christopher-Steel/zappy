@@ -27,5 +27,6 @@ typedef struct	s_graph_cmd
 }		t_graph_cmd;
 
 bool		graph_PI(t_player *player, char *cmd);
+bool		graph_send_to(t_player, char *cmd);
 
 #endif		/* !GRAPH_PI_H_ */
