@@ -12,7 +12,8 @@ void	set_n(int ac, char **av)
   char	*tmp;
 
   if (optind >= ac || strncmp(av[optind], "-", 1) == 0)
-    print_warning("Missing argument for -n option. Using default value.\n");
+    printf_warning("Missing argument for -n option. Using '%s' (default value)",
+		   DEFAULT_N);
   else
     {
       while (optind < ac && strncmp(av[optind], "-", 1) != 0)

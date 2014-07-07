@@ -9,7 +9,7 @@ t_event		*event_create(t_player *player, func_ptr func,
 
   if (!(event = malloc(sizeof(t_event))))
     {
-      print_perror("malloc");
+      print_perror("failed to allocate new event");
       return (NULL);
     }
   event->player = player;

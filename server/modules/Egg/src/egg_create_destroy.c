@@ -10,7 +10,7 @@ t_egg	*egg_create(int id, t_team *team)
 
   if (!(egg = malloc(sizeof(t_egg))))
     {
-      print_perror("malloc");
+      print_perror("failed to allocate new egg");
       return (NULL);
     }
   egg->id = id;
