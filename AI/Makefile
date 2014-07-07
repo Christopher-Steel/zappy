@@ -2,17 +2,15 @@ NAME		=	zappy_AI
 
 LOCAL		=	src/
 INCPATH		=	inc/
-RM		=	rm -f
-CXX		=	g++
 
-SRC		=	$(LOCAL)main.cpp		\
-			$(LOCAL)network.cpp		\
+SRC		=	$(LOCAL)algorithm.cpp		\
+			$(LOCAL)broadcast.cpp		\
 			$(LOCAL)drone.cpp		\
 			$(LOCAL)init_drone.cpp		\
+			$(LOCAL)main.cpp		\
+			$(LOCAL)network.cpp		\
 			$(LOCAL)send_actions.cpp	\
-			$(LOCAL)recive_actions.cpp	\
-			$(LOCAL)broadcast.cpp		\
-			$(LOCAL)algorithm.cpp
+			$(LOCAL)recive_actions.cpp
 
 
 OBJ		=	$(SRC:.cpp=.o)

@@ -81,21 +81,24 @@ typedef struct	s_player
 /*
 ** FUNCTIONS
 */
+bool		player_avance(t_player *player, char *unused);
+bool		player_droite(t_player *player, char *unused);
+bool		player_gauche(t_player *player, char *unused);
+bool		player_voir(t_player *player, char *unused);
+bool		player_inventaire(t_player *player, char *unused);
+bool		player_prend(t_player *player, char *res);
+bool		player_pose(t_player *player, char *res);
+bool		player_expulse(t_player *player, char *unused);
+bool		player_broadcast(t_player *player, char *msg);
+bool		player_incantation(t_player *player, char *cmd);
+bool		player_fork(t_player *player, char *cmd);
+bool		player_connect_nbr(t_player *player, char *unused);
+
 void		show_list_player(t_list *list);
-bool		expulse(t_player *player, char *cmd);
-bool		lay(t_player *player, char *cmd);
 bool		level_up(t_player *player, char *cmd);
-bool		look(t_player *player, char *cmd);
-bool		move_forward(t_player *player, char *cmd);
-bool		move_left(t_player *player, char *cmd);
-bool		move_right(t_player *player, char *cmd);
-bool		put_down_object(t_player *player, char *res);
 bool		set_orientation(t_player *player, const enum e_ori ori);
-bool		show_inventory(t_player *player, char *res);
 bool		send_view(char *str, int *tab_view, t_player *player);
-bool		start_elevation(t_player *player, char *cmd);
 bool		stop_elevation(t_player *player, char *cmd);
-bool		take_object(t_player *player, char *res);
 char		*convert_nbr_to_str(int nbr);
 int		size_str_view(int *tab_view);
 t_player	*create_player(t_vector pos, enum e_ori ori, t_client *client);

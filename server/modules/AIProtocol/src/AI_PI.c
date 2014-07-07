@@ -2,7 +2,7 @@
 #include <string.h>
 
 #include "AI_PI.h"
-#include "network_client.h"
+#include "player.h"
 #include "print_error.h"
 
 static t_AI_cmd	g_cmds[] =

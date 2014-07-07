@@ -1,7 +1,7 @@
 #include "print_log.h"
 #include "world.h"
 
-static void	informe_expulsed_player(t_player *player)
+static void	inform_expulsed_player(t_player *player)
 {
   printf_log("player %d move to %d, %d", player->id, player->pos.x, player->pos.y);
 }
@@ -23,21 +23,21 @@ static void	expulsing(t_node *node, t_player *player,
 	  add_player(expulsed, pos_final);
 	  node = node->next;
 	  expulsed->pos = vec_dest;
-	  informe_expulsed_player(expulsed);
+	  inform_expulsed_player(expulsed);
 	}
       else
 	node = node->next;
     }
 }
 
-bool		expulse(t_player *player, char *cmd)
+bool		player_expulse(t_player *player,
+			       __attribute__ ((unused))char *unused)
 {
   t_world	*world;
   t_node	*node;
   t_vector	vec_dest;
   unsigned int	pos_init;
 
-  (void)cmd;
   world = g_server.world;
   vec_dest = add_vector(player->pos, player->orientation.vec);
   vec_dest = wrap_vertical(vec_dest);

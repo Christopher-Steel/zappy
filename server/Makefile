@@ -19,7 +19,8 @@ MODDIR		=	./modules/
 
 # Modules
 
-MODULE_DIRS	=	$(MODDIR)Event		\
+MODULE_DIRS	=	$(MODDIR)AIProtocol	\
+			$(MODDIR)Event		\
 			$(MODDIR)Egg		\
 			$(MODDIR)Graphic	\
 			$(MODDIR)Network	\
@@ -28,8 +29,7 @@ MODULE_DIRS	=	$(MODDIR)Event		\
 			$(MODDIR)Team		\
 			$(MODDIR)Vector		\
 			$(MODDIR)World
-			#$(MODDIR)AIProtocol	\
-			$(MODDIR)GraphProtocol	\
+			#$(MODDIR)GraphProtocol	\
 
 
 MODULES		=	$(addsuffix /make_module.mk, $(MODULE_DIRS))

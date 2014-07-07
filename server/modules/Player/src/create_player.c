@@ -1,3 +1,4 @@
+#include "AI_PI.h"
 #include "player.h"
 #include "print_error.h"
 #include "print_log.h"
@@ -5,14 +6,15 @@
 static void	player_receive(t_receiver *rec, char *msg)
 {
   t_player	*player;
-  t_list	*inbound;
+  //t_list	*inbound;
 
   player = (t_player *)rec;
-  inbound = &player->client->inbound;
-  if (list_size(inbound) < MAX_CLIENT_OUTQ)
-    list_push_back(inbound, msg);
-  else
-    free(msg);
+  //  inbound = &player->client->inbound;
+  /* if (list_size(inbound) < MAX_CLIENT_OUTQ) */
+  /*   list_push_back(inbound, msg); */
+  /* else */
+  /*   free(msg); */
+  AI_PI(player, msg);
 }
 
 static void	player_destroy(t_receiver *rec)

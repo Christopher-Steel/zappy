@@ -21,12 +21,12 @@ static bool	check_condition(t_elevation *cond, t_player *player)
   return (false);
 }
 
-bool		start_elevation(t_player *player, char *cmd)
+bool		player_incantation(t_player *player,
+				   __attribute__ ((unused))char *unused)
 {
   t_list	*elev;
   t_node	*node;
 
-  (void)cmd;
   elev = g_server.elevation;
   if (!player->is_incant)
     while (elev->nodes != NULL)

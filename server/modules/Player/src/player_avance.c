@@ -24,7 +24,8 @@ static void	wrap_border_map_vertically(t_player *player, t_world *world)
     player->pos.y = 0;
 }
 
-bool		move_forward(t_player *player, char *cmd)
+bool		player_avance(t_player *player,
+			      __attribute__ ((unused))char *unused)
 {
   t_world	*world;
   int		pos_init;
@@ -32,7 +33,6 @@ bool		move_forward(t_player *player, char *cmd)
   unsigned int	pos_x;
   unsigned int	pos_y;
 
-  (void)cmd;
   world = g_server.world;
   pos_init = player->pos.x + (player->pos.y * gs_get_map_width());
   player->pos.x += player->orientation.vec.x;

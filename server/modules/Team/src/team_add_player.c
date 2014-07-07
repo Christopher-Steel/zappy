@@ -28,7 +28,7 @@ bool		team_add_player(t_player *player, char *team_name)
     return (printf_error("team \"%s\" has no free slot for a new player",
 			 team->name));
   list_push_front(team->members, player);
-  printf_log("Player %d joined team %s\n", player->id, team_name);
+  printf_log("Player %d joined team %s", player->id, team_name);
   player->team = team;
   --(team->free_slots);
   return (true);

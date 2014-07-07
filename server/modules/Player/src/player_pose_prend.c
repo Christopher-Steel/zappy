@@ -2,14 +2,16 @@
 #include "world.h"
 
 static const char	*res_name[] =
-  {"NOURRITURE",
-   "LINEMATE",
-   "DERAUMERE",
-   "SIBUR",
-   "MENDIANE",
-   "PHIRAS",
-   "THYSTAME",
-   NULL};
+  {
+    "NOURRITURE",
+    "LINEMATE",
+    "DERAUMERE",
+    "SIBUR",
+    "MENDIANE",
+    "PHIRAS",
+    "THYSTAME",
+    NULL
+  };
 
 static int	string_to_res(const char *res)
 {
@@ -25,7 +27,7 @@ static int	string_to_res(const char *res)
   return (-1);
 }
 
-bool		put_down_object(t_player *player, char *res)
+bool		player_pose(t_player *player, char *res)
 {
   t_world	*world;
   int		type_res;
@@ -44,7 +46,7 @@ bool		put_down_object(t_player *player, char *res)
   return (false);
 }
 
-bool		take_object(t_player *player, char *res)
+bool		player_prend(t_player *player, char *res)
 {
   t_world	*world;
   int		type_res;

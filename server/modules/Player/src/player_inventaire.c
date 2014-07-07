@@ -66,7 +66,8 @@ bool	old_show_inventory(t_player *player, char *res)
   return (is_succed);
 }
 
-bool	show_inventory(t_player *player, __attribute__ ((unused))char *unused)
+bool	player_inventaire(t_player *player,
+			  __attribute__ ((unused))char *unused)
 {
   char	*inventory;
   bool	rc;
