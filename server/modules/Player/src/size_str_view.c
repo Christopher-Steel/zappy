@@ -33,7 +33,7 @@ static bool	egg_present(int i, int *len, int *tab_view, bool is_player)
   t_world	*world;
 
   world = g_server.world;
-  if (is_player == true)
+  if (is_player)
     ++(*len);
   if (world->cell[tab_view[i]].list_egg->size > 0)
     {
