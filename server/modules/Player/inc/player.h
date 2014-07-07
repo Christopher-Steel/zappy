@@ -39,6 +39,17 @@ enum	e_ori
     WEST
   };
 
+enum	e_resource
+  {
+    FOOD,
+    LINEMATE,
+    DERAUMERE,
+    SIBUR,
+    MENDIANE,
+    PHIRAS,
+    THYSTAME
+  };
+
 /*
 ** STRUCTURES
 */

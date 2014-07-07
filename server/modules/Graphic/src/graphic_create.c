@@ -10,10 +10,7 @@ static void	graphic_receive(__attribute__ ((unused))t_receiver *rec,
 
 static void	graphic_destroy(t_receiver *rec)
 {
-  t_graphic	*graphic;
-
-  graphic = (t_graphic *)rec;
-  free(graphic);
+  free(rec);
 }
 
 t_graphic	*graphic_create(t_client *client)

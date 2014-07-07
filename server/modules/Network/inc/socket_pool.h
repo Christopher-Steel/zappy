@@ -58,9 +58,9 @@ t_sockpool_node	*sockpool_node_create(t_sock sock);
 
 void		sockpool_add_client(t_sockpool *pool, t_sock listener)
   __attribute__ ((nonnull(1)));
-void		sockpool_node_read(t_sockpool_node *node)
+int		sockpool_node_read(t_sockpool_node *node)
   __attribute__ ((nonnull));
-void		sockpool_node_write(t_sockpool_node *node)
+int		sockpool_node_write(t_sockpool_node *node)
   __attribute__ ((nonnull));
 
 #endif		/* SOCKET_POOL_H_ */

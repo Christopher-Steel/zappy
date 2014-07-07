@@ -36,7 +36,7 @@ static char	*inventory_to_str(int size, t_player *player)
   return (str);
 }
 
-bool	show_inventory(t_player *player, char *res)
+bool	old_show_inventory(t_player *player, char *res)
 {
   bool	is_succed;
   int	i;
@@ -62,4 +62,30 @@ bool	show_inventory(t_player *player, char *res)
   /* is_succed = client_write_to(player->client, str); */
   free(str);
   return (is_succed);
+}
+
+bool	show_inventory(t_player *player, __attribute__ ((unused))char *unused)
+{
+  char	*inventory;
+  bool	rc;
+
+  asprintf(&inventory, "{"
+	   "nourriture %u, "
+	   "linemate %u, "
+	   "deraumere %u, "
+	   "sibur %u, "
+	   "mendiane %u, "
+	   "phiras %u, "
+	   "thystame %u"
+	   "}",
+	   player->inventaire[0],
+	   player->inventaire[1],
+	   player->inventaire[2],
+	   player->inventaire[3],
+	   player->inventaire[4],
+	   player->inventaire[5],
+	   player->inventaire[6]);
+  rc = write_to_client(player->client, inventory);
+  free(inventory);
+  return (rc);
 }

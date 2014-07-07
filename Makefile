@@ -4,9 +4,9 @@ SERVER		=	server/
 LDPATH		=	libs/
 
 all		:
-			@(make -j4 -C $(LDPATH))
-			@(make -j4 -C $(AI))
-			@(make -j4 -C $(SERVER))
+			@(make -j8 -C $(LDPATH))
+			@(make -j8 -C $(AI))
+			@(make -j8 -C $(SERVER))
 
 clean		:
 			@(cd $(LDPATH) && make clean)

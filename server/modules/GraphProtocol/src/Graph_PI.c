@@ -34,9 +34,9 @@ static int	get_cmd_id(char *cmd)
   return ((i < cmd_size ? (int)i : -1));
 }
 
-bool	graph_PI(t_player *player, char *cmd)
+bool	graph_PI(t_graphic *graphic, char *cmd)
 {
-    char	*args;
+  char	*args;
   int	cmd_id;
 
   if ((cmd_id = get_cmd_id(cmd)) == -1)
@@ -49,5 +49,5 @@ bool	graph_PI(t_player *player, char *cmd)
     ++args;
   if ((*args != '\0' && *args != '\n') != (g_cmds[cmd_id].hasArg))
     return (printf_error("%s: invalid arguments", cmd));
-  return (g_cmds[cmd_id].fn(player, (*args != '\0' ? args : NULL)));
+  return (g_cmds[cmd_id].fn(graphic, (*args != '\0' ? args : NULL)));
 }
