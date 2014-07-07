@@ -166,7 +166,7 @@ void		Drone::do_fork()
     throw My_Exception("Drone: error: can't fork.");
   else if (pid == 0)
     {
-      std::string	cmd = "./client_IA -h ";
+      std::string	cmd = "./zappy_AI -h ";
 
       cmd += this->net.Ip();
       cmd += " -p ";
