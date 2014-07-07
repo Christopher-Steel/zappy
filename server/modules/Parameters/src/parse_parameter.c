@@ -1,14 +1,14 @@
 
 #include <stdlib.h>
 
-#include "print_error.h"
-#include "print_warning.h"
-#include "parse_parameter.h"
-#include "set_parameter.h"
-#include "print_usage.h"
-#include "world.h"
 #include "list.h"
+#include "parse_parameter.h"
+#include "print_error.h"
+#include "print_usage.h"
+#include "print_warning.h"
+#include "set_parameter.h"
 #include "team.h"
+#include "world.h"
 
 static const func_opt_ptr	g_set_opt[] =
   {

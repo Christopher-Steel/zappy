@@ -2,8 +2,9 @@
 #ifndef		GRAPH_PI_H_
 # define	GRAPH_PI_H_
 
-#include	"zappy_types.h"
 #include	"player.h"
+#include	"zappy_types.h"
+
 
 #define	GRAPH_CMD(NAME, HAS_ARG) {#NAME, graphic_ ## NAME, HAS_ARG}
 
