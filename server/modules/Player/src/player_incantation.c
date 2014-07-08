@@ -14,16 +14,6 @@ static t_elevation	g_cond[] =
 bool		player_incantation(t_player *player,
 				   __attribute__ ((unused))char *unused)
 {
-  /* t_node	*node; */
-
-  /* while (elev->nodes != NULL) */
-  /*   { */
-  /*     node = elev->nodes; */
-  /*     if (((t_elevation *)node->data)->lvl_min == player->level) */
-  /* 	return (check_condition((t_elevation *)node->data, player)); */
-  /*     elev->nodes = elev->nodes->next; */
-  /*   } */
-  /* return (false); */
   t_world	*world;
   unsigned int	pos;
   unsigned int	lvl;
