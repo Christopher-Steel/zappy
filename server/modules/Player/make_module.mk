@@ -13,7 +13,7 @@ PLAYER		=	$(SRC_FOLDER)player_avance.c		\
 			$(SRC_FOLDER)player_incantation.c	\
 			$(SRC_FOLDER)player_pose_prend.c	\
 			$(SRC_FOLDER)player_voir.c		\
-			\
+			$(SRC_FOLDER)player_life_update.c	\
 			$(SRC_FOLDER)create_player.c		\
 			$(SRC_FOLDER)show_list_player.c		\
 			$(SRC_FOLDER)get_vision_point.c		\
