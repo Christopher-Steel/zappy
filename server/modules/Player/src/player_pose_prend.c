@@ -13,22 +13,6 @@ static const char	*res_name[] =
     NULL
   };
 
-static char	*str_upcase(char *res)
-{
-  char		*str;
-  int		i;
-
-  i = 0;
-  str = res;
-  while (str[i])
-    {
-      if (str[i] >= 'a' && str[i] <= 'z')
-	str[i] -= 32;
-      ++i;
-    }
-  return (str);
-}
-
 static int	string_to_res(char *res)
 {
   int		i;
@@ -36,7 +20,7 @@ static int	string_to_res(char *res)
   i = 0;
   while (res_name[i] != NULL)
     {
-      if (strcmp(str_upcase(res), res_name[i]) == 0)
+      if (strcasecmp(res, res_name[i]) == 0)
 	return (i);
       ++i;
     }
