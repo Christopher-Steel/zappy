@@ -22,7 +22,7 @@ static const func_opt_ptr	g_set_opt[] =
     NULL
   };
 
-void	set_default_param(void)
+static void	set_default_param(void)
 {
   g_server.info.port = DEFAULT_P;
   g_server.info.tick_delay = DEFAULT_T;
@@ -32,7 +32,7 @@ void	set_default_param(void)
   g_server.param.height = DEFAULT_Y;
 }
 
-void	create_teams()
+static void	create_teams()
 {
   char	*name;
 

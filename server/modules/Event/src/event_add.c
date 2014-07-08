@@ -7,7 +7,7 @@ void		event_add(t_list *events, t_event *event)
   t_node	*node;
 
   added = false;
-  for (node = events->nodes; node && node->next
+  for (node = list_begin(events); node && node->next
 	 && ((t_event *)node->data)->timestamp <= event->timestamp;
        node = node->next)
     {

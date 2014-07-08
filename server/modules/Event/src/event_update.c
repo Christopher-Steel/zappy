@@ -2,7 +2,7 @@
 #include "event.h"
 #include "server.h"
 
-void		update(void *data, void *list)
+static void	event_node_update(void *data, void *list)
 {
   t_event	*event;
 
@@ -11,11 +11,11 @@ void		update(void *data, void *list)
   if (event->timestamp <= 0)
     {
       event->func(event->player, event->arg);
-      list_pop_front((t_list *)list, false);
+      list_pop_front((t_list *)list, true);
     }
 }
 
 void		event_update(t_list *events)
 {
-  list_for_each_arg(events, &update, events);
+  list_for_each_arg(events, &event_node_update, events);
 }
