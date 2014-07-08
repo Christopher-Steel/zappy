@@ -29,8 +29,8 @@ static void	player_destroy(t_receiver *rec)
   --g_server.info.nb_clients;
   remove_player(player->id, player->pos.x + player->pos.y
 		* gs_get_map_width());
-  free(player);
   client_write_to(player->client, "mort");
+  free(player);
 }
 
 static void	inform_client(t_client *client, t_player *pl)
