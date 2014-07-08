@@ -18,7 +18,7 @@ static void	inform_expulsed_player(t_player *player, enum e_ori ori)
   free(dir);
 }
 
-static void	expulsing(t_node *node, t_player *player,
+static bool	expulsing(t_node *node, t_player *player,
 			  unsigned int pos_init, t_vector vec_dest)
 {
   t_player	*expulsed;
@@ -40,6 +40,7 @@ static void	expulsing(t_node *node, t_player *player,
       else
 	node = node->next;
     }
+  return (client_write_to(player->client, "ok"));
 }
 
 bool		player_expulse(t_player *player,
@@ -59,6 +60,6 @@ bool		player_expulse(t_player *player,
   pos_init = player->pos.x + (player->pos.y * gs_get_map_width());
   node = world->cell[pos_init].list_player->nodes;
   if (world->cell[pos_init].list_player->size > 1)
-    expulsing(node, player, pos_init, vec_dest);
-  return (true);
+    return (expulsing(node, player, pos_init, vec_dest));
+  return (client_write_to(player->client, "ko"));
 }

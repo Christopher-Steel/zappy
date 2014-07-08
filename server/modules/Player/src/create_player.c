@@ -3,7 +3,7 @@
 #include <string.h>
 
 #include "AI_PI.h"
-#include "player.h"
+#include "world.h"
 #include "print_error.h"
 #include "print_log.h"
 
@@ -30,6 +30,7 @@ static void	player_destroy(t_receiver *rec)
   remove_player(player->id, player->pos.x + player->pos.y
 		* gs_get_map_width());
   free(player);
+  client_write_to(player->client, "mort");
 }
 
 static void	inform_client(t_client *client, t_player *pl)

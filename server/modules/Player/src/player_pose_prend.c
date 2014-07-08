@@ -57,9 +57,9 @@ bool		player_pose(t_player *player, char *res)
     {
       ++world->cell[position].res[type_res];
       --player->inventory[type_res];
-      return (true);
+      return (client_write_to(player->client, "ok"));
     }
-  return (false);
+  return (client_write_to(player->client, "ko"));
 }
 
 bool		player_prend(t_player *player, char *res)
@@ -76,7 +76,7 @@ bool		player_prend(t_player *player, char *res)
     {
       --world->cell[position].res[type_res];
       ++player->inventory[type_res];
-      return (true);
+      return (client_write_to(player->client, "ok"));
     }
-  return (false);
+  return (client_write_to(player->client, "ko"));
 }

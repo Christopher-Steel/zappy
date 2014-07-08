@@ -12,5 +12,5 @@ bool			player_droite(t_player *player,
     };
 
   player->ori = rot_ori[player->ori];
-  return (true);
+  return (client_write_to(player->client, "ok"));
 }
