@@ -13,6 +13,7 @@
 */
 
 typedef struct	s_world t_world;
+typedef struct	t_list	t_event_manager;
 
 typedef struct		s_param
 {
@@ -42,6 +43,7 @@ typedef struct		s_elevation
 typedef struct		s_server
 {
   t_info		info;
+  t_event_manager	*event_manager;
   t_list		*team_list;
   t_list		*elevation;
   t_param		param;
