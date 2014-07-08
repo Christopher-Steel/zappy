@@ -1,9 +1,21 @@
+#define _GNU_SOURCE
 #include "print_log.h"
 #include "world.h"
 
-static void	inform_expulsed_player(t_player *player)
+static void	inform_expulsed_player(t_player *player, enum e_ori ori)
 {
-  printf_log("player %d move to %d, %d", player->id, player->pos.x, player->pos.y);
+  static char	*tab[] =
+    {
+      "5713",
+      "7135",
+      "1357",
+      "3571"
+    };
+  char		*dir;
+
+  asprintf(&dir, "deplacement: %c", tab[player->ori][ori]);
+  client_write_to(player->client, dir);
+  free(dir);
 }
 
 static void	expulsing(t_node *node, t_player *player,
@@ -23,7 +35,7 @@ static void	expulsing(t_node *node, t_player *player,
 	  add_player(expulsed, pos_final);
 	  node = node->next;
 	  expulsed->pos = vec_dest;
-	  inform_expulsed_player(expulsed);
+	  inform_expulsed_player(expulsed, player->ori);
 	}
       else
 	node = node->next;
