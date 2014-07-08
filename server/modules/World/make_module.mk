@@ -11,16 +11,7 @@ WORLD		=	$(SRC_FOLDER)generate_world.c		\
 			$(SRC_FOLDER)remove_player.c		\
 			$(SRC_FOLDER)spawn_player.c		\
 			$(SRC_FOLDER)delete_player.c		\
-			$(SRC_FOLDER)init_elevation_cond.c	\
-			$(SRC_FOLDER)wrap_pos.c			\
-			\
-			$(ELEV_DIR)up_two.c			\
-			$(ELEV_DIR)up_three.c			\
-			$(ELEV_DIR)up_four.c			\
-			$(ELEV_DIR)up_five.c			\
-			$(ELEV_DIR)up_six.c			\
-			$(ELEV_DIR)up_seven.c			\
-			$(ELEV_DIR)up_height.c			\
+			$(SRC_FOLDER)wrap_pos.c
 
 ############################################################
 

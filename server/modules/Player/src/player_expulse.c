@@ -36,10 +36,12 @@ bool		player_expulse(t_player *player,
   t_world	*world;
   t_node	*node;
   t_vector	vec_dest;
+  t_vector	vec;
   unsigned int	pos_init;
 
   world = g_server.world;
-  vec_dest = add_vector(player->pos, player->orientation.vec);
+  vec = get_vec_direction(player->ori);
+  vec_dest = add_vector(player->pos, vec);
   vec_dest = wrap_vertical(vec_dest);
   vec_dest = wrap_horizontal(vec_dest);
   pos_init = player->pos.x + (player->pos.y * gs_get_map_width());

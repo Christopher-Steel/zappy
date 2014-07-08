@@ -13,14 +13,30 @@ static const char	*res_name[] =
     NULL
   };
 
-static int	string_to_res(const char *res)
+static char	*str_upcase(char *res)
+{
+  char		*str;
+  int		i;
+
+  i = 0;
+  str = res;
+  while (str[i])
+    {
+      if (str[i] >= 'a' && str[i] <= 'z')
+	str[i] -= 32;
+      ++i;
+    }
+  return (str);
+}
+
+static int	string_to_res(char *res)
 {
   int		i;
 
   i = 0;
   while (res_name[i] != NULL)
     {
-      if (strcmp(res, res_name[i]) == 0)
+      if (strcmp(str_upcase(res), res_name[i]) == 0)
 	return (i);
       ++i;
     }
@@ -36,7 +52,7 @@ bool		player_pose(t_player *player, char *res)
   world = g_server.world;
   position = player->pos.x + (player->pos.y * world->width);
   if ((type_res = string_to_res(res)) == -1)
-    return (print_perror("Conversion failed."));
+    return (print_perror("Conversion failed"));
   if (player->inventory[type_res] > 0)
     {
       ++world->cell[position].res[type_res];
@@ -55,7 +71,7 @@ bool		player_prend(t_player *player, char *res)
   world = g_server.world;
   position = player->pos.x + (player->pos.y * world->width);
   if ((type_res = string_to_res(res)) == -1)
-    return (print_perror("Conversion failed."));
+    return (print_perror("Conversion failed"));
   if (world->cell[position].res[type_res] > 0)
     {
       --world->cell[position].res[type_res];

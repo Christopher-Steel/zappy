@@ -117,8 +117,8 @@ void		get_vision_point(int *tab, t_player *player)
   while (i <= player->level)
     {
       vision.dist = i;
-      fptr[player->orientation.orientation](vision, tab, &j);
-      vision.pos = add_vector(vision.pos, player->orientation.vec);
+      fptr[player->ori](vision, tab, &j);
+      vision.pos = add_vector(vision.pos, get_vec_direction(player->ori));
       vision.pos = wrap_vertical(vision.pos);
       vision.pos = wrap_horizontal(vision.pos);
       ++i;

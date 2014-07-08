@@ -15,7 +15,7 @@ static bool	add_list_player(t_player *player, unsigned int pos)
   return (is_succed);
 }
 
-t_player	*spawn_player(t_client *client)
+t_player	*spawn_player(t_client *client, t_team *team)
 {
   unsigned int	height;
   unsigned int	width;
@@ -30,7 +30,7 @@ t_player	*spawn_player(t_client *client)
   pos.y = rand() % height;
   position = pos.x + (width * pos.y);
   ori = rand() % 4;
-  if ((player = create_player(pos, ori, client)) == NULL ||
+  if ((player = create_player(pos, ori, client, team)) == NULL ||
       (add_list_player(player, position) == false))
       return (NULL);
   return (player);

@@ -58,12 +58,6 @@ typedef struct	s_vision
   int		dist;
 }		t_vision;
 
-typedef struct	s_orientation
-{
-  enum e_ori	orientation;
-  t_vector	vec;
-}		t_orientation;
-
 typedef struct	s_player
 {
   void		(*receive)(t_receiver *rec, char *msg);
@@ -72,7 +66,7 @@ typedef struct	s_player
   unsigned int	inventory[7];
   unsigned int	level;
   t_vector	pos;
-  t_orientation	orientation;
+  enum e_ori	ori;
   int		id;
   t_team	*team;
   t_client	*client;
@@ -96,11 +90,12 @@ bool		player_connect_nbr(t_player *player, char *unused);
 
 void		show_list_player(t_list *list);
 bool		level_up(t_player *player, char *cmd);
-bool		set_orientation(t_player *player, const enum e_ori ori);
 bool		send_view(char *str, int *tab_view, t_player *player);
 bool		stop_elevation(t_player *player, char *cmd);
 char		*convert_nbr_to_str(int nbr);
 int		size_str_view(int *tab_view);
-t_player	*create_player(t_vector pos, enum e_ori ori, t_client *client);
+t_player	*create_player(t_vector pos, enum e_ori ori,
+			       t_client *client, t_team *team);
+t_vector	get_vec_direction(enum e_ori ori);
 
 #endif		/* !PLAYER_H_ */

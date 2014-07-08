@@ -28,6 +28,7 @@ bool		player_avance(t_player *player,
 			      __attribute__ ((unused))char *unused)
 {
   t_world	*world;
+  t_vector	vec;
   int		pos_init;
   int		pos_final;
   unsigned int	pos_x;
@@ -35,8 +36,9 @@ bool		player_avance(t_player *player,
 
   world = g_server.world;
   pos_init = player->pos.x + (player->pos.y * gs_get_map_width());
-  player->pos.x += player->orientation.vec.x;
-  player->pos.y += player->orientation.vec.y;
+  vec = get_vec_direction(player->ori);
+  player->pos.x += vec.x;
+  player->pos.y += vec.y;
   pos_x = player->pos.x;
   pos_y = player->pos.y;
   if (player->pos.x < 0 || pos_x >= world->width)

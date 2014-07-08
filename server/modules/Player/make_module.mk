@@ -15,12 +15,12 @@ PLAYER		=	$(SRC_FOLDER)player_avance.c		\
 			$(SRC_FOLDER)player_voir.c		\
 			\
 			$(SRC_FOLDER)create_player.c		\
-			$(SRC_FOLDER)set_orientation.c		\
 			$(SRC_FOLDER)show_list_player.c		\
 			$(SRC_FOLDER)get_vision_point.c		\
 			$(SRC_FOLDER)send_view.c		\
 			$(SRC_FOLDER)size_str_view.c		\
 			$(SRC_FOLDER)stop_elevation.c		\
+			$(SRC_FOLDER)get_vec_direction.c	\
 			$(SRC_FOLDER)level_up.c			\
 			$(SRC_FOLDER)convert_nbr_to_str.c
 

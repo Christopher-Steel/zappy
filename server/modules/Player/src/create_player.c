@@ -1,3 +1,7 @@
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <string.h>
+
 #include "AI_PI.h"
 #include "player.h"
 #include "print_error.h"
@@ -28,8 +32,20 @@ static void	player_destroy(t_receiver *rec)
   free(player);
 }
 
+static void	inform_client(t_client *client, t_player *pl)
+{
+  char		*str;
+
+  asprintf(&str, "%u", pl->id);
+  client_write_to(client, str);
+  free(str);
+  asprintf(&str, "%u %u", gs_get_map_width(), gs_get_map_height());
+  client_write_to(client, str);
+  free(str);
+}
+
 t_player	*create_player(t_vector pos, enum e_ori ori,
-			       t_client *client)
+			       t_client *client, t_team *team)
 {
   t_player	*pl;
 
@@ -48,8 +64,10 @@ t_player	*create_player(t_vector pos, enum e_ori ori,
   pl->pos.x = pos.x;
   pl->pos.y = pos.y;
   pl->client = client;
-  set_orientation(pl, ori);
+  pl->team = team;
+  pl->ori = ori;
   printf_log("Created new player %d at position %d/%d -> %d.", pl->id,
-	     pl->pos.x, pl->pos.y, pl->orientation.orientation);
+	     pl->pos.x, pl->pos.y, pl->ori);
+  inform_client(client, pl);
   return (pl);
 }

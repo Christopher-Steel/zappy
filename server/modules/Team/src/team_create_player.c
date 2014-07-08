@@ -31,7 +31,7 @@ t_player	*team_create_player(char *team_name, t_client *client)
 		   team->name);
       return (NULL);
     }
-  if (!(player = spawn_player(client)))
+  if (!(player = spawn_player(client, team)))
     return (NULL);
   list_push_front(team->members, player);
   printf_log("Player %d joined team %s", player->id, team_name);
