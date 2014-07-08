@@ -67,6 +67,7 @@ t_player	*create_player(t_vector pos, enum e_ori ori,
   pl->client = client;
   pl->team = team;
   pl->ori = ori;
+  pl->alive = 126;
   printf_log("Created new player %d at position %d/%d -> %d.", pl->id,
 	     pl->pos.x, pl->pos.y, pl->ori);
   inform_client(client, pl);

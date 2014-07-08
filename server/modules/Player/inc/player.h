@@ -68,6 +68,7 @@ typedef struct	s_player
   t_vector	pos;
   enum e_ori	ori;
   int		id;
+  long double	alive;
   t_team	*team;
   t_client	*client;
 }		t_player;
@@ -97,5 +98,7 @@ int		size_str_view(int *tab_view);
 t_player	*create_player(t_vector pos, enum e_ori ori,
 			       t_client *client, t_team *team);
 t_vector	get_vec_direction(enum e_ori ori);
+
+void		player_life_update(void);
 
 #endif		/* !PLAYER_H_ */
