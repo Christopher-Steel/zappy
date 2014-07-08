@@ -17,5 +17,6 @@ bool	player_fork(t_player *player,
   if (!add_egg(new_egg, index))
     return (print_perror("failed to spawn egg"));
   printf_log("New egg at %d/%d", player->pos.x, player->pos.y);
+  client_write_to(player->client, "ok");
   return (true);
 }

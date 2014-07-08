@@ -50,7 +50,7 @@ t_player	*create_player(t_vector pos, enum e_ori ori,
 {
   t_player	*pl;
 
-  if ((pl = malloc(sizeof(*pl))) == NULL)
+  if ((pl = calloc(1, sizeof(t_player))) == NULL)
     {
       print_error("Failed to create new player.");
       return (NULL);
