@@ -3,6 +3,7 @@
 
 #include "AI_PI.h"
 #include "player.h"
+#include "print_debug.h"
 #include "print_error.h"
 
 static t_AI_cmd	g_cmds[] =
@@ -43,8 +44,12 @@ bool	AI_PI(t_player *player, char *cmd)
   char	*args;
   int	cmd_id;
 
+  printf_debug("Parsing command: %s", cmd);
   if ((cmd_id = get_cmd_id(cmd)) == -1)
-    return (printf_error("%s: command not found", cmd));
+    {
+      client_write_to(player->client, "ko");
+      return (printf_error("%s: command not found", cmd));
+    }
   args = cmd + strlen(g_cmds[cmd_id].name);
   while (*args != '\0'
 	 && (*args == ' '
@@ -52,6 +57,9 @@ bool	AI_PI(t_player *player, char *cmd)
 	     || *args == '\n'))
     ++args;
   if ((*args != '\0' && *args != '\n') != (g_cmds[cmd_id].hasArg))
-    return (printf_error("%s: invalid arguments", cmd));
+    {
+      client_write_to(player->client, "ko");
+      return (printf_error("%s: invalid arguments", cmd));
+    }
   return (g_cmds[cmd_id].fn(player, (*args != '\0' ? args : NULL)));
 }

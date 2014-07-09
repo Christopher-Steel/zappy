@@ -72,7 +72,6 @@ static bool	check_res_case(char *str, int *tab_view,
 bool		send_view(char *str, int *tab_view, t_player *player)
 {
   t_in_view	view;
-  bool		is_succed;
   int		i;
 
   (void)player;
@@ -93,6 +92,5 @@ bool		send_view(char *str, int *tab_view, t_player *player)
   	str = strcat(str, ",");
     }
   str = strcat(str, "}");
-  is_succed = client_write_to(player->client, str);
-  return (is_succed);
+  return (client_write_to(player->client, str));
 }

@@ -1,14 +1,9 @@
 
 #include <stdlib.h>
 
-#include "list.h"
 #include "parse_parameter.h"
-#include "print_error.h"
 #include "print_usage.h"
-#include "print_warning.h"
 #include "set_parameter.h"
-#include "team.h"
-#include "world.h"
 
 static const func_opt_ptr	g_set_opt[] =
   {
@@ -32,26 +27,6 @@ static void	set_default_param(void)
   g_server.param.height = DEFAULT_Y;
 }
 
-static void	create_teams()
-{
-  char	*name;
-
-  g_server.team_list = list_create();
-  name = strtok(g_server.param.team_names, "\n");
-  while (name)
-    {
-      team_create(++g_server.param.team_max_id, name);
-      name = strtok(NULL, "\n");
-    }
-  free(g_server.param.team_names);
-  if (g_server.team_list->size < 1)
-    {
-      printf_warning("No team names specified, defaulting to \"%s\"",
-		     DEFAULT_N);
-      team_create(++g_server.param.team_max_id, DEFAULT_N);
-    }
-}
-
 void	parse_param(int ac, char **av)
 {
   int	i;
@@ -65,6 +40,4 @@ void	parse_param(int ac, char **av)
       if (i < 7)
 	g_set_opt[i](ac, av);
     }
-  generate_world(g_server.param.height, g_server.param.width);
-  create_teams();
 }

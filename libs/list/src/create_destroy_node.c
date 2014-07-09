@@ -15,7 +15,7 @@ t_node		*create_node(void *data)
 
 void	destroy_node(t_node *node, bool free_data)
 {
-  if (free_data)
+  if (free_data == true)
     free(node->data);
   free(node);
 }

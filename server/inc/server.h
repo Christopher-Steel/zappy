@@ -4,6 +4,8 @@
 /*
 ** INCLUDE
 */
+# include	"event.h"
+# include	"graphic.h"
 # include	"list.h"
 # include	"network.h"
 # include	"world.h"
@@ -12,8 +14,9 @@
 ** STRUCTURE
 */
 
-typedef struct	s_world t_world;
-typedef struct	t_list	t_event_manager;
+typedef struct	s_world			t_world;
+typedef struct	s_event_manager		t_event_manager;
+typedef struct	s_graphic_manager	t_graphic_manager;
 
 typedef struct		s_param
 {
@@ -36,12 +39,13 @@ typedef struct		s_info
 typedef struct		s_server
 {
   t_info		info;
-  t_event_manager	*event_manager;
+  t_event_manager	event_manager;
   t_list		*team_list;
+  t_graphic_manager	graphic_manager;
   t_list		*elevation;
   t_param		param;
   t_network		network;
-  struct s_world	*world;
+  t_world		*world;
 }			t_server;
 
 /*

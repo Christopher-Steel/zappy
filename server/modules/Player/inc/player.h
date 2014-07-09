@@ -11,7 +11,6 @@
 # include	"list.h"
 # include	"network_client.h"
 # include	"receiver.h"
-# include	"server.h"
 # include	"team.h"
 # include	"vector.h"
 # include	"zappy_types.h"
@@ -98,7 +97,6 @@ bool		player_connect_nbr(t_player *player, char *unused);
 void		show_list_player(t_list *list);
 bool		send_view(char *str, int *tab_view, t_player *player);
 bool		stop_elevation(t_player *player, char *unused);
-char		*convert_nbr_to_str(int nbr);
 int		size_str_view(int *tab_view);
 t_player	*create_player(t_vector pos, enum e_ori ori,
 			       t_client *client, t_team *team);

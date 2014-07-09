@@ -21,6 +21,9 @@ typedef struct	s_team
   uint		free_slots;
 }		t_team;
 
+void		team_list_init(void);
+void		team_list_destroy(void);
+
 t_team		*team_create(int id, char *name);
 void		team_destroy(t_team *team);
 

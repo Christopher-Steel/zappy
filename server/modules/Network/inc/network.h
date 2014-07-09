@@ -10,8 +10,8 @@ typedef struct	s_network
   t_sockpool	pool;
 }		t_network;
 
-bool		network_init(int);
+bool		network_init(int port);
 void		network_update(void);
-void		network_shutdown(int, void *);
+void		network_shutdown(void);
 
 #endif		/* NETWORK_H_ */

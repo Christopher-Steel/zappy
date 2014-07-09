@@ -1,5 +1,6 @@
 
 #include "player.h"
+#include "server.h"
 
 static void	player_death(t_player *player)
 {

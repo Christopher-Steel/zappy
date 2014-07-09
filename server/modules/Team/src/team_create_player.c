@@ -1,7 +1,10 @@
+#include <string.h>
 
 #include "print_error.h"
 #include "print_log.h"
+#include "server.h"
 #include "team.h"
+#include "world.h"
 
 static t_team		*find_team(char *team_name)
 {
@@ -31,10 +34,10 @@ t_player	*team_create_player(char *team_name, t_client *client)
 		   team->name);
       return (NULL);
     }
+  --(team->free_slots);
   if (!(player = spawn_player(client, team)))
     return (NULL);
   list_push_front(team->members, player);
   printf_log("Player %d joined team %s", player->id, team_name);
-  player->team = team;
   return (player);
 }

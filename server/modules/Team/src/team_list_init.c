@@ -1,0 +1,26 @@
+#include "set_parameter.h"
+#include "print_warning.h"
+#include "server.h"
+#include "team.h"
+
+void	team_list_init(void)
+{
+  char	*name;
+
+  if (g_server.team_list != NULL)
+    return ;
+  g_server.team_list = list_create();
+  name = strtok(g_server.param.team_names, "\n");
+  while (name)
+    {
+      team_create(++g_server.param.team_max_id, name);
+      name = strtok(NULL, "\n");
+    }
+  free(g_server.param.team_names);
+  if (g_server.team_list->size < 1)
+    {
+      printf_warning("No team names specified, defaulting to \"%s\"",
+		     DEFAULT_N);
+      team_create(++g_server.param.team_max_id, DEFAULT_N);
+    }
+}
