@@ -6,6 +6,7 @@
 
 #include "list.h"
 #include "print_error.h"
+#include "print_log.h"
 #include "server.h"
 #include "team.h"
 
@@ -28,13 +29,16 @@ t_team		*team_create(int id, char *name)
   team->max_level = 0;
   team->free_slots = g_server.param.slots;
   list_push_front(g_server.team_list, team);
+  printf_log("Created team \"%s\"", name);
   return (team);
 };
 
 void		team_destroy(t_team *team)
 {
-  list_destroy(team->members, true);
-  list_destroy(team->eggs, true);
+  if (team->members)
+    list_destroy(team->members, true);
+  if (team->eggs)
+    list_destroy(team->eggs, true);
   free(team->name);
   free(team);
 }

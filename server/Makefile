@@ -103,7 +103,7 @@ fclean		:	clean
 re		:	fclean all
 
 check		:
-			@ $(CHECK) ./ -nocheat -score -printline -return -noheader -malloc
+			@ $(CHECK) ./ -nocheat -score -printline -return -noheader -malloc -makefile
 
 %.o		:	%.c
 			@ $(CC) $(CFLAGS) -o $@ -c $<

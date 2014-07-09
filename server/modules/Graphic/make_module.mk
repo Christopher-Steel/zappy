@@ -2,7 +2,10 @@ GRAPHIC_DIR	:=	$(dir $(lastword $(MAKEFILE_LIST)))
 
 ##########################################################################
 
-GRAPHIC		=	$(SRC_FOLDER)graphic_create.c
+GRAPHIC		=	$(SRC_FOLDER)graphic_manager_init.c	\
+			$(SRC_FOLDER)graphic_manager_shutdown.c	\
+			\
+			$(SRC_FOLDER)graphic_create.c
 
 ##########################################################################
 

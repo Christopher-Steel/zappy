@@ -28,7 +28,7 @@ static void	init_ressource(t_cell *cell, const unsigned int size)
 bool	generate_world(const unsigned int height,
 		       const unsigned int width)
 {
-  print_log("World generation initiated...");
+  print_log("Generating world...");
   if ((g_server.world = malloc(sizeof(t_world))) == NULL)
     return (print_error("World generation failed."));
   g_server.world->height = height;
@@ -38,6 +38,6 @@ bool	generate_world(const unsigned int height,
 				     * sizeof(t_cell))) == NULL)
     return (print_error("World generation failed."));
   init_ressource(g_server.world->cell, g_server.world->size);
-  print_log("World generation done.");
+  print_log("World generated.");
   return (true);
 }

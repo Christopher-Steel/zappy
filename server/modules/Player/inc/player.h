@@ -11,7 +11,6 @@
 # include	"list.h"
 # include	"network_client.h"
 # include	"receiver.h"
-# include	"server.h"
 # include	"team.h"
 # include	"vector.h"
 # include	"zappy_types.h"

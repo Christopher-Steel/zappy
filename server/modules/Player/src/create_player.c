@@ -37,7 +37,7 @@ static void	inform_client(t_client *client, t_player *pl)
 {
   char		*str;
 
-  asprintf(&str, "%u", pl->id);
+  asprintf(&str, "%u", pl->team->free_slots);
   client_write_to(client, str);
   free(str);
   asprintf(&str, "%u %u", gs_get_map_width(), gs_get_map_height());

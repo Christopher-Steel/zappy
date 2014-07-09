@@ -1,5 +1,6 @@
 
 #include "player.h"
+#include "server.h"
 
 static void	life_update_by_player(void *player)
 {
