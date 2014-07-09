@@ -80,7 +80,7 @@ static void	level_up_all_player(t_player *player, t_node *node)
     {
       pl = (t_player *)node->data;
       if (pl->level == player->level)
-	++((t_player *)node->data)->level;
+	++pl->level;
       tmp = tmp->next;
     }
 }

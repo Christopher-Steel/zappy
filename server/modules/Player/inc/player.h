@@ -72,6 +72,13 @@ typedef struct	s_player
   t_client	*client;
 }		t_player;
 
+typedef struct		s_elevation
+{
+  unsigned int		res[7];
+  int			nb_player;
+  unsigned int		lvl_min;
+}			t_elevation;
+
 /*
 ** FUNCTIONS
 */
