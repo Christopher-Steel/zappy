@@ -97,10 +97,14 @@ static bool	inform_all_player(t_player *player, t_node *node)
       pl = (t_player *)node->data;
       if (pl->level == player->level)
 	{
-	  asprintf(&str, "niveau actuel : %u", pl->level);
-	  if (client_write_to(pl->client, str) == false)
+	  if (asprintf(&str, "niveau actuel : %u", pl->level) != -1)
+	    {
+	      if (client_write_to(pl->client, str) == false)
+		return (false);
+	      free(str);
+	    }
+	  else
 	    return (false);
-	  free(str);
 	}
       tmp = tmp->next;
     }

@@ -7,8 +7,11 @@ bool	player_connect_nbr(t_player *player,
 {
   char	*str;
 
-  asprintf(&str, "%u", player->team->free_slots);
-  client_write_to(player->client, str);
-  free(str);
-  return (true);
+  if (asprintf(&str, "%u", player->team->free_slots) != -1)
+    {
+      client_write_to(player->client, str);
+      free(str);
+      return (true);
+    }
+  return (false);
 }

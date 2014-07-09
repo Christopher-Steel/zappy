@@ -2,7 +2,7 @@
 #include "print_log.h"
 #include "world.h"
 
-static void	inform_expulsed_player(t_player *player, enum e_ori ori)
+static bool	inform_expulsed_player(t_player *player, enum e_ori ori)
 {
   static char	*tab[] =
     {
@@ -13,9 +13,13 @@ static void	inform_expulsed_player(t_player *player, enum e_ori ori)
     };
   char		*dir;
 
-  asprintf(&dir, "deplacement: %c", tab[player->ori][ori]);
-  client_write_to(player->client, dir);
-  free(dir);
+  if (asprintf(&dir, "deplacement: %c", tab[player->ori][ori]) != -1)
+    {
+      client_write_to(player->client, dir);
+      free(dir);
+      return (true);
+    }
+  return (false);
 }
 
 static bool	expulsing(t_node *node, t_player *player,
@@ -35,7 +39,8 @@ static bool	expulsing(t_node *node, t_player *player,
 	  add_player(expulsed, pos_final);
 	  node = node->next;
 	  expulsed->pos = vec_dest;
-	  inform_expulsed_player(expulsed, player->ori);
+	  if (!inform_expulsed_player(expulsed, player->ori))
+	    return (false);
 	}
       else
 	node = node->next;
