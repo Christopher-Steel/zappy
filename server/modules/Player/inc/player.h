@@ -62,7 +62,6 @@ typedef struct	s_player
 {
   void		(*receive)(t_receiver *rec, char *msg);
   void		(*destroy)(t_receiver *rec);
-  bool		is_incant;
   unsigned int	inventory[7];
   unsigned int	level;
   t_vector	pos;
@@ -72,6 +71,13 @@ typedef struct	s_player
   t_team	*team;
   t_client	*client;
 }		t_player;
+
+typedef struct		s_elevation
+{
+  unsigned int		res[7];
+  int			nb_player;
+  unsigned int		lvl_min;
+}			t_elevation;
 
 /*
 ** FUNCTIONS
@@ -90,9 +96,8 @@ bool		player_fork(t_player *player, char *cmd);
 bool		player_connect_nbr(t_player *player, char *unused);
 
 void		show_list_player(t_list *list);
-bool		level_up(t_player *player, char *cmd);
 bool		send_view(char *str, int *tab_view, t_player *player);
-bool		stop_elevation(t_player *player, char *cmd);
+bool		stop_elevation(t_player *player, char *unused);
 char		*convert_nbr_to_str(int nbr);
 int		size_str_view(int *tab_view);
 t_player	*create_player(t_vector pos, enum e_ori ori,
