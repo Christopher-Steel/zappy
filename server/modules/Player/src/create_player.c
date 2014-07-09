@@ -37,12 +37,16 @@ static void	inform_client(t_client *client, t_player *pl)
 {
   char		*str;
 
-  asprintf(&str, "%u", pl->id);
-  client_write_to(client, str);
-  free(str);
-  asprintf(&str, "%u %u", gs_get_map_width(), gs_get_map_height());
-  client_write_to(client, str);
-  free(str);
+  if (asprintf(&str, "%u", pl->id) != -1)
+    {
+      client_write_to(client, str);
+      free(str);
+    }
+  if (asprintf(&str, "%u %u", gs_get_map_width(), gs_get_map_height()) != -1)
+    {
+      client_write_to(client, str);
+      free(str);
+    }
 }
 
 t_player	*create_player(t_vector pos, enum e_ori ori,
