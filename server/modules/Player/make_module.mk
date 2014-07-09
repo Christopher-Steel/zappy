@@ -19,8 +19,8 @@ PLAYER		=	$(SRC_FOLDER)player_avance.c		\
 			$(SRC_FOLDER)send_view.c		\
 			$(SRC_FOLDER)size_str_view.c		\
 			$(SRC_FOLDER)stop_elevation.c		\
-			$(SRC_FOLDER)get_vec_direction.c	\
-			$(SRC_FOLDER)convert_nbr_to_str.c
+			$(SRC_FOLDER)get_vec_direction.c
+			#$(SRC_FOLDER)convert_nbr_to_str.c
 
 
 ############################################################
