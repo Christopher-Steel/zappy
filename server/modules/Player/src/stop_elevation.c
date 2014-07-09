@@ -73,14 +73,38 @@ static bool	check_condition(t_player *player, t_node *node,
 static void	level_up_all_player(t_player *player, t_node *node)
 {
   t_node	*tmp;
+  t_player	*pl;
 
   tmp = node;
   while (tmp != NULL)
     {
-      if (((t_player *)node->data)->level == player->level)
-	++(((t_player *)node->data)->level);
+      pl = (t_player *)node->data;
+      if (pl->level == player->level)
+	++((t_player *)node->data)->level;
       tmp = tmp->next;
     }
+}
+
+static bool	inform_all_player(t_player *player, t_node *node)
+{
+  t_node	*tmp;
+  t_player	*pl;
+  char		*str;
+
+  tmp = node;
+  while (tmp != NULL)
+    {
+      pl = (t_player *)node->data;
+      if (pl->level == player->level)
+	{
+	  asprintf(&str, "niveau actuel : %u", pl->level);
+	  if (client_write_to(pl->client, str) == false)
+	    return (false);
+	  free(str);
+	}
+      tmp = tmp->next;
+    }
+  return (true);
 }
 
 bool		stop_elevation(t_player *player,
@@ -88,8 +112,6 @@ bool		stop_elevation(t_player *player,
 {
   t_world	*world;
   t_node	*node;
-  char		*str;
-  bool		rc;
   unsigned int	pos;
 
   world = g_server.world;
@@ -101,8 +123,5 @@ bool		stop_elevation(t_player *player,
       ressource_spreading(pos, world, player->level - 1);
       return (true);
     }
-  asprintf(&str, "niveau actuel : %u", player->level);
-  rc = client_write_to(player->client, str);
-  free(str);
-  return (rc);
+  return (inform_all_player(player, node));
 }

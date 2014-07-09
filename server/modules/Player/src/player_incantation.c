@@ -1,3 +1,7 @@
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <string.h>
+
 #include "world.h"
 
 static t_elevation	g_cond[] =
@@ -30,6 +34,7 @@ static int	cnt_same_lvl(t_node *node, uint lvl)
 bool		player_incantation(t_player *player,
 				   __attribute__ ((unused))char *unused)
 {
+  char		*str;
   t_world	*world;
   t_node	*node;
   unsigned int	pos;
@@ -50,5 +55,8 @@ bool		player_incantation(t_player *player,
       client_write_to(player->client, "elevation en cours");
       return (true);
     }
+  asprintf(&str, "niveau actuel : %u", player->level);
+  client_write_to(player->client, str);
+  free(str);
   return (false);
 }
