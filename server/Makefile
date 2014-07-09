@@ -23,13 +23,13 @@ MODULE_DIRS	=	$(MODDIR)AIProtocol	\
 			$(MODDIR)Event		\
 			$(MODDIR)Egg		\
 			$(MODDIR)Graphic	\
+			$(MODDIR)GraphProtocol	\
 			$(MODDIR)Network	\
 			$(MODDIR)Parameters	\
 			$(MODDIR)Player		\
 			$(MODDIR)Team		\
 			$(MODDIR)Vector		\
 			$(MODDIR)World
-			#$(MODDIR)GraphProtocol	\
 
 
 MODULES		=	$(addsuffix /make_module.mk, $(MODULE_DIRS))
