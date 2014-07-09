@@ -24,6 +24,10 @@ OBJ		=	$(SRC:.c=.o)
 CFLAGS		+=	-Wall -Wextra -Werror -pedantic	\
 			$(addprefix -I, $(INC))
 
+ifneq		($(DEBUG), false)
+CFLAGS		+=	-ggdb
+endif
+
 LDFLAGS		=
 
 $(NAME)		:	$(OBJ)

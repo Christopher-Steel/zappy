@@ -2,13 +2,20 @@
 #include "player.h"
 #include "server.h"
 
+static void	player_death(t_player *player)
+{
+  // replace ressources sur la map
+  list_remove(player->team->members, player, false);
+  //player_destroy(player);
+}
+
 static void	life_update_by_player(void *player)
 {
   ((t_player *)player)->alive -= g_server.info.dtime;
   if (((t_player *)player)->alive <= 0)
     {
       if (((t_player *)player)->inventory[FOOD] <= 0)
-	puts("is dead");
+	player_death(player);
       else
 	--(((t_player *)player)->inventory[FOOD]);
     }

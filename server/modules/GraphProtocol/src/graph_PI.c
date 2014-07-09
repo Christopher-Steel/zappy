@@ -53,9 +53,9 @@ bool	graph_PI(t_graphic *graphic, char *cmd)
   return (g_cmds[cmd_id].fn(graphic, (*args != '\0' ? args : NULL)));
 }
 
-bool	graph_send_to(t_player *player, char *cmd)
+bool	graph_send_to(t_graphic *graphic, char *cmd)
 {
-  if (client_write_to(player->client, cmd))
+  if (client_write_to(graphic->client, cmd))
     {
       free(cmd);
       return (true);

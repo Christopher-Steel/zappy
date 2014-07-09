@@ -60,6 +60,8 @@ DEBUG		?=	false
 ifneq		($(DEBUG), false)
 CFLAGS		+=	-DDEBUG
 CFLAGS		+=	-ggdb
+else
+CFLAGS		+=	-O3 -funroll-loops
 endif
 
 # Binary tools
@@ -74,7 +76,6 @@ CHECK		=	$(ROOT)/tools/norme.py
 # Flags
 
 CFLAGS		+=	-Wall -Wextra -Werror		\
-			-O3 -funroll-loops		\
 			-Wnonnull			\
 			$(addprefix -I, $(INCPATH))
 

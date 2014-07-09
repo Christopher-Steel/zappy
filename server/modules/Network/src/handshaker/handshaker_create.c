@@ -23,7 +23,7 @@ static void	handshaker_receive(t_receiver *rec, char *msg)
 	   == NULL)
     {
       print_log("Handshake failed. Rejected client.");
-      client_write_to(client, "KO");
+      client_write_to(client, "ko");
       client_close(client);
     }
 }

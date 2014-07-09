@@ -36,7 +36,10 @@ bool		player_pose(t_player *player, char *res)
   world = g_server.world;
   position = player->pos.x + (player->pos.y * world->width);
   if ((type_res = string_to_res(res)) == -1)
-    return (print_perror("Conversion failed"));
+    {
+      client_write_to(player->client, "ko");
+      return (print_perror("Conversion failed"));
+    }
   if (player->inventory[type_res] > 0)
     {
       ++world->cell[position].res[type_res];
@@ -55,7 +58,10 @@ bool		player_prend(t_player *player, char *res)
   world = g_server.world;
   position = player->pos.x + (player->pos.y * world->width);
   if ((type_res = string_to_res(res)) == -1)
-    return (print_perror("Conversion failed"));
+    {
+      client_write_to(player->client, "ko");
+      return (print_perror("Conversion failed"));
+    }
   if (world->cell[position].res[type_res] > 0)
     {
       --world->cell[position].res[type_res];

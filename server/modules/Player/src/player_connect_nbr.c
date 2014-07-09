@@ -9,8 +9,8 @@ bool	player_connect_nbr(t_player *player,
 {
   char	*str;
 
-  print_debug("player_connect_nbr called");
-  asprintf(&str, "%u", player->team->free_slots);
+  if (asprintf(&str, "%u", player->team->free_slots) == -1)
+    return (false);
   client_write_to(player->client, str);
   free(str);
   return (true);

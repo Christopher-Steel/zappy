@@ -13,4 +13,7 @@ void		list_clear(t_list *list, bool free_data)
       destroy_node(node, free_data);
       node = tmp;
     }
+  list->last = NULL;
+  list->size = 0;
+  list->nodes = NULL;
 }
