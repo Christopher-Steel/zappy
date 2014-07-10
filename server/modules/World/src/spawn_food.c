@@ -1,16 +1,16 @@
 #include "world.h"
 
-void		respawn_ressource(unsigned int *res)
+void		spawn_food(__attribute__ ((unused))t_player *uplayer,
+			   __attribute__ ((unused))char *unused)
 {
   t_world	*world;
   unsigned int	quantity;
 
-  i = 0;
   world = g_server.world;
   quantity = (world->size * 50) / 100;
   while (quantity > 0)
     {
-      ++world->cell[rand() % world->size].res[i];
+      ++world->cell[rand() % world->size].res[FOOD];
       --quantity;
     }
 }
