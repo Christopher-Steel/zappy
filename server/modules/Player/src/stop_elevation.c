@@ -45,13 +45,15 @@ static bool	inform_all_player(t_player *player, t_node *node)
   return (true);
 }
 
-bool		stop_elevation(t_player *player,
-			       __attribute__ ((unused))char *unused)
+bool		stop_elevation(void *pl,
+			       __attribute__ ((unused))void *unused)
 {
+  t_player	*player;
   t_world	*world;
   t_node	*node;
   unsigned int	pos;
 
+  player = (t_player *)pl;
   world = g_server.world;
   pos = player->pos.x + (player->pos.y * gs_get_map_width());
   node = world->cell[pos].list_player->nodes;

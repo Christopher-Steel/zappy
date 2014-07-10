@@ -5,12 +5,14 @@
 #include "print_error.h"
 #include "world.h"
 
-bool	player_inventaire(t_player *player,
-			  __attribute__ ((unused))char *unused)
+bool		player_inventaire(void *pl,
+				  __attribute__ ((unused))void *unused)
 {
-  char	*inventory;
-  bool	rc;
+  t_player	*player;
+  char		*inventory;
+  bool		rc;
 
+  player = (t_player *)pl;
   if (asprintf(&inventory, "{"
 	       "nourriture %u, "
 	       "linemate %u, "

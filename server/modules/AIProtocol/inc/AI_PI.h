@@ -9,7 +9,7 @@
 typedef struct	s_AI_cmd
 {
   char		*name;
-  bool		(*fn)(t_player *, char *);
+  bool		(*fn)(void *, void *);
   bool		hasArg;
   double	delay;
 }		t_AI_cmd;

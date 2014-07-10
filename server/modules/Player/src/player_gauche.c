@@ -1,7 +1,7 @@
 #include "player.h"
 
-bool			player_gauche(t_player *player,
-				      __attribute__ ((unused))char *unused)
+bool			player_gauche(void *pl,
+				      __attribute__ ((unused))void *unused)
 {
   static enum e_ori	rot_ori[4] =
     {
@@ -10,7 +10,9 @@ bool			player_gauche(t_player *player,
       EAST,
       SOUTH
     };
+  t_player		*player;
 
+  player = (t_player *)pl;
   player->ori = rot_ori[player->ori];
   return (client_write_to(player->client, "ok"));
 }

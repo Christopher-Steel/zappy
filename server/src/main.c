@@ -45,6 +45,10 @@ int	main(int ac, char *av[])
   parse_param(ac, av);
   if (start_services())
     while (true)
-      network_update();
+      {
+	gs_time_update();
+	network_update();
+	gs_event_update();
+      }
   return (0);
 }

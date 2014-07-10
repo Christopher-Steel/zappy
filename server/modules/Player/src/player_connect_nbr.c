@@ -3,11 +3,13 @@
 
 #include "player.h"
 
-bool	player_connect_nbr(t_player *player,
-			   __attribute__ ((unused))char *unused)
+bool		player_connect_nbr(void *pl,
+				   __attribute__ ((unused))void *unused)
 {
-  char	*str;
+  t_player	*player;
+  char		*str;
 
+  player = (t_player *)pl;
   if (asprintf(&str, "%u", player->team->free_slots) == -1)
     return (false);
   client_write_to(player->client, str);

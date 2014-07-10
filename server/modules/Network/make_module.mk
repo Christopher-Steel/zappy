@@ -38,7 +38,7 @@ NETWORK		=	$(SRC_FOLDER)network_broadcast.c		\
 			$(INJECT_BUFFER)injectbuf_create.c		\
 			$(INJECT_BUFFER)injectbuf_destroy.c		\
 			$(INJECT_BUFFER)injectbuf_empty.c		\
-			$(INJECT_BUFFER)injectbuf_ring_inject.c	\
+			$(INJECT_BUFFER)injectbuf_ring_inject.c		\
 			$(INJECT_BUFFER)injectbuf_write.c		\
 			\
 			$(CLIENT)client_write_to.c			\

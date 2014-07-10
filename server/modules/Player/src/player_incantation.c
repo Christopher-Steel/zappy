@@ -12,7 +12,8 @@ static bool	player_register_incant_end(t_player *player)
   fn = &stop_elevation;
   if ((player->current_event = event_create(player, fn, 300.0, NULL)) == NULL)
     {
-      list_pop_front(&player->client->inbound, true);
+      // i highly doubt this is a good idea. Time will tell
+      //      list_pop_front(&player->client->inbound, true);
       return (false);
     }
   else
@@ -22,14 +23,16 @@ static bool	player_register_incant_end(t_player *player)
     }
 }
 
-bool		player_incantation(t_player *player,
-				   __attribute__ ((unused))char *unused)
+bool		player_incantation(void *pl,
+				   __attribute__ ((unused))void *unused)
 {
+  t_player	*player;
   char		*str;
   t_world	*world;
   t_node	*node;
   unsigned int	pos;
 
+  player = (t_player *)pl;
   world = g_server.world;
   pos = player->pos.x + (player->pos.y * gs_get_map_width());
   node = world->cell[pos].list_player->nodes;

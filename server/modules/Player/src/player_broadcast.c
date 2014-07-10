@@ -77,12 +77,15 @@ static void	check_best_way(void *data, t_player *player, char *msg)
     }
 }
 
-bool	player_broadcast(t_player *player, char *msg)
+bool	player_broadcast(void *pl, void *message)
 {
+  t_player	*player;
+  char		*msg;
   t_node	*tmp_list;
   t_node	*tmp_player;
 
-  msg = (void *)msg;
+  player = (t_player *)pl;
+  msg = (char *)message;
   for (tmp_list = g_server.team_list->nodes; tmp_list; tmp_list = tmp_list->next)
     for (tmp_player = ((t_team *)(tmp_list->data))->members->nodes; tmp_player; tmp_player = tmp_player->next)
       if (tmp_player->data != player)

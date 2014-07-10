@@ -17,17 +17,18 @@ void		event_manager_shutdown(void);
 
 typedef struct	s_event
 {
-  t_player	*player;
+  void		*data;
   t_pl_func	func;
   long double	timestamp;
   void		*arg;
 }		t_event;
 
-t_event		*event_create(t_player *player, t_pl_func func,
+t_event		*event_create(void *data, t_pl_func func,
 			      long double timestamp, void *arg);
 void		event_add(t_list *events, t_event *event);
 void		event_update(t_list *event);
 
 void		gs_event_add(t_event *event);
+void		gs_event_update(void);
 
 #endif		/* !EVENT_H_ */

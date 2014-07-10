@@ -48,15 +48,17 @@ static bool	expulsing(t_node *node, t_player *player,
   return (client_write_to(player->client, "ok"));
 }
 
-bool		player_expulse(t_player *player,
-			       __attribute__ ((unused))char *unused)
+bool		player_expulse(void *pl,
+			       __attribute__ ((unused))void *unused)
 {
+  t_player	*player;
   t_world	*world;
   t_node	*node;
   t_vector	vec_dest;
   t_vector	vec;
   unsigned int	pos_init;
 
+  player = (t_player *)pl;
   world = g_server.world;
   vec = get_vec_direction(player->ori);
   vec_dest = add_vector(player->pos, vec);

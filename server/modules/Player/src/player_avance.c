@@ -2,13 +2,15 @@
 #include	"print_log.h"
 #include	"world.h"
 
-bool		player_avance(t_player *player,
-			      __attribute__ ((unused))char *unused)
+bool		player_avance(void *pl,
+			      __attribute__ ((unused))void *unused)
 {
+  t_player	*player;
   t_vector	vec;
   int		pos_init;
   int		pos_final;
 
+  player = (t_player *)pl;
   pos_init = player->pos.x + (player->pos.y * gs_get_map_width());
   vec = get_vec_direction(player->ori);
   player->pos.x += vec.x;

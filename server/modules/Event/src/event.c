@@ -2,7 +2,7 @@
 #include "event.h"
 #include "print_error.h"
 
-t_event		*event_create(t_player *player, t_pl_func func,
+t_event		*event_create(void *data, t_pl_func func,
 			      long double timestamp, void *arg)
 {
   t_event	*event;
@@ -12,7 +12,7 @@ t_event		*event_create(t_player *player, t_pl_func func,
       print_perror("failed to allocate new event");
       return (NULL);
     }
-  event->player = player;
+  event->data = data;
   event->func = func;
   event->timestamp = timestamp;
   event->arg = arg;

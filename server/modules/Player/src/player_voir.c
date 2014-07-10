@@ -23,13 +23,15 @@ static int	*init_tab_view(t_player *player)
   return (tab);
 }
 
-bool		player_voir(t_player *player,
-			    __attribute__ ((unused))char *unused)
+bool		player_voir(void *pl,
+			    __attribute__ ((unused))void *unused)
 {
+  t_player	*player;
   char		*str;
   int		*tab_view;
   int		len;
 
+  player = (t_player *)pl;
   if ((tab_view = init_tab_view(player)) == NULL)
     return (print_perror("failed to allocate view array"));
   get_vision_point(tab_view, player);

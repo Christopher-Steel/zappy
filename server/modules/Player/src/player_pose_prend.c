@@ -27,12 +27,16 @@ static int	string_to_res(char *res)
   return (-1);
 }
 
-bool		player_pose(t_player *player, char *res)
+bool		player_pose(void *pl, void *resource)
 {
+  t_player	*player;
+  char		*res;
   t_world	*world;
   int		type_res;
   unsigned int	position;
 
+  player = (t_player *)pl;
+  res = (char *)resource;
   world = g_server.world;
   position = player->pos.x + (player->pos.y * world->width);
   if ((type_res = string_to_res(res)) == -1)
@@ -49,12 +53,16 @@ bool		player_pose(t_player *player, char *res)
   return (client_write_to(player->client, "ko"));
 }
 
-bool		player_prend(t_player *player, char *res)
+bool		player_prend(void *pl, void *resource)
 {
+  t_player	*player;
+  char		*res;
   t_world	*world;
   int		type_res;
   unsigned int	position;
 
+  player = (t_player *)pl;
+  res = (char *)resource;
   world = g_server.world;
   position = player->pos.x + (player->pos.y * world->width);
   if ((type_res = string_to_res(res)) == -1)

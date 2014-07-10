@@ -15,7 +15,7 @@ SRC		=	$(LOCAL)algorithm.cpp		\
 
 OBJ		=	$(SRC:.cpp=.o)
 
-CXXFLAGS	=	-W -Wall -Werror		\
+CXXFLAGS	=	-W -Wall -Werror -O3		\
 			$(addprefix -I, $(INCPATH))
 
 LDFLAGS		=	-lm

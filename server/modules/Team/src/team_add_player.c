@@ -41,5 +41,4 @@ void		team_add_egg(t_egg *egg, char *team_name)
   team = find_team(team_name);
   list_push_front(team->eggs, egg);
   egg->team = team;
-  ++(team->free_slots);
 }

@@ -72,29 +72,29 @@ typedef struct		s_elevation
   unsigned int		lvl_min;
 }			t_elevation;
 
-typedef bool		(*t_pl_func)(t_player *, char *);
+typedef bool		(*t_pl_func)(void *, void *);
 
 /*
 ** FUNCTIONS
 */
-bool		player_avance(t_player *player, char *unused);
-bool		player_droite(t_player *player, char *unused);
-bool		player_gauche(t_player *player, char *unused);
-bool		player_voir(t_player *player, char *unused);
-bool		player_inventaire(t_player *player, char *unused);
-bool		player_prend(t_player *player, char *res);
-bool		player_pose(t_player *player, char *res);
-bool		player_expulse(t_player *player, char *unused);
-bool		player_broadcast(t_player *player, char *msg);
-bool		player_incantation(t_player *player, char *cmd);
-bool		player_fork(t_player *player, char *cmd);
-bool		player_connect_nbr(t_player *player, char *unused);
+bool		player_avance(void *pl, void *unused);
+bool		player_droite(void *pl, void *unused);
+bool		player_gauche(void *pl, void *unused);
+bool		player_voir(void *pl, void *unused);
+bool		player_inventaire(void *pl, void *unused);
+bool		player_prend(void *pl, void *res);
+bool		player_pose(void *pl, void *res);
+bool		player_expulse(void *pl, void *unused);
+bool		player_broadcast(void *pl, void *msg);
+bool		player_incantation(void *pl, void *cmd);
+bool		player_fork(void *pl, void *cmd);
+bool		player_connect_nbr(void *pl, void *unused);
 
+bool		stop_elevation(void *pl, void *unused);
 void		ressource_spreading(unsigned int pos, int cond);
 bool		check_condition(t_player *player, t_node *node,
 			        unsigned int pos);
 bool		send_view(char *str, int *tab_view, t_player *player);
-bool		stop_elevation(t_player *player, char *unused);
 int		size_str_view(int *tab_view);
 int		cnt_same_lvl(t_node *node, uint lvl);
 t_player	*create_player(t_vector pos, enum e_ori ori,

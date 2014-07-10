@@ -43,7 +43,7 @@ SRC		=	$(COMMON)print_error.c		\
 			$(LOCAL)gs_get_map_height.c	\
 			$(LOCAL)gs_get_map_size.c	\
 			$(LOCAL)gs_get_map_width.c	\
-			$(LOCAL)time_update.c		\
+			$(LOCAL)gs_time_update.c	\
 			$(LOCAL)main.c
 
 include $(MODULES)
