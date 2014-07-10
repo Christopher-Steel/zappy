@@ -9,8 +9,8 @@ GRAPHIC		=	$(SRC_FOLDER)graphic_manager_init.c	\
 			$(SRC_FOLDER)graphic_bct.c		\
 			$(SRC_FOLDER)graphic_mct.c		\
 			$(SRC_FOLDER)graphic_tna.c		\
-			$(SRC_FOLDER)graphic_player_info.c
-			#$(SRC_FOLDER)graphic_ .c
+			$(SRC_FOLDER)graphic_player_info.c	\
+			$(SRC_FOLDER)graphic_time.c
 
 ##########################################################################
 
