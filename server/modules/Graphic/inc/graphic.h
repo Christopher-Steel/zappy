@@ -3,6 +3,7 @@
 
 # include	"list.h"
 # include	"network_client.h"
+# include	"player.h"
 # include	"receiver.h"
 # include	"zappy_types.h"
 
@@ -32,5 +33,28 @@ bool		graphic_plv(t_graphic *, char *);
 bool		graphic_pin(t_graphic *, char *);
 bool		graphic_sgt(t_graphic *, char *);
 bool		graphic_sst(t_graphic *, char *);
+
+bool		graphic_sug(t_graphic *);
+bool		graphic_sbp(t_graphic *);
+
+bool		graphic_pnw(t_graphic *graphic, t_player *player);
+
+bool		graphic_pex(t_graphic *graphic, t_player *player);
+bool		graphic_pbc(t_graphic *graphic, t_player *player, char *msg);
+bool		graphic_pic(t_graphic *graphic, t_player **players);
+bool		graphic_pie(t_graphic *graphic, t_vector *pos, int result);
+bool		graphic_pdi(t_graphic *graphic, t_player *player);
+
+bool		graphic_pfk(t_graphic *graphic, t_player *player);
+bool		graphic_enw(t_graphic *graphic, t_player *player, t_egg *egg);
+bool		graphic_eht(t_graphic *graphic, t_egg *egg);
+bool		graphic_ebo(t_graphic *graphic, t_egg *egg);
+bool		graphic_edi(t_graphic *graphic, t_egg *egg);
+
+bool		graphic_pdr(t_graphic *graphic, t_player *player, uint obj);
+bool		graphic_pgt(t_graphic *graphic, t_player *player, uint obj);
+
+bool		graphic_seg(t_graphic *graphic, char *team_name);
+bool		graphic_smg(t_graphic *graphic, char *msg);
 
 #endif		/* GRAPHIC_H_ */

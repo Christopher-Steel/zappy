@@ -127,35 +127,50 @@ void		Drone::Recive_Speak(std::string str)
 
 void		Drone::Recive_Cast(std::string str)
 {
-  this->rep.pop_front();
+  if (str == "ok")
+    {
+      std::list<Action>::iterator it;
+
+      for (it = this->rep.begin(); it != this->rep.end()
+	     && (*it) != SPEAK; ++it);
+      if ((*it) == SPEAK)
+	this->rep.erase(it);
+    }
   if (str == "elevation en cours")
     {
+      this->rep.pop_front();
       this->rep.push_back(CAST);
       while (this->is_action != false)
 	this->Recive();
     }
   else if (str.find("niveau actuel : ") == 0)
     {
+      this->rep.pop_front();
       std::string	tmp = str.substr(strlen("niveau actuel : "));
       Level		level = this->level;
 
       this->level = (Level)(translate<std::string, int>(tmp) - 1);
       if (this->level != level)
 	{
-	  if (this->id > 6 && this->level > 5)
+	  if (this->id > SIX && this->level > FIVE)
 	    this->duty = OTHER;
 	  else if (this->id % this->evolve[this->level][DRONE] == 0)
 	    this->duty = CASTER;
 	  else
 	    this->duty = FOLLOWER;
 	  this->init_sypher();
-	  if (level == ONE && this->id < 1)
+	  if (level == ONE && this->id < 7)
 	    this->Send_Fork();
 	}
+      this->is_action = false;
     }
-  else if (this->duty == CASTER)
-    this->Send_Speak("[level up ko].");
-  this->is_action = false;
+  else if (this->duty == CASTER || this->duty == NONE)
+    {
+      this->rep.pop_front();
+      if (this->duty == CASTER)
+	this->Send_Speak("[level up ko].");
+      this->is_action = false;
+    }
 }
 
 void		Drone::do_fork()
@@ -168,6 +183,8 @@ void		Drone::do_fork()
     {
       std::string	cmd = "./zappy_AI -h ";
 
+      std::cout << "in" << std::endl;
+ 
       cmd += this->net.Ip();
       cmd += " -p ";
       cmd += translate<int, std::string>(this->net.Port());

@@ -20,6 +20,8 @@ PLAYER		=	$(SRC_FOLDER)player_avance.c		\
 			$(SRC_FOLDER)send_view.c		\
 			$(SRC_FOLDER)size_str_view.c		\
 			$(SRC_FOLDER)stop_elevation.c		\
+			$(SRC_FOLDER)cnt_same_lvl.c		\
+			$(SRC_FOLDER)check_condition.c		\
 			$(SRC_FOLDER)get_vec_direction.c
 
 

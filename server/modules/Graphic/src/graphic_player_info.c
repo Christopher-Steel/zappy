@@ -21,7 +21,8 @@ static t_player	*find_player(int id)
   t_node	*node;
 
   player = NULL;
-  for (node = list_begin(g_server.team_list); node && !player; node = node->next)
+  for (node = list_begin(g_server.team_list); node && !player;
+       node = node->next)
     if (((t_player *)(node->data))->id == id)
       player = (t_player *)(node->data);
   return (player);
@@ -76,8 +77,8 @@ bool		graphic_pin(t_graphic *graphic, char *cmd)
   player = find_player(id);
   if (!player)
     return (printf_error("can't find player with id %d", id));
-  res = g_server.world->cell[(player->pos.x +
-			      (player->pos.y * gs_get_map_width()))].res;
+  res = g_server.world->cell[(player->pos.x
+			      + (player->pos.y * gs_get_map_width()))].res;
   if (asprintf(&answer, "pin #%d %u %u %u %u %u %u %u %u %u\n", player->id,
 	       player->pos.x, player->pos.y, res[0], res[1], res[2],
 	       res[3], res[4], res[5], res[6]) == -1)

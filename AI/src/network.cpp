@@ -60,7 +60,8 @@ void		Network::putmsg(const std::string &msg) const
   tmp = msg;
   if (send(this->fd, tmp.c_str(), tmp.size(), 0) == -1)
     throw My_Exception("Network: error: can't send message.");
-  std::cout << "\E[33;1mClient: " << tmp << "\E[m";
+  if (tmp != "connect_nbr\n")
+    std::cout << "\E[33;1mClient: " << tmp << "\E[m";
 }
 
 std::string	Network::getmsg(void) const
@@ -76,7 +77,8 @@ std::string	Network::getmsg(void) const
       buff[ret] = '\0';
       str += buff;
     }
-  std::cout << "\E[34;1mServer: " << str << "\E[m";
+  if (str.size() > 2)
+    std::cout << "\E[34;1mServer: " << str << "\E[m";
   return (str);
 }
 
