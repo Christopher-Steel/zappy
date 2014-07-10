@@ -101,6 +101,9 @@ int		size_str_view(int *tab_view);
 t_player	*create_player(t_vector pos, enum e_ori ori,
 			       t_client *client, t_team *team);
 t_vector	get_vec_direction(enum e_ori ori);
+int		calc_k(double angle);
+double		calc_angle(t_vector pos_player,
+			   t_vector pos_dest, t_player *dest);
 
 void		player_life_update(void);
 
