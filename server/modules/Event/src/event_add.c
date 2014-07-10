@@ -1,5 +1,6 @@
 
 #include "event.h"
+#include "server.h"
 
 void		event_add(t_list *events, t_event *event)
 {
@@ -25,4 +26,9 @@ void		event_add(t_list *events, t_event *event)
       else
 	list_insert_after(events, node, event);
     }
+}
+
+void	gs_event_add(t_event *event)
+{
+  event_add(&g_server.event_manager.events, event);
 }

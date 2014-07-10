@@ -11,6 +11,8 @@ static void	event_node_update(void *data, void *list)
   if (event->timestamp <= 0)
     {
       event->func(event->player, event->arg);
+      event->player->current_event = NULL;
+      list_pop_front(&event->player->client->inbound, true);
       list_pop_front((t_list *)list, true);
     }
 }

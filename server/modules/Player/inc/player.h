@@ -19,7 +19,7 @@
 ** TYPEDEF
 */
 
-typedef struct	s_team		t_team;
+typedef struct s_team	t_team;
 
 /*
 ** DEFINES
@@ -67,6 +67,7 @@ typedef struct	s_player
   enum e_ori	ori;
   int		id;
   long double	alive;
+  void		*current_event;
   t_team	*team;
   t_client	*client;
 }		t_player;
@@ -77,6 +78,8 @@ typedef struct		s_elevation
   int			nb_player;
   unsigned int		lvl_min;
 }			t_elevation;
+
+typedef bool		(*t_pl_func)(t_player *, char *);
 
 /*
 ** FUNCTIONS

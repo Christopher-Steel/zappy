@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "player.h"
 #include "world.h"
 
 static t_elevation	g_cond[] =
@@ -31,6 +32,23 @@ static int	cnt_same_lvl(t_node *node, uint lvl)
   return (nbr_player);
 }
 
+static bool	player_register_incant_end(t_player *player)
+{
+  t_pl_func	fn;
+
+  fn = &stop_elevation;
+  if ((player->current_event = event_create(player, fn, 300.0, NULL)) == NULL)
+    {
+      list_pop_front(&player->client->inbound, true);
+      return (false);
+    }
+  else
+    {
+      gs_event_add(player->current_event);
+      return (true);
+    }
+}
+
 bool		player_incantation(t_player *player,
 				   __attribute__ ((unused))char *unused)
 {
@@ -53,7 +71,8 @@ bool		player_incantation(t_player *player,
       world->cell[pos].res[THYSTAME] >= g_cond[lvl].res[THYSTAME])
     {
       client_write_to(player->client, "elevation en cours");
-      return (true);
+      if (player_register_incant_end(player))
+	return (true);
     }
   asprintf(&str, "niveau actuel : %u", player->level);
   client_write_to(player->client, str);
