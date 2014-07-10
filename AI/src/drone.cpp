@@ -65,17 +65,17 @@ void		Drone::Recive()
   std::string	tmp;
   unsigned int	pos;
 
-  while (str.find("\n") != std::string::npos)
+  while (str.find("\n") != std::string::npos && this->level != MAX)
     {
       pos = str.find("\n");
-
       tmp = str.substr(0, pos);
+
       if (tmp.find("message") == 0)
 	Check_msg(tmp);
       else if (tmp.find("deplacement") == 0)
 	{}
       else if (tmp.find("mort") == 0)
-	throw My_Exception("Sorry you are dead.");
+	{}// throw My_Exception("Sorry you are dead.");
       else if (!this->rep.empty())
 	(this->*actions[this->rep.front()])(tmp);
       str = str.substr(pos + 1);
@@ -113,10 +113,10 @@ void		Drone::Send(Action act, std::string str)
 
 void		Drone::Play()
 {
-  while (this->level != FOUR)
+  while (this->level != MAX)
     {
       if (this->net.Select())
-  	this->Recive();
+      	this->Recive();
 
       this->Send_Inventory();
       this->Send_See();

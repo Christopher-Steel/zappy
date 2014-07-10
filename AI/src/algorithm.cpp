@@ -4,7 +4,7 @@ void		Drone::Algorithm()
 {
   if (this->inventory[FOOD] < this->evolve[this->level][FOOD])
     {
-      this->evolve[this->level][FOOD] = 15;
+      this->evolve[this->level][FOOD] = 20;
       this->Search_obj(FOOD);
     }
   else
