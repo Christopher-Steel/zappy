@@ -9,13 +9,13 @@ static t_graph_cmd g_cmds[] =
   {
     GRAPH_CMD(msz, false),
     GRAPH_CMD(bct, true),
-    GRAPH_CMD(mct, false),
+    GRAPH_CMD(mct, false)/*,
     GRAPH_CMD(tna, false),
     GRAPH_CMD(ppo, true),
     GRAPH_CMD(plv, true),
     GRAPH_CMD(pin, true),
     GRAPH_CMD(sgt, false),
-    GRAPH_CMD(sst, true)
+    GRAPH_CMD(sst, true)*/
   };
 
 static int	get_cmd_id(char *cmd)

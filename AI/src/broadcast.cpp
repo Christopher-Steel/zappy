@@ -16,6 +16,13 @@ void		Drone::andle_msg()
 	this->level_up();
       else if (tmp.find("[level up ko].") != std::string::npos)
 	{
+	  std::list<Action>::iterator it;
+
+	  for (it = this->rep.begin(); it != this->rep.end()
+		 && (*it) != CAST; ++it);
+	  if ((*it) == CAST)
+	    this->rep.erase(it);
+
 	  if (this->rep.front() == CAST)
 	    this->rep.pop_front();
 	  this->is_action = false;

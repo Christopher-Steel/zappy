@@ -32,6 +32,9 @@ void		team_update_max_level(t_team *team);
 bool		team_add_player(t_player *player, char *team_name);
 void		team_add_egg(t_egg *egg, char *team_name);
 
+void		team_remove_player(t_player* player);
+void		team_remove_egg(t_egg *egg, bool hatch);
+
 t_player	*team_create_player(char *team_name, t_client *client);
 
 #endif		/* !TEAM_H_ */

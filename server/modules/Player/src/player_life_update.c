@@ -9,15 +9,18 @@ static void	player_death(t_player *player)
   //player_destroy(player);
 }
 
-static void	life_update_by_player(void *player)
+static void	life_update_by_player(void *pl)
 {
-  ((t_player *)player)->alive -= g_server.info.dtime;
-  if (((t_player *)player)->alive <= 0)
+  t_player	*player;
+
+  player = (t_player *)pl;
+  player->alive -= g_server.info.dtime;
+  if (player->alive <= 0)
     {
-      if (((t_player *)player)->inventory[FOOD] <= 0)
+      if (player->inventory[FOOD] <= 0)
 	player_death(player);
       else
-	--(((t_player *)player)->inventory[FOOD]);
+	--(player->inventory[FOOD]);
     }
 }
 

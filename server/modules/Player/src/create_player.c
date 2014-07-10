@@ -3,22 +3,43 @@
 #include <string.h>
 
 #include "AI_PI.h"
-#include "world.h"
+#include "player.h"
 #include "print_error.h"
 #include "print_log.h"
+#include "world.h"
+
+static void	player_register_event(t_player *player)
+{
+  char		*in_cmd;
+  t_pl_func	fn;
+  double	delay;
+
+  in_cmd = list_front(&player->client->inbound);
+  if ((fn = AI_PI(&in_cmd, &delay)) == NULL
+      || (player->current_event = event_create(player, fn, delay, in_cmd))
+      == NULL)
+    {
+      client_write_to(player->client, "ko");
+      list_pop_front(&player->client->inbound, true);
+    }
+  else
+    gs_event_add(player->current_event);
+}
 
 static void	player_receive(t_receiver *rec, char *msg)
 {
   t_player	*player;
-  //t_list	*inbound;
+  t_list	*inbound;
 
   player = (t_player *)rec;
-  //  inbound = &player->client->inbound;
-  /* if (list_size(inbound) < MAX_CLIENT_OUTQ) */
-  /*   list_push_back(inbound, msg); */
-  /* else */
-  /*   free(msg); */
-  AI_PI(player, msg);
+  inbound = &player->client->inbound;
+  if (list_size(inbound) < MAX_CLIENT_OUTQ)
+    list_push_back(inbound, msg);
+  else
+    free(msg);
+  if (player->current_event == NULL
+      && list_empty(&player->client->inbound) == false)
+    player_register_event(player);
 }
 
 static void	player_destroy(t_receiver *rec)
@@ -29,6 +50,7 @@ static void	player_destroy(t_receiver *rec)
   --g_server.info.nb_clients;
   remove_player(player->id, player->pos.x + player->pos.y
 		* gs_get_map_width());
+  team_remove_player(player);
   free(player);
 }
 

@@ -19,7 +19,7 @@
 ** TYPEDEF
 */
 
-typedef struct	s_team		t_team;
+typedef struct s_team	t_team;
 
 /*
 ** DEFINES
@@ -42,13 +42,6 @@ enum	e_ori
 ** STRUCTURES
 */
 
-typedef struct	s_in_view
-{
-  bool		is_player;
-  bool		is_res;
-  bool		is_egg;
-}		t_in_view;
-
 typedef struct	s_vision
 {
   t_vector	start;
@@ -67,6 +60,7 @@ typedef struct	s_player
   enum e_ori	ori;
   int		id;
   long double	alive;
+  void		*current_event;
   t_team	*team;
   t_client	*client;
 }		t_player;
@@ -77,6 +71,8 @@ typedef struct		s_elevation
   int			nb_player;
   unsigned int		lvl_min;
 }			t_elevation;
+
+typedef bool		(*t_pl_func)(t_player *, char *);
 
 /*
 ** FUNCTIONS
@@ -94,10 +90,13 @@ bool		player_incantation(t_player *player, char *cmd);
 bool		player_fork(t_player *player, char *cmd);
 bool		player_connect_nbr(t_player *player, char *unused);
 
-void		show_list_player(t_list *list);
+void		ressource_spreading(unsigned int pos, int cond);
+bool		check_condition(t_player *player, t_node *node,
+			        unsigned int pos);
 bool		send_view(char *str, int *tab_view, t_player *player);
 bool		stop_elevation(t_player *player, char *unused);
 int		size_str_view(int *tab_view);
+int		cnt_same_lvl(t_node *node, uint lvl);
 t_player	*create_player(t_vector pos, enum e_ori ori,
 			       t_client *client, t_team *team);
 t_vector	get_vec_direction(enum e_ori ori);

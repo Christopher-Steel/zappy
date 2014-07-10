@@ -7,8 +7,6 @@
 # include	"team.h"
 # include	"zappy_types.h"
 
-typedef bool	(*func_ptr)(t_player *player, void *arg);
-
 typedef struct	s_event_manager
 {
   t_list	events;
@@ -20,16 +18,16 @@ void		event_manager_shutdown(void);
 typedef struct	s_event
 {
   t_player	*player;
-  func_ptr	func;
+  t_pl_func	func;
   long double	timestamp;
   void		*arg;
 }		t_event;
 
-t_event		*event_create(t_player *player, func_ptr func,
+t_event		*event_create(t_player *player, t_pl_func func,
 			      long double timestamp, void *arg);
-
 void		event_add(t_list *events, t_event *event);
-
 void		event_update(t_list *event);
+
+void		gs_event_add(t_event *event);
 
 #endif		/* !EVENT_H_ */

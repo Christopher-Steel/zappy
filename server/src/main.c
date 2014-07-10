@@ -5,6 +5,7 @@
 #include "parse_parameter.h"
 #include "print_error.h"
 #include "server.h"
+#include "time.h"
 #include "zappy_types.h"
 
 static void	sigint_handler(__attribute__ ((unused))int sig)
@@ -29,6 +30,7 @@ static void	stop_services(void)
 
 static bool	start_services(void)
 {
+  srand(time(NULL));
   event_manager_init();
   graphic_manager_init();
   generate_world(g_server.param.height, g_server.param.width);

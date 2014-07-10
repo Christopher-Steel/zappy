@@ -2,24 +2,23 @@
 #include <string.h>
 
 #include "AI_PI.h"
-#include "player.h"
 #include "print_debug.h"
 #include "print_error.h"
 
 static t_AI_cmd	g_cmds[] =
   {
-    AI_CMD(voir, false),
-    AI_CMD(avance, false),
-    AI_CMD(droite, false),
-    AI_CMD(gauche, false),
-    AI_CMD(prend, true),
-    AI_CMD(pose, true),
-    AI_CMD(expulse, false),
-    AI_CMD(broadcast, true),
-    AI_CMD(incantation, false),
-    AI_CMD(fork, false),
-    AI_CMD(connect_nbr, false),
-    AI_CMD(inventaire, false)
+    AI_CMD(voir, false, 7.0),
+    AI_CMD(avance, false, 7.0),
+    AI_CMD(droite, false, 7.0),
+    AI_CMD(gauche, false, 7.0),
+    AI_CMD(prend, true, 7.0),
+    AI_CMD(pose, true, 7.0),
+    AI_CMD(expulse, false, 7.0),
+    AI_CMD(broadcast, true, 7.0),
+    AI_CMD(incantation, false, 0.0),
+    AI_CMD(fork, false, 42.0),
+    AI_CMD(connect_nbr, false, 0.0),
+    AI_CMD(inventaire, false, 1.0)
   };
 
 static int	get_cmd_id(char *cmd)
@@ -32,34 +31,31 @@ static int	get_cmd_id(char *cmd)
   backup_str = strdup(cmd);
   if ((token = strtok(backup_str, " \t\n")) == NULL)
     return (-1);
-  for (i = 0; i < cmd_size; ++i)
-    if (strcmp(g_cmds[i].name, token) == 0)
-      break ;
+  for (i = 0; i < cmd_size && strcmp(g_cmds[i].name, token); ++i);
   free(backup_str);
   return ((i < cmd_size ? (int)i : -1));
 }
 
-bool	AI_PI(t_player *player, char *cmd)
+t_pl_func	AI_PI(char **cmd, double *delay)
 {
   char	*args;
   int	cmd_id;
 
-  printf_debug("Parsing command: %s", cmd);
-  if ((cmd_id = get_cmd_id(cmd)) == -1)
+  printf_debug("Parsing command: %s", *cmd);
+  if ((cmd_id = get_cmd_id(*cmd)) == -1)
     {
-      client_write_to(player->client, "ko");
-      return (printf_error("%s: command not found", cmd));
+      printf_error("%s: command not found", *cmd);
+      return (NULL);
     }
-  args = cmd + strlen(g_cmds[cmd_id].name);
-  while (*args != '\0'
-	 && (*args == ' '
-	     || *args == '\t'
-	     || *args == '\n'))
+  args = *cmd + strlen(g_cmds[cmd_id].name);
+  while (*args != '\0' && (*args == ' ' || *args == '\t' || *args == '\n'))
     ++args;
   if ((*args != '\0' && *args != '\n') != (g_cmds[cmd_id].hasArg))
     {
-      client_write_to(player->client, "ko");
-      return (printf_error("%s: invalid arguments", cmd));
+      printf_error("%s: invalid arguments", *cmd);
+      return (NULL);
     }
-  return (g_cmds[cmd_id].fn(player, (*args != '\0' ? args : NULL)));
+  *cmd = (*args != '\0' ? args : NULL);
+  *delay = g_cmds[cmd_id].delay;
+  return (g_cmds[cmd_id].fn);
 }
