@@ -10,7 +10,7 @@ void		list_for_each(t_list *list, void (*fcn)(void *))
 }
 
 void		list_for_each_arg(t_list *list, void (*fcn)(void *, void *),
-			     void* param)
+				  void* param)
 {
   t_node	*tmp;
 
