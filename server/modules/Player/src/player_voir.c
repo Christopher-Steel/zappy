@@ -36,7 +36,7 @@ bool		player_voir(t_player *player,
   len = size_str_view(tab_view);
   if ((str = malloc((len + 1) * sizeof(char))) == NULL)
     return (print_perror("failed to allocate view description"));
-  str = strcpy(str, "");
+  str[0] = '\0';
   send_view(str, tab_view, player);
   free(tab_view);
   free(str);

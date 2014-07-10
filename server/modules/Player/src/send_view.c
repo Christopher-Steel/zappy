@@ -17,34 +17,42 @@ static const char	*res_name[] =
 static bool	check_player_case(char *str, int i, int *tab_view)
 {
   t_world	*world;
+  t_node	*node;
 
   world = g_server.world;
-  if ((i == 0 && world->cell[tab_view[i]].list_player->size > 1) ||
-      (i > 0 && world->cell[tab_view[i]].list_player->size > 0))
+  if (world->cell[tab_view[i]].list_player->size > 0)
     {
-      str = strcat(str, "joueur");
+      node = world->cell[tab_view[i]].list_player->nodes;
+      while (node != NULL)
+	{
+	  str = strcat(str, "joueur");
+	  node = node->next;
+	  if (node != NULL)
+	    str = strcat(str, " ");
+	}
       return (true);
     }
   return (false);
 }
 
-static bool	check_egg_case(char *str, int i, int *tab_view, bool is_player)
+static void	write_nbr_res(char *str, int *tab_view, int i, int j)
 {
+  unsigned int	u;
   t_world	*world;
 
+  u = 0;
   world = g_server.world;
-  if (is_player)
-    str = strcat(str, " ");
-  if (world->cell[tab_view[i]].list_egg->size > 0)
+  while (u < world->cell[tab_view[i]].res[j])
     {
-      str = strcat(str, "oeuf");
-      return (true);
+      str = strcat(str, res_name[j]);
+      ++u;
+      if (u < world->cell[tab_view[i]].res[j])
+	str = strcat(str, " ");
     }
-  return (false);
 }
 
 static bool	check_res_case(char *str, int *tab_view,
-			       int i, t_in_view view)
+			       int i, bool is_player)
 {
   t_world	*world;
   int		j;
@@ -55,14 +63,14 @@ static bool	check_res_case(char *str, int *tab_view,
   world = g_server.world;
   while (res_name[j])
     {
-      if (j == 0 && (view.is_player || view.is_egg))
+      if (j == 0 && is_player)
 	str = strcat(str, " ");
       if (world->cell[tab_view[i]].res[j] > 0)
 	{
-	  if (is_res == true)
+	  if (is_res)
 	    str = strcat(str, " ");
 	  is_res = true;
-	  str = strcat(str, res_name[j]);
+	  write_nbr_res(str, tab_view, i, j);
 	}
       ++j;
     }
@@ -71,25 +79,26 @@ static bool	check_res_case(char *str, int *tab_view,
 
 bool		send_view(char *str, int *tab_view, t_player *player)
 {
-  t_in_view	view;
+  bool		is_player;
+  bool		is_res;
   int		i;
 
-  (void)player;
   i = 0;
-  view.is_player = false;
-  view.is_egg = false;
-  view.is_res = false;
+  is_player = false;
+  is_res = false;
   str = strcat(str, "{");
   while (tab_view[i] != -1)
     {
-      if (view.is_res || view.is_player || view.is_egg)
-      	str = strcat(str, " ");
-      view.is_player = check_player_case(str, i, tab_view);
-      view.is_egg = check_egg_case(str, i, tab_view, view.is_player);
-      view.is_res = check_res_case(str, tab_view, i, view);
+      is_player = check_player_case(str, i, tab_view);
+      is_res = check_res_case(str, tab_view, i, is_player);
       ++i;
       if (tab_view[i] != -1)
-  	str = strcat(str, ",");
+	{
+	  str = strcat(str, ",");
+	  if (is_res || is_player ||
+	      (i > 0 && !is_res && !is_player))
+	    str = strcat(str, " ");
+	}
     }
   str = strcat(str, "}");
   return (client_write_to(player->client, str));

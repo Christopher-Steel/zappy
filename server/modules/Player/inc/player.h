@@ -42,13 +42,6 @@ enum	e_ori
 ** STRUCTURES
 */
 
-typedef struct	s_in_view
-{
-  bool		is_player;
-  bool		is_res;
-  bool		is_egg;
-}		t_in_view;
-
 typedef struct	s_vision
 {
   t_vector	start;
