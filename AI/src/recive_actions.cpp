@@ -152,7 +152,7 @@ void		Drone::Recive_Cast(std::string str)
       this->level = (Level)(translate<std::string, int>(tmp) - 1);
       if (this->level != level)
 	{
-	  if (this->id > 6 && this->level > 5)
+	  if (this->id > SIX && this->level > FIVE)
 	    this->duty = OTHER;
 	  else if (this->id % this->evolve[this->level][DRONE] == 0)
 	    this->duty = CASTER;
