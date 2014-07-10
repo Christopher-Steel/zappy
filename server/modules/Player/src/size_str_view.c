@@ -83,7 +83,7 @@ int	size_str_view(int *tab_view)
   int		len;
 
   i = 0;
-  len = 2;
+  len = 4;
   is_player = false;
   is_res = false;
   while (tab_view[i] != -1)

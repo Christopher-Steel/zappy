@@ -86,7 +86,7 @@ bool		send_view(char *str, int *tab_view, t_player *player)
   i = 0;
   is_player = false;
   is_res = false;
-  str = strcat(str, "{");
+  str = strcat(str, "{ ");
   while (tab_view[i] != -1)
     {
       is_player = check_player_case(str, i, tab_view);
@@ -100,6 +100,6 @@ bool		send_view(char *str, int *tab_view, t_player *player)
 	    str = strcat(str, " ");
 	}
     }
-  str = strcat(str, "}");
+  str = strcat(str, " }");
   return (client_write_to(player->client, str));
 }
