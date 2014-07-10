@@ -34,7 +34,13 @@ bool	graphic_tna(t_graphic *graphic, __attribute__ ((unused))char *cmd)
   char	*answer;
   bool	success;
 
+  answer = NULL;
   list_for_each_arg(g_server.team_list, &find_team_name, &answer);
+  if (!answer)
+    {
+      graphic_smg_KO(graphic);
+      return (false);
+    }
   success = client_write_to(graphic->client, answer);
   free(answer);
   return (success);

@@ -38,10 +38,16 @@ bool		graphic_ppo(t_graphic *graphic, char *cmd)
   id = get_id(cmd);
   player = find_player(id);
   if (!player)
-    return (printf_error("can't find player with id %d", id));
+    {
+      graphic_sbp(graphic);
+      return (printf_error("can't find player with id %d", id));
+    }
   if (asprintf(&answer, "ppo #%d %u %u %u\n", player->id, player->pos.x,
 	       player->pos.y, player->ori) == -1)
-    return (print_error("failed to allocate new graphic message"));
+    {
+      graphic_smg_KO(graphic);
+      return (print_error("failed to allocate new graphic message"));
+    }
   success = client_write_to(graphic->client, answer);
   free(answer);
   return (success);
@@ -57,9 +63,15 @@ bool		graphic_plv(t_graphic *graphic, char *cmd)
   id = get_id(cmd);
   player = find_player(id);
   if (!player)
-    return (printf_error("can't find player with id %d", id));
+    {
+      graphic_sbp(graphic);
+      return (printf_error("can't find player with id %d", id));
+    }
   if (asprintf(&answer, "plv #%d %d\n", player->id, player->level) == -1)
-    return (print_error("failed to allocate new graphic message"));
+    {
+      graphic_smg_KO(graphic);
+      return (print_error("failed to allocate new graphic message"));
+    }
   success = client_write_to(graphic->client, answer);
   free(answer);
   return (success);
@@ -76,13 +88,19 @@ bool		graphic_pin(t_graphic *graphic, char *cmd)
   id = get_id(cmd);
   player = find_player(id);
   if (!player)
-    return (printf_error("can't find player with id %d", id));
+    {
+      graphic_sbp(graphic);
+      return (printf_error("can't find player with id %d", id));
+    }
   res = g_server.world->cell[(player->pos.x
 			      + (player->pos.y * gs_get_map_width()))].res;
   if (asprintf(&answer, "pin #%d %u %u %u %u %u %u %u %u %u\n", player->id,
 	       player->pos.x, player->pos.y, res[0], res[1], res[2],
 	       res[3], res[4], res[5], res[6]) == -1)
-    return (print_error("failed to allocate new graphic message"));
+    {
+      graphic_smg_KO(graphic);
+      return (print_error("failed to allocate new graphic message"));
+    }
   success = client_write_to(graphic->client, answer);
   free(answer);
   return (success);

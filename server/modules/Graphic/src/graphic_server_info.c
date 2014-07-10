@@ -27,3 +27,8 @@ bool	graphic_smg(t_graphic *graphic, char *msg)
   free(answer);
   return (success);
 }
+
+bool	graphic_smg_KO(t_graphic *graphic)
+{
+  return (client_write_to(graphic->client, "smg KO\n"));
+}

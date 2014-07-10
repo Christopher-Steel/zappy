@@ -7,9 +7,10 @@
 #include "print_error.h"
 #include "server.h"
 
-static bool	quit_with_error(char *to_free)
+static bool	quit_with_error(t_graphic *graphic, char *to_free)
 {
   free(to_free);
+  graphic_smg_KO(graphic);
   return (print_error("failed to allocate new graphic message"));
 }
 
@@ -30,9 +31,9 @@ bool	graphic_mct(t_graphic *graphic, __attribute__ ((unused)) char *cmd)
 		   (pos % gs_get_map_width()), (pos / gs_get_map_width()),
 		   res[0], res[1], res[2], res[3], res[4], res[5], res[6])
 	  == -1)
-	return (quit_with_error(answer));
+	return (quit_with_error(graphic, answer));
       if (!(answer = realloc(answer, sizeof(char) * (strlen(tmp) + 1))))
-	return (quit_with_error(tmp));
+	return (quit_with_error(graphic, tmp));
       answer = strcat(answer, tmp);
       free(tmp);
       ++pos;

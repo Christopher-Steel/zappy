@@ -56,5 +56,6 @@ bool		graphic_pgt(t_graphic *graphic, t_player *player, uint obj);
 
 bool		graphic_seg(t_graphic *graphic, char *team_name);
 bool		graphic_smg(t_graphic *graphic, char *msg);
+bool		graphic_smg_KO(t_graphic *graphic);
 
 #endif		/* GRAPHIC_H_ */

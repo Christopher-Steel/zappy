@@ -1,14 +1,18 @@
 #include <stdlib.h>
 
 #include "graphic.h"
+#include "graph_PI.h"
 #include "print_debug.h"
 #include "print_error.h"
 #include "server.h"
 
-static void	graphic_receive(__attribute__ ((unused))t_receiver *rec,
-				char *msg)
+static void	graphic_receive(t_receiver *rec, char *msg)
 {
+  t_graphic	*graphic;
+
   printf_debug("graphic received: %s", msg);
+  graphic = (t_graphic *)rec;
+  graph_PI(graphic, msg);
 }
 
 static void	graphic_destroy(t_receiver *rec)
