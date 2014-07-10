@@ -1,7 +1,3 @@
-#define _GNU_SOURCE
-#include <stdio.h>
-#include <string.h>
-
 #include "world.h"
 
 int	cnt_same_lvl(t_node *node, uint lvl)

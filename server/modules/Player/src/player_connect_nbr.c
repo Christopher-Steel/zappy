@@ -2,7 +2,6 @@
 #include <stdio.h>
 
 #include "player.h"
-#include "print_debug.h"
 
 bool	player_connect_nbr(t_player *player,
 			   __attribute__ ((unused))char *unused)
