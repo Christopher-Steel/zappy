@@ -41,7 +41,10 @@ bool	graph_PI(t_graphic *graphic, char *cmd)
   int	cmd_id;
 
   if ((cmd_id = get_cmd_id(cmd)) == -1)
-    return (printf_error("%s: command not found", cmd));
+    {
+      graphic_suc(graphic);
+      return (printf_error("%s: command not found", cmd));
+    }
   args = cmd + strlen(g_cmds[cmd_id].name);
   while (*args != '\0'
 	 && (*args == ' '
@@ -49,7 +52,10 @@ bool	graph_PI(t_graphic *graphic, char *cmd)
 	     || *args == '\n'))
     ++args;
   if ((*args != '\0' && *args != '\n') != (g_cmds[cmd_id].hasArg))
-    return (printf_error("%s: invalid arguments", cmd));
+    {
+      graphic_sbp(graphic);
+      return (printf_error("%s: invalid arguments", cmd));
+    }
   return (g_cmds[cmd_id].fn(graphic, (*args != '\0' ? args : NULL)));
 }
 
