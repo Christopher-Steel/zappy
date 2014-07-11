@@ -15,7 +15,6 @@ static bool	get_position(char *cmd, uint *x, uint *y)
     *x = atoi(tmp);
   else
     return (false);
-
   tmp = strtok(NULL, " \n");
   if (tmp)
     *y = atoi(tmp);
@@ -41,7 +40,7 @@ bool	graphic_bct(t_graphic *graphic, char *cmd)
 
   if (!get_position(cmd, &x, &y))
     return (error_type_sbp(graphic, cmd));
-  if (x < gs_get_map_width() && gs_get_map_height())
+  if (x >= gs_get_map_width() || y >= gs_get_map_height())
     return (error_type_sbp(graphic, cmd));
   res = g_server.world->cell[(x + (y * gs_get_map_width()))].res;
   if (asprintf(&answer, "bct %u %u %u %u %u %u %u %u %u\n", x, y, res[0],

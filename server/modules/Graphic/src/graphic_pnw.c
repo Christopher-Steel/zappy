@@ -10,8 +10,8 @@ bool	graphic_pnw(t_graphic *graphic, t_player *player)
   bool	success;
 
   if (asprintf(&answer, "pnw #%d %d %d %d %d %s\n", player->id, player->pos.x,
-	       player->pos.y, player->ori, player->level, player->team->name)
-      == -1)
+	       player->pos.y, (player->ori + 1), player->level,
+	       player->team->name) == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);
   free(answer);

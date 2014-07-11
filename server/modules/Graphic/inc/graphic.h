@@ -28,9 +28,11 @@ bool		graphic_msz(t_graphic *, char *);
 bool		graphic_bct(t_graphic *, char *);
 bool		graphic_mct(t_graphic *, char *);
 bool		graphic_tna(t_graphic *, char *);
+
 bool		graphic_ppo(t_graphic *, char *);
 bool		graphic_plv(t_graphic *, char *);
 bool		graphic_pin(t_graphic *, char *);
+
 bool		graphic_sgt(t_graphic *, char *);
 bool		graphic_sst(t_graphic *, char *);
 
