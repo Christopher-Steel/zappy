@@ -2,6 +2,7 @@
 #ifndef		EVENT_H_
 # define	EVENT_H_
 
+# include	"event_handler.h"
 # include	"list.h"
 # include	"player.h"
 # include	"team.h"
@@ -15,15 +16,15 @@ typedef struct	s_event_manager
 void		event_manager_init(void);
 void		event_manager_shutdown(void);
 
-typedef struct	s_event
+typedef struct		s_event
 {
-  void		*data;
-  t_pl_func	func;
-  long double	timestamp;
-  void		*arg;
-}		t_event;
+  t_event_handler	*data;
+  t_pl_func		func;
+  long double		timestamp;
+  void			*arg;
+}			t_event;
 
-t_event		*event_create(void *data, t_pl_func func,
+t_event		*event_create(t_event_handler *data, t_pl_func func,
 			      long double timestamp, void *arg);
 void		event_add(t_list *events, t_event *event);
 void		event_update(t_list *event);

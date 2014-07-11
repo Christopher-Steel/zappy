@@ -12,6 +12,7 @@ t_egg	*egg_create(int id, t_team *team)
       print_perror("failed to allocate new egg");
       return (NULL);
     }
+  egg->event_handler = &egg_event_handler;
   egg->id = id;
   egg->team = team;
   return (egg);

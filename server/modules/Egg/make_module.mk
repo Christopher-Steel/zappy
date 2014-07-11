@@ -3,7 +3,8 @@ EGG_DIR	:=	$(dir $(lastword $(MAKEFILE_LIST)))
 ############################################################
 
 EGG		=	$(SRC_FOLDER)egg_create_destroy.c	\
-			$(SRC_FOLDER)egg_hatch.c
+			$(SRC_FOLDER)egg_hatch.c		\
+			$(SRC_FOLDER)egg_event_handler.c
 
 ############################################################
 

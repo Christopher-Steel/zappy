@@ -8,6 +8,7 @@
 # include	<stdio.h>
 
 # include	"egg.h"
+# include	"event_handler.h"
 # include	"list.h"
 # include	"network_client.h"
 # include	"receiver.h"
@@ -54,6 +55,7 @@ typedef struct	s_player
 {
   void		(*receive)(t_receiver *rec, char *msg);
   void		(*destroy)(t_receiver *rec);
+  void		(*event_handler)(t_event_handler *handler);
   unsigned int	inventory[7];
   unsigned int	level;
   t_vector	pos;
@@ -91,6 +93,8 @@ bool		player_fork(void *pl, void *cmd);
 bool		player_connect_nbr(void *pl, void *unused);
 
 bool		stop_elevation(void *pl, void *unused);
+void		player_register_event(t_player *player);
+void		player_event_handler(t_event_handler *handler);
 void		ressource_spreading(unsigned int pos, int cond);
 bool		check_condition(t_player *player, t_node *node,
 			        unsigned int pos);

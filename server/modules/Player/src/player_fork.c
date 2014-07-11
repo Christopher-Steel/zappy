@@ -9,7 +9,7 @@ static bool	egg_register_hatch(t_egg *egg)
 {
   t_event	*event;
 
-  if ((event = event_create(egg, &egg_hatch, 600, NULL)))
+  if ((event = event_create((t_event_handler *)egg, &egg_hatch, 600, NULL)))
     return (false);
   else
     {

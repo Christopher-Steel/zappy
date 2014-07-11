@@ -2,29 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "AI_PI.h"
 #include "player.h"
 #include "print_error.h"
 #include "print_log.h"
 #include "world.h"
-
-static void	player_register_event(t_player *player)
-{
-  char		*in_cmd;
-  t_pl_func	fn;
-  double	delay;
-
-  in_cmd = list_front(&player->client->inbound);
-  if ((fn = AI_PI(&in_cmd, &delay)) == NULL
-      || (player->current_event = event_create(player, fn, delay, in_cmd))
-      == NULL)
-    {
-      client_write_to(player->client, "ko");
-      list_pop_front(&player->client->inbound, true);
-    }
-  else
-    gs_event_add(player->current_event);
-}
 
 static void	player_receive(t_receiver *rec, char *msg)
 {
@@ -89,6 +70,7 @@ t_player	*create_player(t_vector pos, enum e_ori ori,
     }
   pl->receive = &player_receive;
   pl->destroy = &player_destroy;
+  pl->event_handler = &player_event_handler;
   pl->inventory[0] = 10;
   pl->level = 1;
   pl->id = g_server.info.nb_clients;

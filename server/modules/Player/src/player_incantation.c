@@ -5,12 +5,15 @@
 #include "player.h"
 #include "world.h"
 
-static bool	player_register_incant_end(t_player *player)
+static bool		player_register_incant_end(t_player *player)
 {
-  t_pl_func	fn;
+  t_event_handler	*handler;
+  t_pl_func		fn;
 
+  handler = (t_event_handler *)player;
   fn = &stop_elevation;
-  if ((player->current_event = event_create(player, fn, 300.0, NULL)) == NULL)
+  if ((player->current_event = event_create(handler, fn, 300.0, NULL))
+      == NULL)
     {
       // i highly doubt this is a good idea. Time will tell
       //      list_pop_front(&player->client->inbound, true);

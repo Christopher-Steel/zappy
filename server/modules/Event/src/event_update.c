@@ -5,16 +5,13 @@
 static void	event_node_update(void *data, void *list)
 {
   t_event	*event;
-  t_player	*player;
 
   event = (t_event *)data;
-  player = (t_player *)event->data;
   event->timestamp -= g_server.info.dtime;
   if (event->timestamp <= 0)
     {
-      event->func(player, event->arg);
-      player->current_event = NULL;
-      list_pop_front(&player->client->inbound, true);
+      event->func(event->data, event->arg);
+      event->data->event_handler(event->data);
       list_pop_front((t_list *)list, true);
     }
 }
