@@ -1,9 +1,9 @@
 
 #include "graphic.h"
 
-bool	graphic_sug(t_graphic *graphic)
+bool	graphic_suc(t_graphic *graphic)
 {
-  return (client_write_to(graphic->client, "sug\n"));
+  return (client_write_to(graphic->client, "suc\n"));
 }
 
 bool	graphic_sbp(t_graphic *graphic)

@@ -34,7 +34,7 @@ bool		graphic_pin(t_graphic *, char *);
 bool		graphic_sgt(t_graphic *, char *);
 bool		graphic_sst(t_graphic *, char *);
 
-bool		graphic_sug(t_graphic *);
+bool		graphic_suc(t_graphic *);
 bool		graphic_sbp(t_graphic *);
 
 bool		graphic_pnw(t_graphic *graphic, t_player *player);

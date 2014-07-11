@@ -8,24 +8,24 @@
 void	find_team_name(void *data, void *arg)
 {
   char	*tmp;
-  char	*answer;
+  char	**answer;
   t_team *team;
 
   team = (t_team *)data;
-  answer = *((char **)arg);
+  answer = (char **)arg;
 
   if (asprintf(&tmp, "tna %s\n", team->name) == -1)
     {
       print_error("failed to alloc new graphic message");
       return ;
     }
-  if (!(answer = realloc(answer, sizeof(char) * (strlen(tmp) + 1))))
+  if (!(*answer = realloc(*answer, sizeof(char) * (strlen(tmp) + 1))))
     {
       free(tmp);
       print_error("failed to allocate new graphic message");
       return ;
     }
-  answer = strcat(answer, tmp);
+  *answer = strcat(*answer, tmp);
   free(tmp);
 }
 

@@ -14,6 +14,11 @@ static bool	quit_with_error(t_graphic *graphic, char *to_free)
   return (print_error("failed to allocate new graphic message"));
 }
 
+static	uint	get_size(char *tmp, char *answer)
+{
+  return (strlen(tmp) + (answer ? strlen(answer) : 0) + 1);
+}
+
 bool	graphic_mct(t_graphic *graphic, __attribute__ ((unused)) char *cmd)
 {
   uint	pos;
@@ -32,7 +37,7 @@ bool	graphic_mct(t_graphic *graphic, __attribute__ ((unused)) char *cmd)
 		   res[0], res[1], res[2], res[3], res[4], res[5], res[6])
 	  == -1)
 	return (quit_with_error(graphic, answer));
-      if (!(answer = realloc(answer, sizeof(char) * (strlen(tmp) + 1))))
+      if (!(answer = realloc(answer, sizeof(char) * get_size(tmp, answer))))
 	return (quit_with_error(graphic, tmp));
       answer = strcat(answer, tmp);
       free(tmp);
