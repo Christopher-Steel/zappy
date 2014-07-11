@@ -21,7 +21,7 @@ bool	graphic_pbc(t_graphic *graphic, t_player *player, char *msg)
   char	*answer;
   bool	success = true;
 
-  if (asprintf(&answer, "pbp #%d %s\n", player->id, msg) == -1)
+  if (asprintf(&answer, "pbc #%d %s\n", player->id, msg) == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);
   free(answer);

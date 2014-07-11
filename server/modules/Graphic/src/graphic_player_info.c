@@ -99,15 +99,10 @@ bool		graphic_pin(t_graphic *graphic, char *cmd)
   t_player	*player;
   uint		*res;
 
-  if ((id = get_id(cmd)) == -1)
+  if ((id = get_id(cmd)) == -1 || !(player= find_player(id)))
     {
       graphic_sbp(graphic);
-      return (print_error("can't get player id"));
-    }
-  if (!(player= find_player(id)))
-    {
-      graphic_sbp(graphic);
-      return (printf_error("can't find player with id %d", id));
+      return (printf_error("can't find player with id %s", cmd));
     }
   res = player->inventory;
   if (asprintf(&answer, "pin #%d %u %u %u %u %u %u %u %u %u\n", player->id,

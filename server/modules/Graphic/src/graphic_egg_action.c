@@ -21,7 +21,7 @@ bool	graphic_enw(t_graphic *graphic, t_player *player, t_egg *egg)
   char	*answer;
   bool	success;
 
-  if (asprintf(&answer, "enw #%d #%d, %d %d\n", egg->id, player->id,
+  if (asprintf(&answer, "enw #%d #%d %d %d\n", egg->id, player->id,
 	       egg->pos.x, egg->pos.y) == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);
