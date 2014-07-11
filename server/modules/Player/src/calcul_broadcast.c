@@ -6,16 +6,16 @@ int	calc_k(double angle)
 {
   int	ret;
 
-  ret = (angle < 22.5 && angle >= 0) ? (1) :
-    ((angle >= 22.5 && angle < 67.5) ? (8) :
-     ((angle >= 67.5 && angle < 112.5) ? (7) :
-      ((angle >= 112.5 && angle < 157.5) ? (6) : (5))));
+  ret = (angle < 22.5 && angle >= 0 ? 1 :
+    (angle >= 22.5 && angle < 67.5 ? 8 :
+     (angle >= 67.5 && angle < 112.5 ? 7 :
+      (angle >= 112.5 && angle < 157.5 ? 6 : 5))));
   if (ret == 5)
     {
-      ret = (angle < 0 && angle >= -22.5) ? (1) :
-	((angle <= -22.5 && angle > -67.5) ? (2) :
-	 ((angle <= -67.5 && angle > -112.5) ? (3) :
-	  ((angle <= -112.5 && angle > -157.5) ? (4) : (5))));
+      ret = (angle < 0 && angle >= -22.5 ? 1 :
+	(angle <= -22.5 && angle > -67.5 ? 2 :
+	 (angle <= -67.5 && angle > -112.5 ? 3 :
+	  (angle <= -112.5 && angle > -157.5 ? 4 : 5))));
     }
   return (ret);
 }

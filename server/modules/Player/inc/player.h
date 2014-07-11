@@ -74,6 +74,14 @@ typedef struct		s_elevation
   unsigned int		lvl_min;
 }			t_elevation;
 
+typedef struct	s_broadcast
+{
+  t_vector	pos_player[4];
+  t_vector	pos_dest[4];
+  t_player	*dest;
+  int		dist[4];
+}		t_broadcast;
+
 typedef bool		(*t_pl_func)(void *, void *);
 
 /*
