@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "world.h"
+#include "server.h"
 
 static t_elevation	g_cond[] =
   {
@@ -15,7 +16,7 @@ static t_elevation	g_cond[] =
     {{0, 2, 2, 2, 2, 2, 1}, 6, 7}
   };
 
-void		ressource_spreading(unsigned int pos, int cond)
+void		resource_spreading(unsigned int pos, int cond)
 {
   unsigned int	i;
   unsigned int	rand_pos;
@@ -23,7 +24,7 @@ void		ressource_spreading(unsigned int pos, int cond)
   t_world	*world;
 
   i = 1;
-  world = g_server.world;
+  world = &g_server.world;
   while (i < 7)
     {
       world->cell[pos].res[i] -= g_cond[cond].res[i];
@@ -44,7 +45,7 @@ bool	check_condition(t_player *player, t_node *node,
   t_world	*world;
   uint		lvl;
 
-  world = g_server.world;
+  world = &g_server.world;
   lvl = player->level - 1;
   if (cnt_same_lvl(node, player->level) >= g_cond[lvl].nb_player &&
       world->cell[pos].res[LINEMATE] >= g_cond[lvl].res[LINEMATE] &&

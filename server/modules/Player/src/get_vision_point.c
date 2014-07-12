@@ -1,3 +1,4 @@
+#include "server.h"
 #include "world.h"
 
 static void   	point_north(t_vision vision, int *tab, int *j)

@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "player.h"
+#include "server.h"
 #include "world.h"
 
 static bool		player_register_incant_end(t_player *player)
@@ -32,9 +33,9 @@ bool		player_incantation(void *pl,
   unsigned int	pos;
 
   player = (t_player *)pl;
-  world = g_server.world;
+  world = &g_server.world;
   pos = player->pos.x + (player->pos.y * gs_get_map_width());
-  node = world->cell[pos].list_player->nodes;
+  node = world->cell[pos].list_player.nodes;
   if (check_condition(player, node, pos))
     {
       client_write_to(player->client, "elevation en cours");

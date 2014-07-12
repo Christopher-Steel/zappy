@@ -1,5 +1,6 @@
 #include "print_error.h"
 #include "print_log.h"
+#include "server.h"
 #include "world.h"
 
 static const char	*res_name[] =
@@ -19,10 +20,10 @@ static bool	check_player_case(char *str, int i, int *tab_view)
   t_world	*world;
   t_node	*node;
 
-  world = g_server.world;
-  if (world->cell[tab_view[i]].list_player->size > 0)
+  world = &g_server.world;
+  if (world->cell[tab_view[i]].list_player.size > 0)
     {
-      node = world->cell[tab_view[i]].list_player->nodes;
+      node = world->cell[tab_view[i]].list_player.nodes;
       while (node != NULL)
 	{
 	  str = strcat(str, "joueur");
@@ -41,7 +42,7 @@ static void	write_nbr_res(char *str, int *tab_view, int i, int j)
   t_world	*world;
 
   u = 0;
-  world = g_server.world;
+  world = &g_server.world;
   while (u < world->cell[tab_view[i]].res[j])
     {
       str = strcat(str, res_name[j]);
@@ -60,7 +61,7 @@ static bool	check_res_case(char *str, int *tab_view,
 
   j = 0;
   is_res = false;
-  world = g_server.world;
+  world = &g_server.world;
   while (res_name[j])
     {
       if (j == 0 && is_player)

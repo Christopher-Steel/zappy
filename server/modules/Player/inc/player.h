@@ -73,6 +73,14 @@ typedef struct		s_elevation
   unsigned int		lvl_min;
 }			t_elevation;
 
+typedef struct	s_broadcast
+{
+  t_vector	pos_player[4];
+  t_vector	pos_dest[4];
+  t_player	*dest;
+  int		dist[4];
+}		t_broadcast;
+
 typedef bool		(*t_pl_func)(void *, void *);
 
 /*
@@ -94,7 +102,7 @@ bool		player_connect_nbr(void *pl, void *unused);
 bool		stop_elevation(void *pl, void *unused);
 void		player_register_event(t_player *player);
 void		player_event_handler(t_event *event);
-void		ressource_spreading(unsigned int pos, int cond);
+void		resource_spreading(unsigned int pos, int cond);
 bool		check_condition(t_player *player, t_node *node,
 			        unsigned int pos);
 bool		send_view(char *str, int *tab_view, t_player *player);

@@ -46,7 +46,7 @@ typedef struct		s_server
   t_list		*elevation;
   t_param		param;
   t_network		network;
-  t_world		*world;
+  t_world		world;
 }			t_server;
 
 /*

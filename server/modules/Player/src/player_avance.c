@@ -1,5 +1,6 @@
 #include	"print_error.h"
 #include	"print_log.h"
+#include	"server.h"
 #include	"world.h"
 
 bool		player_avance(void *pl,

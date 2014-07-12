@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "print_error.h"
+#include "server.h"
 #include "world.h"
 
 static bool	send_results_to_players(t_player *player, t_node *node,
@@ -44,12 +45,12 @@ bool		stop_elevation(void *pl,
   unsigned int	pos;
 
   player = (t_player *)pl;
-  world = g_server.world;
+  world = &g_server.world;
   pos = player->pos.x + (player->pos.y * gs_get_map_width());
-  node = world->cell[pos].list_player->nodes;
+  node = world->cell[pos].list_player.nodes;
   if (check_condition(player, node, pos))
     {
-      ressource_spreading(pos, player->level - 1);
+      resource_spreading(pos, player->level - 1);
       return (send_results_to_players(player, node, true));
     }
   return (send_results_to_players(player, node, false));

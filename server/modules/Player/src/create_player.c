@@ -5,6 +5,7 @@
 #include "player.h"
 #include "print_error.h"
 #include "print_log.h"
+#include "server.h"
 #include "world.h"
 
 static void	player_receive(t_receiver *rec, char *msg)
@@ -82,6 +83,6 @@ t_player	*create_player(t_vector pos, enum e_ori ori,
   pl->ori = ori;
   pl->alive = 126;
   printf_log("Created new player %d at position %d/%d -> %d.", pl->id,
-	     pl->pos.x, pl->pos.y, pl->ori);
+	     pl->pos.x, pl->pos.y, (pl->ori + 1));
   return (inform_client(client, pl));
 }

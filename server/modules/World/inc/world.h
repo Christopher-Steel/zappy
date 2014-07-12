@@ -8,7 +8,6 @@
 
 # include	"egg.h"
 # include	"player.h"
-# include	"server.h"
 # include	"team.h"
 # include	"vector.h"
 
@@ -44,8 +43,8 @@ typedef struct	s_egg		t_egg;
 typedef struct	s_cell
 {
   unsigned int	res[7];
-  t_list	*list_egg;
-  t_list	*list_player;
+  t_list	list_egg;
+  t_list	list_player;
 }		t_cell;
 
 typedef struct	s_world
@@ -59,11 +58,10 @@ typedef struct	s_world
 /*
 ** FONCTION
 */
-void		spawn_ressource(t_world *world);
 void		remove_player(const int id, const int position);
 void		delete_player(t_player *player);
 void		get_vision_point(int *tab, t_player *player);
-void		respawn_ressource(unsigned int *res);
+void		respawn_resource(unsigned int *res);
 void		respawn_food(t_player *uplayer, char *unused);
 bool		generate_world(const unsigned int height,
 			       const unsigned int width);
