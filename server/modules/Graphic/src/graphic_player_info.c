@@ -53,7 +53,7 @@ bool		graphic_ppo(t_graphic *graphic, char *cmd)
       graphic_sbp(graphic);
       return (printf_error("can't find player with id %d", id));
     }
-  if (asprintf(&answer, "ppo #%d %u %u %u\n", player->id, player->pos.x,
+  if (asprintf(&answer, "ppo #%d %u %u %u", player->id, player->pos.x,
 	       player->pos.y, (player->ori + 1)) == -1)
     {
       graphic_smg_KO(graphic);
@@ -81,7 +81,7 @@ bool		graphic_plv(t_graphic *graphic, char *cmd)
       graphic_sbp(graphic);
       return (printf_error("can't find player with id %d", id));
     }
-  if (asprintf(&answer, "plv #%d %d\n", player->id, player->level) == -1)
+  if (asprintf(&answer, "plv #%d %d", player->id, player->level) == -1)
     {
       graphic_smg_KO(graphic);
       return (print_error("failed to allocate new graphic message"));
@@ -105,7 +105,7 @@ bool		graphic_pin(t_graphic *graphic, char *cmd)
       return (printf_error("can't find player with id %s", cmd));
     }
   res = player->inventory;
-  if (asprintf(&answer, "pin #%d %u %u %u %u %u %u %u %u %u\n", player->id,
+  if (asprintf(&answer, "pin #%d %u %u %u %u %u %u %u %u %u", player->id,
 	       player->pos.x, player->pos.y, res[0], res[1], res[2],
 	       res[3], res[4], res[5], res[6]) == -1)
     {

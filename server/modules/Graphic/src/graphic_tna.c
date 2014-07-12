@@ -14,7 +14,7 @@ void	find_team_name(void *data, void *arg)
   team = (t_team *)data;
   answer = (char **)arg;
 
-  if (asprintf(&tmp, "tna %s\n", team->name) == -1)
+  if (asprintf(&tmp, "tna %s", team->name) == -1)
     {
       print_error("failed to alloc new graphic message");
       return ;
