@@ -34,6 +34,7 @@ bool		player_fork(void *pl,
     return (false);
   team_add_egg(new_egg, player->team->name);
   new_egg->pos = player->pos;
+  new_egg->player_lay = pl;
   index = player->pos.x + (player->pos.y * gs_get_map_width());
   if (egg_register_hatch(new_egg) == false
       || !add_egg(new_egg, index))

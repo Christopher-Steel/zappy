@@ -18,6 +18,7 @@
 ** TYPEDEF
 */
 
+typedef struct s_egg	t_egg;
 typedef struct s_event	t_event;
 typedef struct s_team	t_team;
 

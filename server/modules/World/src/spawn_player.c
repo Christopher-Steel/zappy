@@ -16,6 +16,21 @@ static bool	add_list_player(t_player *player, unsigned int pos)
   return (is_succed);
 }
 
+t_player	*spawn_pos_player(t_client *client, t_team *team, t_egg *egg)
+{
+  unsigned int	position;
+  enum e_ori	ori;
+  t_player	*player;
+
+  print_log("spawn from egg");
+  position = egg->pos.x + (gs_get_map_width() * egg->pos.y);
+  ori = rand() % 4;
+  if ((player = create_player(egg->pos, ori, client, team)) == NULL ||
+      (add_list_player(player, position) == false))
+      return (NULL);
+  return (player);
+}
+
 t_player	*spawn_player(t_client *client, t_team *team)
 {
   unsigned int	height;
@@ -25,6 +40,7 @@ t_player	*spawn_player(t_client *client, t_team *team)
   t_vector	pos;
   t_player	*player;
 
+  print_log("spawn from connection");
   height = gs_get_map_height();
   width = gs_get_map_width();
   pos.x = rand() % width;
