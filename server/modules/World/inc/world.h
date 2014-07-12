@@ -66,6 +66,7 @@ void		respawn_food(t_player *uplayer, char *unused);
 bool		generate_world(const unsigned int height,
 			       const unsigned int width);
 bool		add_player(t_player *player, const int pos);
+bool		victory_condition_resolve(void);
 bool		add_egg(t_egg *egg, const int pos);
 t_vector	wrap_horizontal(t_vector vec);
 t_vector	wrap_vertical(t_vector vec);
