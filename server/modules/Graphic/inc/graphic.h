@@ -39,25 +39,25 @@ bool		graphic_sst(t_graphic *, char *);
 bool		graphic_suc(t_graphic *);
 bool		graphic_sbp(t_graphic *);
 
-bool		graphic_pnw(t_graphic *graphic, t_player *player);
+bool		graphic_pnw(t_graphic *graphic, void *player);
 
-bool		graphic_pex(t_graphic *graphic, t_player *player);
-bool		graphic_pbc(t_graphic *graphic, t_player *player, char *msg);
-bool		graphic_pic(t_graphic *graphic, t_player **players);
-bool		graphic_pie(t_graphic *graphic, t_vector *pos, int result);
-bool		graphic_pdi(t_graphic *graphic, t_player *player);
+bool		graphic_pex(t_graphic *graphic, void *player);
+bool		graphic_pbc(t_graphic *graphic, void *player, void *msg);
+bool		graphic_pic(t_graphic *graphic, void *players);
+bool		graphic_pie(t_graphic *graphic, void *pos, void *result);
+bool		graphic_pdi(t_graphic *graphic, void *player);
 
-bool		graphic_pfk(t_graphic *graphic, t_player *player);
-bool		graphic_enw(t_graphic *graphic, t_player *player, t_egg *egg);
-bool		graphic_eht(t_graphic *graphic, t_egg *egg);
-bool		graphic_ebo(t_graphic *graphic, t_egg *egg);
-bool		graphic_edi(t_graphic *graphic, t_egg *egg);
+bool		graphic_pfk(t_graphic *graphic, void *player);
+bool		graphic_enw(t_graphic *graphic, void *player, void *egg);
+bool		graphic_eht(t_graphic *graphic, void *egg);
+bool		graphic_ebo(t_graphic *graphic, void *egg);
+bool		graphic_edi(t_graphic *graphic, void *egg);
 
-bool		graphic_pdr(t_graphic *graphic, t_player *player, uint obj);
-bool		graphic_pgt(t_graphic *graphic, t_player *player, uint obj);
+bool		graphic_pdr(t_graphic *graphic, void *player, void *obj);
+bool		graphic_pgt(t_graphic *graphic, void *player, void *obj);
 
-bool		graphic_seg(t_graphic *graphic, char *team_name);
-bool		graphic_smg(t_graphic *graphic, char *msg);
+bool		graphic_seg(t_graphic *graphic, void *team_name);
+bool		graphic_smg(t_graphic *graphic, void *msg);
 bool		graphic_smg_KO(t_graphic *graphic);
 
 #endif		/* GRAPHIC_H_ */

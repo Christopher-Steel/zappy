@@ -17,4 +17,18 @@ typedef struct	s_graph_cmd
 bool		graph_PI(t_graphic *graphic, char *cmd);
 bool		graph_send_to(t_graphic *graphic, char *cmd);
 
+
+void		**mount_args(void *arg1, void *arg2)
+  __attribute__ ((nonnull (1, 2)));
+bool		graph_for_each(t_list *graphics, bool (*func)(t_graphic*))
+  __attribute__ ((nonnull (1, 2)));
+bool		graph_for_each_1_arg(t_list *graphics,
+				     bool (*func)(t_graphic*, void *),
+				     void *arg)
+  __attribute__ ((nonnull (1, 2, 3)));
+bool		graph_for_each_2_args(t_list *graphics,
+				      bool (*func)(t_graphic*, void *, void *),
+				      void **args)
+  __attribute__ ((nonnull (1, 2, 3)));
+
 #endif		/* !GRAPH_PI_H_ */
