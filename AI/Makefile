@@ -10,7 +10,7 @@ SRC		=	$(LOCAL)algorithm.cpp		\
 			$(LOCAL)main.cpp		\
 			$(LOCAL)network.cpp		\
 			$(LOCAL)send_actions.cpp	\
-			$(LOCAL)recive_actions.cpp
+			$(LOCAL)receive_actions.cpp
 
 
 OBJ		=	$(SRC:.cpp=.o)

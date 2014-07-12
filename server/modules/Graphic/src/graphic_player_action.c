@@ -9,7 +9,7 @@ bool	graphic_pex(t_graphic *graphic, void *player)
   char	*answer;
   bool	success = true;
 
-  if (asprintf(&answer, "pex #%d\n", ((t_player *)player)->id) == -1)
+  if (asprintf(&answer, "pex #%d", ((t_player *)player)->id) == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);
   free(answer);
@@ -21,7 +21,7 @@ bool	graphic_pbc(t_graphic *graphic, void *player, void *msg)
   char	*answer;
   bool	success = true;
 
-  if (asprintf(&answer, "pbc #%d %s\n", ((t_player *)player)->id, (char *)msg)
+  if (asprintf(&answer, "pbc #%d %s", ((t_player *)player)->id, (char *)msg)
       == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);
@@ -50,7 +50,7 @@ bool	graphic_pic(t_graphic *graphic, void *players)
       free(tmp);
     }
   tmp = answer;
-  if (asprintf(&answer, "%s\n", tmp) == -1)
+  if (asprintf(&answer, "%s", tmp) == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);
   free(answer);
@@ -62,7 +62,7 @@ bool	graphic_pie(t_graphic *graphic, void *pos, void *result)
   char	*answer;
   bool	success;
 
-  if (asprintf(&answer, "pie %d %d %d\n", ((t_vector *)pos)->x,
+  if (asprintf(&answer, "pie %d %d %d", ((t_vector *)pos)->x,
 	       ((t_vector *)pos)->y, *(int *)result) == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);
@@ -75,7 +75,7 @@ bool	graphic_pdi(t_graphic *graphic, void *player)
   char	*answer;
   bool	success;
 
-  if (asprintf(&answer, "pdi #%d\n", ((t_player *)player)->id) == -1)
+  if (asprintf(&answer, "pdi #%d", ((t_player *)player)->id) == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);
   free(answer);

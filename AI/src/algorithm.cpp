@@ -49,14 +49,14 @@ void		Drone::clear_case()
 
 void		Drone::prepare_cast()
 {
+  if (this->duty == CASTER)
+    this->Send_Speak("[level up] begin.");
   this->clear_case();
   for(int res = LINEMATE; res < DRONE; ++res)
     {
       for(int i = this->evolve[this->level][(Object)res]; i > 0; --i)
 	this->Send_Drop(this->obj[(Object)res]);
     }
-  if (this->duty == CASTER)
-    this->Send_Speak("[level up] begin.");
   this->Send_Cast();
 }
 

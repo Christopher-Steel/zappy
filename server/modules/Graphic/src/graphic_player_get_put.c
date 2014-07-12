@@ -9,7 +9,7 @@ bool	graphic_pdr(t_graphic *graphic, void *player, void *obj)
   char	*answer;
   bool	success;
 
-  if (asprintf(&answer, "pdr #%d %u\n", ((t_player *)player)->id, *(uint *)obj)
+  if (asprintf(&answer, "pdr #%d %u", ((t_player *)player)->id, *(uint *)obj)
       == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);
@@ -22,7 +22,7 @@ bool	graphic_pgt(t_graphic *graphic, void *player, void *obj)
   char	*answer;
   bool	success;
 
-  if (asprintf(&answer, "pgt #%d %u\n", ((t_player *)player)->id, *(uint *)obj)
+  if (asprintf(&answer, "pgt #%d %u", ((t_player *)player)->id, *(uint *)obj)
       == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);

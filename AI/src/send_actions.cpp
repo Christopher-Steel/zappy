@@ -13,16 +13,6 @@ void		Drone::Send_Forward()
     ++this->coor.x;
 
   this->Send(FORWARD, "avance");
-  if (this->inventory[FOOD] < this->evolve[this->level][FOOD])
-    {
-      std::list<Object>	tmp = this->map[this->coor.y][this->coor.x];
-
-      for (std::list<Object>::iterator it = tmp.begin(); it != tmp.end(); ++it)
-	{
-	  if ((*it) == FOOD)
-	    this->Send_Take(this->obj[FOOD]);
-	}
-    }
 }
 
 void		Drone::Send_Left()
@@ -55,9 +45,9 @@ void		Drone::Send_Right()
 
 void		Drone::Send_See()
 {
-  this->is_action = true;
+  this->is_see = true;
   this->Send(SEE, "voir");
-  while (this->is_action != false)
+  while (this->is_see != false)
     this->Recive();
 }
 
@@ -98,24 +88,19 @@ void		Drone::Send_Speak(std::string str)
 
 void		Drone::Send_Cast()
 {
-  this->is_action = true;
+  this->is_cast = true;
   this->Send(CAST, "incantation");
-  while (this->is_action != false)
+  while (this->is_cast != false)
     this->Recive();
 }
 
 void		Drone::Send_Fork()
 {
-  this->is_action = true;
+  this->is_fork = true;
   this->Send(FORK, "fork");
-  while (this->is_action != false)
-    this->Recive();
 }
 
 void		Drone::Send_Slots()
 {
-  this->is_action = true;
   this->Send(SLOTS, "connect_nbr");
-  while (this->is_action != false)
-    this->Recive();
 }

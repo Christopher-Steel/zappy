@@ -8,7 +8,11 @@ Drone::Drone(const std::vector<std::string> &arg)
   this->init_obj();
   this->init_map();
   this->init_evolve();
+  this->is_see = false;
+  this->is_cast = false;
+  this->is_action = false;
   this->id = 0;
+  this->id_max = 0;
   this->duty = NONE;
 
   this->Hello();
@@ -24,27 +28,34 @@ void		Drone::Check_msg(std::string str)
 {
   if (str.find("[team:") == std::string::npos
       || str.find("[id:") == std::string::npos
+      || str.find("[id_max:") == std::string::npos
       || str.find("[level:") == std::string::npos)
     return;
   int		id;
+  int		id_m;
   int		level;
   std::string	team;
 
   team = str.substr(str.find("[team:") + strlen("[team:"));
   team = team.substr(0, team.find("]"));
   id = translate<std::string, int>(str.substr(str.find("[id:") + strlen("[id:")));
+  id_m = translate<std::string, int>(str.substr(str.find("[id_max:") + strlen("[id_max:")));
   level = translate<std::string, int>(str.substr(str.find("[level:") + strlen("[level:")));
 
   if (team != this->team.name)
     return;
-  if (str.find("i have this id.") != std::string::npos
-      && this->duty == NONE && this->id <= id)
+  if (str.find("i have this id.") != std::string::npos && this->id <= id_m)
     {
-      this->id = id + 1;
+      this->id_max = id_m + 1;
+      if (duty == NONE)
+	  this->id = this->id_max;
       this->init_sypher();
     }
   else if (str.find("do you have an id?") != std::string::npos && this->duty != NONE)
-    this->Send_Speak("i have this id.");
+    {
+      if (!(this->is_cast == true && this->duty == CASTER))
+	this->Send_Speak("i have this id.");
+    }
   else if (id == this->id - (this->id % this->evolve[this->level][DRONE])
 	   && str.find("[level up") != std::string::npos && level == this->level
 	   && this->duty == FOLLOWER)
@@ -75,7 +86,7 @@ void		Drone::Recive()
       else if (tmp.find("deplacement") == 0)
 	{}
       else if (tmp.find("mort") == 0)
-	{}// throw My_Exception("Sorry you are dead.");
+	throw My_Exception("Sorry you are dead.");
       else if (!this->rep.empty())
 	(this->*actions[this->rep.front()])(tmp);
       str = str.substr(pos + 1);
@@ -115,6 +126,13 @@ void		Drone::Play()
 {
   while (this->level != MAX)
     {
+      if (this->is_fork == true)
+	{
+	  if (this->team.slots == 0)
+	    this->Send_Slots();
+	  else
+	    this->do_fork();
+	}
       if (this->net.Select())
       	this->Recive();
 

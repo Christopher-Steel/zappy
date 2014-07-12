@@ -50,7 +50,7 @@ int		Network::Select()
     throw My_Exception("Network: error: can't use select.");
   if (FD_ISSET(this->fd, &fd_read))
     ret = 1;
-  return (ret);
+  return (ret);                                                          
 }
 
 void		Network::putmsg(const std::string &msg) const
@@ -60,8 +60,7 @@ void		Network::putmsg(const std::string &msg) const
   tmp = msg;
   if (send(this->fd, tmp.c_str(), tmp.size(), 0) == -1)
     throw My_Exception("Network: error: can't send message.");
-  //if (tmp != "connect_nbr\n")
-    std::cout << "\E[33;1mClient: " << tmp << "\E[m";
+  std::cout << "\E[33;1mClient: " << tmp << "\E[m";
 }
 
 std::string	Network::getmsg(void) const
@@ -73,12 +72,11 @@ std::string	Network::getmsg(void) const
   while (ret == 2036)
     {
       if ((ret = recv(this->fd, buff, 2036, 0)) == -1 || ret == 0)
-	throw My_Exception("Network: error: can't receive message.");
+	throw My_Exception("Network: error: server close connection.");
       buff[ret] = '\0';
       str += buff;
     }
-  //if (str.size() > 2)
-    std::cout << "\E[34;1mServer: " << str << "\E[m";
+  std::cout << "\E[34;1mServer: " << str << "\E[m";
   return (str);
 }
 

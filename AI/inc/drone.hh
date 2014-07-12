@@ -5,7 +5,7 @@
 // Login   <cisner_d@epitech.net>
 // 
 // Started on  Sun Jun  1 10:50:50 2014 [D[C[3~[3~[3~
-// Last update Sat Jul  5 13:53:17 2014 [D[C[3~[3~[3~
+// Last update Sat Jul 12 16:59:50 2014 [D[C[3~[3~[3~
 //
 
 #ifndef		DRONE_HH_
@@ -16,6 +16,7 @@
 # include	<vector>
 # include	<list>
 # include	<map>
+# include	<time.h>
 # include	"network.hh"
 
 enum	Duty
@@ -111,8 +112,12 @@ class		Drone
   Level		level;
   Direction	axis;
   int		id;
+  int		id_max;
   Duty		duty;
   std::string	sypher;
+  bool		is_see;
+  bool		is_cast;
+  bool		is_fork;
   bool		is_action;
   int		inventory[DRONE];
   int		evolve[8][8];
@@ -204,18 +209,18 @@ public:
   void		Send_Fork();
   void		Send_Slots();
 
-  void		Recive_Forward(std::string);
-  void		Recive_Right(std::string);
-  void		Recive_Left(std::string);
-  void		Recive_See(std::string);
-  void		Recive_Inventory(std::string);
-  void		Recive_Take(std::string);
-  void		Recive_Drop(std::string);
-  void		Recive_Expulse(std::string);
-  void		Recive_Speak(std::string);
-  void		Recive_Cast(std::string);
-  void		Recive_Fork(std::string);
-  void		Recive_Slots(std::string);
+  void		Receive_Forward(std::string);
+  void		Receive_Right(std::string);
+  void		Receive_Left(std::string);
+  void		Receive_See(std::string);
+  void		Receive_Inventory(std::string);
+  void		Receive_Take(std::string);
+  void		Receive_Drop(std::string);
+  void		Receive_Expulse(std::string);
+  void		Receive_Speak(std::string);
+  void		Receive_Cast(std::string);
+  void		Receive_Fork(std::string);
+  void		Receive_Slots(std::string);
 };
 
 #endif
