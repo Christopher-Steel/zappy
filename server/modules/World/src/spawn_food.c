@@ -8,7 +8,7 @@ void		spawn_food(__attribute__ ((unused))t_player *uplayer,
   unsigned int	quantity;
 
   world = &g_server.world;
-  quantity = (world->size * 50) / 100;
+  quantity = ((world->size * 50) / 100) + 1;
   while (quantity > 0)
     {
       ++world->cell[rand() % world->size].res[FOOD];

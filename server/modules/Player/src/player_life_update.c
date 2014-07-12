@@ -2,11 +2,12 @@
 #include "player.h"
 #include "server.h"
 
+
 static void	player_death(t_player *player)
 {
-  // replace ressources sur la map
-  list_remove(player->team->members, player, false);
-  //player_destroy(player);
+  respawn_resource(player->inventory);
+  client_write_to(player->client, "mort");
+  client_close(player->client);
 }
 
 static void	life_update_by_player(void *pl)

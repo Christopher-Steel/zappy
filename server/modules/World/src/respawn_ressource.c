@@ -1,7 +1,7 @@
 #include "server.h"
 #include "world.h"
 
-void		respawn_ressource(unsigned int *res)
+void		respawn_resource(unsigned int *res)
 {
   t_world	*world;
   unsigned int	i;
