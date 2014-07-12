@@ -44,7 +44,7 @@ int	main(int ac, char *av[])
   setup_sighandlers();
   parse_param(ac, av);
   if (start_services())
-    while (true)
+    while (!victory_condition_resolve())
       {
 	gs_time_update();
 	network_update();
