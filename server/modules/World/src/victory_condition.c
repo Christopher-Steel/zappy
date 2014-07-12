@@ -2,6 +2,8 @@
 #include "print_log.h"
 #include "server.h"
 #include "world.h"
+#include "graphic.h"
+#include "graph_PI.h"
 
 static int	cnt_player_lvl_max(t_node *team_player)
 {
@@ -21,6 +23,7 @@ static bool	write_winner(t_team *team)
 {
   char		*str;
 
+  graph_for_each_1_arg(&graphic_seg, team->name);
   if (asprintf(&str, "L'equipe %s est vainqueur", team->name) != -1)
     {
       print_log(str);
