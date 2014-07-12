@@ -25,7 +25,7 @@ void		Drone::andle_msg()
 
 	  if (this->rep.front() == CAST)
 	    this->rep.pop_front();
-	  this->is_action = false;
+	  this->is_cast = false;
 	}
       if (!this->msg.empty())
 	this->msg.pop_front();
@@ -35,9 +35,9 @@ void		Drone::andle_msg()
 void		Drone::level_up()
 {
   this->msg.pop_front();
-  this->is_action = true;
+  this->is_cast = true;
   this->rep.push_back(CAST);
-  while (this->is_action != false)
+  while (this->is_cast != false)
     {
       this->Recive();
       if (!this->msg.empty())

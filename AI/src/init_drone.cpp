@@ -2,18 +2,18 @@
 
 void		Drone::init_fct_act()
 {
-  this->actions[SEE] = &Drone::Recive_See;
-  this->actions[INVENTORY] = &Drone::Recive_Inventory;
-  this->actions[CAST] = &Drone::Recive_Cast;
-  this->actions[SLOTS] = &Drone::Recive_Slots;
-  this->actions[FORWARD] = &Drone::Recive_Forward;
-  this->actions[LEFT] = &Drone::Recive_Left;
-  this->actions[RIGHT] = &Drone::Recive_Right;
-  this->actions[TAKE] = &Drone::Recive_Take;
-  this->actions[DROP] = &Drone::Recive_Drop;
-  this->actions[EXPULSE] = &Drone::Recive_Expulse;
-  this->actions[SPEAK] = &Drone::Recive_Speak;
-  this->actions[FORK] = &Drone::Recive_Fork;
+  this->actions[SEE] = &Drone::Receive_See;
+  this->actions[INVENTORY] = &Drone::Receive_Inventory;
+  this->actions[CAST] = &Drone::Receive_Cast;
+  this->actions[SLOTS] = &Drone::Receive_Slots;
+  this->actions[FORWARD] = &Drone::Receive_Forward;
+  this->actions[LEFT] = &Drone::Receive_Left;
+  this->actions[RIGHT] = &Drone::Receive_Right;
+  this->actions[TAKE] = &Drone::Receive_Take;
+  this->actions[DROP] = &Drone::Receive_Drop;
+  this->actions[EXPULSE] = &Drone::Receive_Expulse;
+  this->actions[SPEAK] = &Drone::Receive_Speak;
+  this->actions[FORK] = &Drone::Receive_Fork;
 }
 
 void		Drone::init_fct_dir()
@@ -32,7 +32,8 @@ void		Drone::init_fct_dir()
 void		Drone::init_sypher()
 {
   this->sypher = "[team:" + this->team.name + "][id:";
-  this->sypher += translate<int, std::string>(this->id) + "][level:";
+  this->sypher += translate<int, std::string>(this->id) + "][id_max:";
+  this->sypher += translate<int, std::string>(this->id_max) + "][level:";
   this->sypher += translate<int, std::string>(this->level) + "]";
 }
 
