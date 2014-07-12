@@ -1,5 +1,7 @@
-#include	"drone.hh"
 #include	<stdlib.h>
+#include	<unistd.h>
+
+#include	"drone.hh"
 
 void		Drone::Recive_Forward(std::string str)
 {
@@ -208,7 +210,10 @@ void		Drone::Recive_Fork(std::string str)
   if (str == "ok")
     {
       while (this->team.slots == 0)
-      	this->Send_Slots();
+	{
+	  usleep(500000);
+	  this->Send_Slots();
+	}
       this->do_fork();
     }
   this->is_action = false;

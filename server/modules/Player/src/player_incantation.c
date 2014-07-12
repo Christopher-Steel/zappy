@@ -14,11 +14,7 @@ static bool		player_register_incant_end(t_player *player)
   fn = &stop_elevation;
   if ((player->current_event = event_create(handler, fn, 300.0, NULL))
       == NULL)
-    {
-      // i highly doubt this is a good idea. Time will tell
-      //      list_pop_front(&player->client->inbound, true);
       return (false);
-    }
   else
     {
       gs_event_add(player->current_event);

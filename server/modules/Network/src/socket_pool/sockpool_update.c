@@ -5,8 +5,8 @@ void			sockpool_update(t_sockpool *pool)
 {
   struct timeval	t;
 
-  t.tv_sec = 0;
-  t.tv_usec = 0;
+  t.tv_sec = FILTER_TIMEOUT_S;
+  t.tv_usec = FILTER_TIMEOUT_MS;
   sockpool_fill_sets(pool);
   if (sockpool_filter(pool, &t) != -1)
     sockpool_handle(pool);

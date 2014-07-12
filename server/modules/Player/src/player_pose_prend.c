@@ -42,7 +42,7 @@ bool		player_pose(void *pl, void *resource)
   if ((type_res = string_to_res(res)) == -1)
     {
       client_write_to(player->client, "ko");
-      return (print_perror("Conversion failed"));
+      return (printf_error("Unknown resource: %s", res));
     }
   if (player->inventory[type_res] > 0)
     {
@@ -68,7 +68,7 @@ bool		player_prend(void *pl, void *resource)
   if ((type_res = string_to_res(res)) == -1)
     {
       client_write_to(player->client, "ko");
-      return (print_perror("Conversion failed"));
+      return (printf_error("Unknown resource: %s", res));
     }
   if (world->cell[position].res[type_res] > 0)
     {

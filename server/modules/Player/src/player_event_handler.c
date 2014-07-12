@@ -22,13 +22,15 @@ void			player_register_event(t_player *player)
     gs_event_add(player->current_event);
 }
 
-void		player_event_handler(t_event_handler *handler)
+void		player_event_handler(t_event *event)
 {
   t_player	*player;
 
-  player = (t_player *)handler;
+  player = (t_player *)event->data;
   player->current_event = NULL;
+  event->func(player, event->arg);
   list_pop_front(&player->client->inbound, true);
-  if (list_empty(&player->client->inbound) == false)
+  if (player->current_event == NULL
+      && list_empty(&player->client->inbound) == false)
     player_register_event(player);
 }

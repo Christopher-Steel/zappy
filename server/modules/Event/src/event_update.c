@@ -2,7 +2,7 @@
 #include "event.h"
 #include "server.h"
 
-static void	event_node_update(void *data, void *list)
+static bool	event_node_update(void *data)
 {
   t_event	*event;
 
@@ -10,15 +10,16 @@ static void	event_node_update(void *data, void *list)
   event->timestamp -= g_server.info.dtime;
   if (event->timestamp <= 0)
     {
-      event->func(event->data, event->arg);
-      event->data->event_handler(event->data);
-      list_pop_front((t_list *)list, true);
+      event->data->event_handler(event);
+      return (true);
     }
+  else
+    return (false);
 }
 
 void	event_update(t_list *events)
 {
-  list_for_each_arg(events, &event_node_update, events);
+  list_filter(events, &event_node_update);
 }
 
 void	gs_event_update(void)

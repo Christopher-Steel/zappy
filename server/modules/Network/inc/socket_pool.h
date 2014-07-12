@@ -11,6 +11,9 @@
 # include	"tcp_socket.h"
 # include	"zappy_types.h"
 
+# define	FILTER_TIMEOUT_S	0
+# define	FILTER_TIMEOUT_MS	50
+
 typedef struct	s_sockpool
 {
   fd_set	read_set;

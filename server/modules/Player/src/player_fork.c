@@ -9,7 +9,8 @@ static bool	egg_register_hatch(t_egg *egg)
 {
   t_event	*event;
 
-  if ((event = event_create((t_event_handler *)egg, &egg_hatch, 600, NULL)))
+  if ((event = event_create((t_event_handler *)egg, &egg_hatch, 600, NULL))
+      == NULL)
     return (false);
   else
     {
@@ -35,9 +36,10 @@ bool		player_fork(void *pl,
       || !add_egg(new_egg, index))
     {
       egg_destroy(new_egg);
-      return (print_perror("failed to spawn egg"));
+      return (print_error("failed to spawn egg"));
     }
-  printf_log("New egg at %d/%d", player->pos.x, player->pos.y);
+  printf_log("Created new egg %d spawned at position %d/%d", new_egg->id,
+	     player->pos.x, player->pos.y);
   client_write_to(player->client, "ok");
   return (true);
 }

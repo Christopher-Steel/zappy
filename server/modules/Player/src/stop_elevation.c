@@ -2,46 +2,36 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "print_error.h"
 #include "world.h"
 
-static void	level_up_all_player(t_player *player, t_node *node)
-{
-  t_node	*tmp;
-  t_player	*pl;
-
-  tmp = node;
-  while (tmp != NULL)
-    {
-      pl = (t_player *)node->data;
-      if (pl->level == player->level)
-	++pl->level;
-      tmp = tmp->next;
-    }
-}
-
-static bool	inform_all_player(t_player *player, t_node *node)
+static bool	send_results_to_players(t_player *player, t_node *node,
+					bool up)
 {
   t_node	*tmp;
   t_player	*pl;
   char		*str;
 
   tmp = node;
+  if (asprintf(&str, "niveau actuel : %u",
+	       player->level + (up ? 1 : 0)) == -1)
+    {
+      print_perror("failed to allocate level description");
+      client_write_to(player->client, "ko");
+      return (false);
+    }
   while (tmp != NULL)
     {
       pl = (t_player *)node->data;
       if (pl->level == player->level)
 	{
-	  if (asprintf(&str, "niveau actuel : %u", pl->level) != -1)
-	    {
-	      if (client_write_to(pl->client, str) == false)
-		return (false);
-	      free(str);
-	    }
-	  else
-	    return (false);
+	  client_write_to(pl->client, str);
+	  if (up)
+	    ++pl->level;
 	}
       tmp = tmp->next;
     }
+  free(str);
   return (true);
 }
 
@@ -59,9 +49,8 @@ bool		stop_elevation(void *pl,
   node = world->cell[pos].list_player->nodes;
   if (check_condition(player, node, pos))
     {
-      level_up_all_player(player, node);
       ressource_spreading(pos, player->level - 1);
-      return (true);
+      return (send_results_to_players(player, node, true));
     }
-  return (inform_all_player(player, node));
+  return (send_results_to_players(player, node, false));
 }
