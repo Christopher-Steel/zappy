@@ -42,7 +42,7 @@ bool	graphic_bct(t_graphic *graphic, char *cmd)
     return (error_type_sbp(graphic, cmd));
   if (x >= gs_get_map_width() || y >= gs_get_map_height())
     return (error_type_sbp(graphic, cmd));
-  res = g_server.world->cell[(x + (y * gs_get_map_width()))].res;
+  res = g_server.world.cell[(x + (y * gs_get_map_width()))].res;
   if (asprintf(&answer, "bct %u %u %u %u %u %u %u %u %u\n", x, y, res[0],
 	       res[1], res[2], res[3], res[4], res[5], res[6]) == -1)
     {

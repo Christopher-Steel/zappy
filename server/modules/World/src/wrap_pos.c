@@ -1,3 +1,4 @@
+#include "server.h"
 #include "world.h"
 
 t_vector	wrap_vertical(t_vector vec)

@@ -8,7 +8,6 @@
 
 # include	"egg.h"
 # include	"player.h"
-# include	"server.h"
 # include	"team.h"
 # include	"vector.h"
 
@@ -44,8 +43,8 @@ typedef struct	s_egg		t_egg;
 typedef struct	s_cell
 {
   unsigned int	res[7];
-  t_list	*list_egg;
-  t_list	*list_player;
+  t_list	list_egg;
+  t_list	list_player;
 }		t_cell;
 
 typedef struct	s_world

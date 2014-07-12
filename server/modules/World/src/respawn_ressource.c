@@ -1,3 +1,4 @@
+#include "server.h"
 #include "world.h"
 
 void		respawn_ressource(unsigned int *res)
@@ -7,7 +8,7 @@ void		respawn_ressource(unsigned int *res)
   unsigned int	quantity;
 
   i = 0;
-  world = g_server.world;
+  world = &g_server.world;
   while (res[i])
     {
       quantity = 0;

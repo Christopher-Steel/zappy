@@ -1,11 +1,12 @@
 #include "print_log.h"
+#include "server.h"
 #include "world.h"
 
 static void	remove_in_list(t_node *tmp, const int position)
 {
   t_node	*free_node;
 
-  --g_server.world->cell[position].list_player->size;
+  --g_server.world.cell[position].list_player.size;
   free_node = tmp->next;
   tmp->next = tmp->next->next;
   destroy_node(free_node, false);
@@ -15,7 +16,7 @@ static void	remove_front_list(t_node *tmp, const int position)
 {
   t_node	*free_node;
 
-  --g_server.world->cell[position].list_player->size;
+  --g_server.world.cell[position].list_player.size;
   free_node = tmp;
   tmp = tmp->next;
   destroy_node(free_node, false);
@@ -25,12 +26,12 @@ static void   	remove_last(const int id, const int position)
 {
   t_node	*nodes;
 
-  nodes = g_server.world->cell[position].list_player->nodes;
+  nodes = g_server.world.cell[position].list_player.nodes;
   if (((t_player *)nodes->data)->id == id)
     {
-      free(g_server.world->cell[position].list_player->nodes);
-      g_server.world->cell[position].list_player->nodes = NULL;
-      --g_server.world->cell[position].list_player->size;
+      free(g_server.world.cell[position].list_player.nodes);
+      g_server.world.cell[position].list_player.nodes = NULL;
+      --g_server.world.cell[position].list_player.size;
     }
 }
 
@@ -58,8 +59,8 @@ void		remove_player(const int id, const int position)
   t_node	*tmp;
   unsigned int	nbr;
 
-  tmp = g_server.world->cell[position].list_player->nodes;
-  nbr = g_server.world->cell[position].list_player->size;
+  tmp = g_server.world.cell[position].list_player.nodes;
+  nbr = g_server.world.cell[position].list_player.size;
   if (nbr == 0)
     return ;
   else if (nbr == 1)

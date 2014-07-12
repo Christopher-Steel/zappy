@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "server.h"
 #include "world.h"
 
 static void	level_up_all_player(t_player *player, t_node *node)
@@ -54,13 +55,13 @@ bool		stop_elevation(void *pl,
   unsigned int	pos;
 
   player = (t_player *)pl;
-  world = g_server.world;
+  world = &g_server.world;
   pos = player->pos.x + (player->pos.y * gs_get_map_width());
-  node = world->cell[pos].list_player->nodes;
+  node = world->cell[pos].list_player.nodes;
   if (check_condition(player, node, pos))
     {
       level_up_all_player(player, node);
-      ressource_spreading(pos, player->level - 1);
+      resource_spreading(pos, player->level - 1);
       return (true);
     }
   return (inform_all_player(player, node));

@@ -1,5 +1,6 @@
 #define _GNU_SOURCE
 #include "print_log.h"
+#include "server.h"
 #include "world.h"
 
 static bool	inform_expulsed_player(t_player *player, enum e_ori ori)
@@ -59,14 +60,14 @@ bool		player_expulse(void *pl,
   unsigned int	pos_init;
 
   player = (t_player *)pl;
-  world = g_server.world;
+  world = &g_server.world;
   vec = get_vec_direction(player->ori);
   vec_dest = add_vector(player->pos, vec);
   vec_dest = wrap_vertical(vec_dest);
   vec_dest = wrap_horizontal(vec_dest);
   pos_init = player->pos.x + (player->pos.y * gs_get_map_width());
-  node = world->cell[pos_init].list_player->nodes;
-  if (world->cell[pos_init].list_player->size > 1)
+  node = world->cell[pos_init].list_player.nodes;
+  if (world->cell[pos_init].list_player.size > 1)
     return (expulsing(node, player, pos_init, vec_dest));
   return (client_write_to(player->client, "ko"));
 }

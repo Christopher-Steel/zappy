@@ -5,6 +5,7 @@
 #include "player.h"
 #include "print_error.h"
 #include "print_log.h"
+#include "server.h"
 #include "world.h"
 
 static void	player_receive(t_receiver *rec, char *msg)

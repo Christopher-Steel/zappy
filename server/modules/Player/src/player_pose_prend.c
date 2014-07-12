@@ -1,4 +1,5 @@
 #include "print_error.h"
+#include "server.h"
 #include "world.h"
 
 static const char	*res_name[] =
@@ -37,7 +38,7 @@ bool		player_pose(void *pl, void *resource)
 
   player = (t_player *)pl;
   res = (char *)resource;
-  world = g_server.world;
+  world = &g_server.world;
   position = player->pos.x + (player->pos.y * world->width);
   if ((type_res = string_to_res(res)) == -1)
     {
@@ -63,7 +64,7 @@ bool		player_prend(void *pl, void *resource)
 
   player = (t_player *)pl;
   res = (char *)resource;
-  world = g_server.world;
+  world = &g_server.world;
   position = player->pos.x + (player->pos.y * world->width);
   if ((type_res = string_to_res(res)) == -1)
     {

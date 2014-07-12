@@ -31,7 +31,7 @@ bool	graphic_mct(t_graphic *graphic, __attribute__ ((unused)) char *cmd)
   answer = NULL;
   while (pos < gs_get_map_size())
     {
-      res = g_server.world->cell[pos].res;
+      res = g_server.world.cell[pos].res;
       if (asprintf(&tmp, "bct %u %u %u %u %u %u %u %u %u\n",
 		   (pos % gs_get_map_width()), (pos / gs_get_map_width()),
 		   res[0], res[1], res[2], res[3], res[4], res[5], res[6])

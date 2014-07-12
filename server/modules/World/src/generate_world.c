@@ -1,5 +1,6 @@
 #include "print_error.h"
 #include "print_log.h"
+#include "server.h"
 #include "world.h"
 
 static void	init_ressource(t_cell *cell, const unsigned int size)
@@ -19,8 +20,6 @@ static void	init_ressource(t_cell *cell, const unsigned int size)
 	    cell[i].res[j] = rand() % NBR_SPAWN;
 	  ++j;
 	}
-      cell[i].list_player = list_create();
-      cell[i].list_egg = list_create();
       ++i;
     }
 }
@@ -29,15 +28,13 @@ bool	generate_world(const unsigned int height,
 		       const unsigned int width)
 {
   print_log("Generating world...");
-  if ((g_server.world = malloc(sizeof(t_world))) == NULL)
-    return (print_error("World generation failed."));
-  g_server.world->height = height;
-  g_server.world->width = width;
-  g_server.world->size = height * width;
-  if ((g_server.world->cell = malloc((g_server.world->size)
+  g_server.world.height = height;
+  g_server.world.width = width;
+  g_server.world.size = height * width;
+  if ((g_server.world.cell = malloc((g_server.world.size)
 				     * sizeof(t_cell))) == NULL)
     return (print_error("World generation failed."));
-  init_ressource(g_server.world->cell, g_server.world->size);
+  init_ressource(g_server.world.cell, g_server.world.size);
   print_log("World generated.");
   return (true);
 }

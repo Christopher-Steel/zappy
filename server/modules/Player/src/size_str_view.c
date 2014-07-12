@@ -1,4 +1,5 @@
 #include "print_error.h"
+#include "server.h"
 #include "world.h"
 
 static const char	*res_name[] =
@@ -18,10 +19,10 @@ static bool	player_present(int i, int *len, int *tab_view)
   t_world	*world;
   t_node	*node;
 
-  world = g_server.world;
-  if (world->cell[tab_view[i]].list_player->size > 0)
+  world = &g_server.world;
+  if (world->cell[tab_view[i]].list_player.size > 0)
     {
-      node = world->cell[tab_view[i]].list_player->nodes;
+      node = world->cell[tab_view[i]].list_player.nodes;
       while (node != NULL)
 	{
 	  *len += strlen("joueur");
@@ -40,7 +41,7 @@ static void	cnt_res(int *len, int i, int j, int *tab_view)
   t_world	*world;
 
   u = 0;
-  world = g_server.world;
+  world = &g_server.world;
   while (u < world->cell[tab_view[i]].res[j])
     {
       *len += strlen(res_name[j]);
@@ -58,7 +59,7 @@ static bool	res_present(int i, int *len, int *tab_view, bool is_player)
 
   j = 0;
   is_res = false;
-  world = g_server.world;
+  world = &g_server.world;
   while (res_name[j])
     {
       if (j == 0 && is_player)

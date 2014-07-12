@@ -103,7 +103,7 @@ bool		player_connect_nbr(void *pl, void *unused);
 bool		stop_elevation(void *pl, void *unused);
 void		player_register_event(t_player *player);
 void		player_event_handler(t_event_handler *handler);
-void		ressource_spreading(unsigned int pos, int cond);
+void		resource_spreading(unsigned int pos, int cond);
 bool		check_condition(t_player *player, t_node *node,
 			        unsigned int pos);
 bool		send_view(char *str, int *tab_view, t_player *player);

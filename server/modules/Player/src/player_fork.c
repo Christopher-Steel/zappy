@@ -3,6 +3,7 @@
 #include "player.h"
 #include "print_error.h"
 #include "print_log.h"
+#include "server.h"
 #include "world.h"
 
 static bool	egg_register_hatch(t_egg *egg)
