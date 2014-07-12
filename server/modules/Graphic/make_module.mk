@@ -17,7 +17,9 @@ GRAPHIC		=	$(SRC_FOLDER)graphic_manager_init.c	\
 			$(SRC_FOLDER)graphic_pnw.c		\
 			$(SRC_FOLDER)graphic_server_info.c	\
 			$(SRC_FOLDER)graphic_time.c		\
-			$(SRC_FOLDER)graphic_tna.c
+			$(SRC_FOLDER)graphic_tna.c		\
+			\
+			$(SRC_FOLDER)graphic_ppo_bct_pin_2.c
 
 ##########################################################################
 

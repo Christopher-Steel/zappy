@@ -51,6 +51,7 @@ bool		player_pose(void *pl, void *resource)
       --player->inventory[type_res];
       return (client_write_to(player->client, "ok"));
     }
+  //graph_pose(pl, resource);
   return (client_write_to(player->client, "ko"));
 }
 

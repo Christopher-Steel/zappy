@@ -1,5 +1,6 @@
 #include "egg.h"
 #include "event.h"
+#include "graph_PI.h"
 #include "player.h"
 #include "print_error.h"
 #include "print_log.h"
@@ -23,6 +24,7 @@ static bool	egg_register_hatch(t_egg *egg)
 bool		player_fork(void *pl,
 			    __attribute__ ((unused))void *unused)
 {
+  void		**tab;
   t_player	*player;
   int		index;
   t_egg		*new_egg;
@@ -42,5 +44,7 @@ bool		player_fork(void *pl,
   printf_log("Created new egg %d spawned at position %d/%d", new_egg->id,
 	     player->pos.x, player->pos.y);
   client_write_to(player->client, "ok");
+  tab = mount_args(pl, new_egg);
+  graph_for_each_2_args(&graphic_enw, tab);
   return (true);
 }

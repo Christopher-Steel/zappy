@@ -1,4 +1,6 @@
 #define _GNU_SOURCE
+
+#include "graph_PI.h"
 #include "print_log.h"
 #include "server.h"
 #include "world.h"
@@ -46,6 +48,10 @@ static bool	expulsing(t_node *node, t_player *player,
       else
 	node = node->next;
     }
+  graph_for_each_1_arg(&graphic_pex, player);
+  for (node = (g_server.world.cell[pos_init]).list_player.nodes;
+       node; node = node->next)
+    graph_for_each_1_arg(&graphic_ppo2, node->data);
   return (client_write_to(player->client, "ok"));
 }
 

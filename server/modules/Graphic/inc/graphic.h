@@ -60,4 +60,8 @@ bool		graphic_seg(t_graphic *graphic, void *team_name);
 bool		graphic_smg(t_graphic *graphic, void *msg);
 bool		graphic_smg_KO(t_graphic *graphic);
 
-#endif		/* GRAPHIC_H_ */
+bool		graphic_ppo2(t_graphic *graphic, void *player);
+bool		graphic_bct2(t_graphic *graphic, void *x, void *y);
+bool		graphic_pin2(t_graphic *graphic, void *player);
+
+#endif			/* GRAPHIC_H_ */

@@ -1,3 +1,4 @@
+#include	"graph_PI.h"
 #include	"print_error.h"
 #include	"print_log.h"
 #include	"server.h"
@@ -21,5 +22,6 @@ bool		player_avance(void *pl,
   pos_final = player->pos.x + (player->pos.y * gs_get_map_width());
   remove_player(player->id, pos_init);
   add_player(player, pos_final);
+  graph_for_each_1_arg(&graphic_ppo2, pl);
   return (client_write_to(player->client, "ok"));
 }
