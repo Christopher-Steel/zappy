@@ -1,3 +1,12 @@
+/*
+** graph_PI.c for zappy in /home/launoi_a/tmp/PSU_2013_zappy/server/modules/GraphProtocol
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 18:54:05 2014 allyriane.launois
+** Last update Sun Jul 13 18:54:54 2014 allyriane.launois
+*/
 
 #include <string.h>
 
@@ -5,7 +14,7 @@
 #include "network_client.h"
 #include "print_error.h"
 
-static t_graph_cmd g_cmds[] =
+static t_graph_cmd	g_cmds[] =
   {
     GRAPH_CMD(msz, false),
     GRAPH_CMD(bct, true),

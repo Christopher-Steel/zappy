@@ -1,3 +1,12 @@
+/*
+** team_add_player.c for zappy in /home/launoi_a/tmp/PSU_2013_zappy/server/modules/Team
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 18:58:47 2014 allyriane.launois
+** Last update Sun Jul 13 18:59:04 2014 allyriane.launois
+*/
 
 #include "list.h"
 #include "print_error.h"
@@ -5,7 +14,7 @@
 #include "server.h"
 #include "team.h"
 
-static t_team		*find_team(char *team_name)
+static t_team	*find_team(char *team_name)
 {
   t_node	*node;
 
