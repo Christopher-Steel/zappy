@@ -1,3 +1,12 @@
+/*
+** graph_for_each.c for zappy in /home/launoi_a/tmp/PSU_2013_zappy/server/modules/GraphProtocol
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 18:51:53 2014 allyriane.launois
+** Last update Sun Jul 13 18:52:16 2014 allyriane.launois
+*/
 
 #include "graph_PI.h"
 #include "print_error.h"
@@ -28,7 +37,8 @@ bool		graph_for_each(bool (*func)(t_graphic *))
   return (true);
 }
 
-bool		graph_for_each_1_arg(bool (*func)(t_graphic *, void *), void *arg)
+bool		graph_for_each_1_arg(bool (*func)(t_graphic *, void *),
+				     void *arg)
 {
   t_node	*node;
 

@@ -1,3 +1,13 @@
+/*
+** graphic.h for zappy in /home/launoi_a/tmp/PSU_2013_zappy
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 18:50:58 2014 allyriane.launois
+** Last update Sun Jul 13 18:51:21 2014 allyriane.launois
+*/
+
 #ifndef		GRAPHIC_H_
 # define	GRAPHIC_H_
 
@@ -65,4 +75,4 @@ bool		graphic_bct2(t_graphic *graphic, void *x, void *y);
 bool		graphic_pin2(t_graphic *graphic, void *player);
 bool		graphic_plv2(t_graphic *graphic, void *player);
 
-#endif			/* GRAPHIC_H_ */
+#endif		/* GRAPHIC_H_ */
