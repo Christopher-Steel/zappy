@@ -1,3 +1,13 @@
+/*
+** graphic_player_info.c for zappy in /home/launoi_a/tmp/PSU_2013_zappy/server/modules/Graphic
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 18:41:49 2014 allyriane.launois
+** Last update Sun Jul 13 18:43:17 2014 allyriane.launois
+*/
+
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <string.h>
@@ -10,9 +20,7 @@ static int	get_id(char *cmd)
 {
   char		*tmp;
 
-  if (cmd[0] != '#')
-    return (-1);
-  tmp = strtok(cmd, "#\n");
+  tmp = strtok(cmd, "\n");
   if (tmp)
     return (atoi(tmp));
   return (-1);
@@ -53,7 +61,7 @@ bool		graphic_ppo(t_graphic *graphic, char *cmd)
       graphic_sbp(graphic);
       return (printf_error("can't find player with id %d", id));
     }
-  if (asprintf(&answer, "ppo #%d %u %u %u", player->id, player->pos.x,
+  if (asprintf(&answer, "ppo %d %u %u %u", player->id, player->pos.x,
 	       player->pos.y, (player->ori + 1)) == -1)
     {
       graphic_smg_KO(graphic);
@@ -81,7 +89,7 @@ bool		graphic_plv(t_graphic *graphic, char *cmd)
       graphic_sbp(graphic);
       return (printf_error("can't find player with id %d", id));
     }
-  if (asprintf(&answer, "plv #%d %d", player->id, player->level) == -1)
+  if (asprintf(&answer, "plv %d %d", player->id, player->level) == -1)
     {
       graphic_smg_KO(graphic);
       return (print_error("failed to allocate new graphic message"));
@@ -105,7 +113,7 @@ bool		graphic_pin(t_graphic *graphic, char *cmd)
       return (printf_error("can't find player with id %s", cmd));
     }
   res = player->inventory;
-  if (asprintf(&answer, "pin #%d %u %u %u %u %u %u %u %u %u", player->id,
+  if (asprintf(&answer, "pin %d %u %u %u %u %u %u %u %u %u", player->id,
 	       player->pos.x, player->pos.y, res[0], res[1], res[2],
 	       res[3], res[4], res[5], res[6]) == -1)
     {

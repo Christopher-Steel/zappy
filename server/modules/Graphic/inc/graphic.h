@@ -24,20 +24,20 @@ typedef struct	s_graphic
 
 t_graphic	*graphic_create(t_client *client);
 
-bool		graphic_msz(t_graphic *, char *);
-bool		graphic_bct(t_graphic *, char *);
-bool		graphic_mct(t_graphic *, char *);
-bool		graphic_tna(t_graphic *, char *);
+bool		graphic_msz(t_graphic *graphic, char *cmd);
+bool		graphic_bct(t_graphic *graphic, char *cmd);
+bool		graphic_mct(t_graphic *graphic, char *cmd);
+bool		graphic_tna(t_graphic *graphic, char *cmd);
 
-bool		graphic_ppo(t_graphic *, char *);
-bool		graphic_plv(t_graphic *, char *);
-bool		graphic_pin(t_graphic *, char *);
+bool		graphic_ppo(t_graphic *graphic, char *cmd);
+bool		graphic_plv(t_graphic *graphic, char *cmd);
+bool		graphic_pin(t_graphic *graphic, char *cmd);
 
-bool		graphic_sgt(t_graphic *, char *);
-bool		graphic_sst(t_graphic *, char *);
+bool		graphic_sgt(t_graphic *graphic, char *cmd);
+bool		graphic_sst(t_graphic *graphic, char *cmd);
 
-bool		graphic_suc(t_graphic *);
-bool		graphic_sbp(t_graphic *);
+bool		graphic_suc(t_graphic *graphic);
+bool		graphic_sbp(t_graphic *graphic);
 
 bool		graphic_pnw(t_graphic *graphic, void *player);
 

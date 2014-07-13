@@ -1,5 +1,14 @@
-#define	_GNU_SOURCE
+/*
+** graphic_ppo_bct_pin_2.c for zappy in /home/launoi_a/tmp/PSU_2013_zappy/server/modules/Graphic
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 18:43:56 2014 allyriane.launois
+** Last update Sun Jul 13 18:44:30 2014 allyriane.launois
+*/
 
+#define	_GNU_SOURCE
 #include <stdio.h>
 
 #include "graph_PI.h"
@@ -10,7 +19,7 @@ bool	graphic_ppo2(t_graphic *graphic, void *player)
 {
   char	*info;
 
-  if (asprintf(&info, "ppo #%d %u %u %u", ((t_player *)player)->id,
+  if (asprintf(&info, "ppo %d %u %u %u", ((t_player *)player)->id,
 	       ((t_player *)player)->pos.x, ((t_player *)player)->pos.y,
 	       (((t_player *)player)->ori + 1)) == -1)
     return (print_error("failed to allocate new graphic message"));
@@ -50,7 +59,7 @@ bool		graphic_pin2(t_graphic *graphic, void *pl)
 
   player = (t_player *)pl;
   res = player->inventory;
-  if (asprintf(&answer, "pin #%d %u %u %u %u %u %u %u %u %u", player->id,
+  if (asprintf(&answer, "pin %d %u %u %u %u %u %u %u %u %u", player->id,
 	       player->pos.x, player->pos.y, res[0], res[1], res[2],
 	       res[3], res[4], res[5], res[6]) == -1)
     {
@@ -69,7 +78,7 @@ bool		graphic_plv2(t_graphic *graphic, void *pl)
   char		*answer;
 
   player = (t_player *)pl;
-  if (asprintf(&answer, "plv #%d %d", player->id, player->level) == -1)
+  if (asprintf(&answer, "plv %d %d", player->id, player->level) == -1)
     return (print_error("failed to allocate new graphic message"));
   success = client_write_to(graphic->client, answer);
   free(answer);
