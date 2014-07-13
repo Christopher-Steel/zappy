@@ -1,3 +1,13 @@
+/*
+** generate_world.c for zappy in /home/launoi_a/tmp/PSU_2013_zappy/server/modules/World
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 19:15:25 2014 allyriane.launois
+** Last update Sun Jul 13 19:15:36 2014 allyriane.launois
+*/
+
 #include "print_error.h"
 #include "print_log.h"
 #include "server.h"

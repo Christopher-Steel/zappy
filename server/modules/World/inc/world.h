@@ -1,3 +1,13 @@
+/*
+** world.h for zappy in /home/launoi_a/tmp/PSU_2013_zappy/server/modules/World
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 19:14:14 2014 allyriane.launois
+** Last update Sun Jul 13 19:14:31 2014 allyriane.launois
+*/
+
 #ifndef		WORLD_H_
 # define	WORLD_H_
 
