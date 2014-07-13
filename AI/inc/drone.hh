@@ -5,7 +5,7 @@
 // Login   <cisner_d@epitech.net>
 // 
 // Started on  Sun Jun  1 10:50:50 2014 [D[C[3~[3~[3~
-// Last update Sun Jul 13 16:59:10 2014 [D[C[3~[3~[3~
+// Last update Sun Jul 13 17:59:05 2014 [D[C[3~[3~[3~
 //
 
 #ifndef		DRONE_HH_
@@ -104,7 +104,7 @@ U		translate(const T &ori)
 class		Drone
 {
   typedef void (Drone::*fct_dir)();
-  typedef void (Drone::*fct_act)(const std::string &);
+  typedef void (Drone::*fct_act)(std::string);
 
   Network	net;
   Vector	coor;
@@ -193,7 +193,7 @@ public:
 **					**
 \****************************************/
 
-  void		Push_map(int x, int y, const std::string &str);
+  void		Push_map(int x, int y, std::string str);
   void		do_fork();
 
   void		Send_Forward();
@@ -209,18 +209,18 @@ public:
   void		Send_Fork();
   void		Send_Slots();
 
-  void		Receive_Forward(const std::string &str);
-  void		Receive_Right(const std::string &str);
-  void		Receive_Left(const std::string &str);
-  void		Receive_See(const std::string &str);
-  void		Receive_Inventory(const std::string &str);
-  void		Receive_Take(const std::string &str);
-  void		Receive_Drop(const std::string &str);
-  void		Receive_Expulse(const std::string &str);
-  void		Receive_Speak(const std::string &str);
-  void		Receive_Cast(const std::string &str);
-  void		Receive_Fork(const std::string &str);
-  void		Receive_Slots(const std::string &str);
+  void		Receive_Forward(std::string);
+  void		Receive_Right(std::string);
+  void		Receive_Left(std::string);
+  void		Receive_See(std::string);
+  void		Receive_Inventory(std::string );
+  void		Receive_Take(std::string);
+  void		Receive_Drop(std::string);
+  void		Receive_Expulse(std::string);
+  void		Receive_Speak(std::string);
+  void		Receive_Cast(std::string);
+  void		Receive_Fork(std::string);
+  void		Receive_Slots(std::string);
 };
 
 #endif
