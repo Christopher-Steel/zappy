@@ -5,6 +5,7 @@
 #include "parse_parameter.h"
 #include "print_error.h"
 #include "server.h"
+#include "player.h"
 #include "time.h"
 #include "zappy_types.h"
 
@@ -47,6 +48,7 @@ int	main(int ac, char *av[])
     while (!victory_condition_resolve())
       {
 	gs_time_update();
+	player_life_update();
 	network_update();
 	gs_event_update();
       }
