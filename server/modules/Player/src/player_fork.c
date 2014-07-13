@@ -21,7 +21,28 @@ static bool	egg_register_hatch(t_egg *egg)
     }
 }
 
-bool		player_fork(void *pl,
+bool		player_fork(void *player,
+			    __attribute__ ((unused))void *unused)
+{
+  t_player		*pl;
+  t_event_handler	*handler;
+  t_pl_func		fn;
+
+  pl = (t_player *)player;
+  handler = (t_event_handler *)player;
+  fn = player_fork_end;
+  if ((pl->current_event = event_create(handler, fn, 42.0, NULL))
+      == NULL)
+    return (false);
+  else
+    {
+      gs_event_add(pl->current_event);
+      graph_for_each_1_arg(&graphic_pfk, player);
+      return (true);
+    }
+}
+
+bool		player_fork_end(void *pl,
 			    __attribute__ ((unused))void *unused)
 {
   void		**tab;

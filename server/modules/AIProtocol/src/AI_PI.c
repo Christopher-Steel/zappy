@@ -16,7 +16,7 @@ static t_AI_cmd	g_cmds[] =
     AI_CMD(expulse, false, 7.0),
     AI_CMD(broadcast, true, 7.0),
     AI_CMD(incantation, false, 0.0),
-    AI_CMD(fork, false, 42.0),
+    AI_CMD(fork, false, 0.0),
     AI_CMD(connect_nbr, false, 0.0),
     AI_CMD(inventaire, false, 1.0)
   };
