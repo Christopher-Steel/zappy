@@ -17,7 +17,6 @@ typedef struct	s_graph_cmd
 bool		graph_PI(t_graphic *graphic, char *cmd);
 bool		graph_send_to(t_graphic *graphic, char *cmd);
 
-
 void		**mount_args(void *arg1, void *arg2)
   __attribute__ ((nonnull));
 bool		graph_for_each(bool (*func)(t_graphic*))
@@ -32,6 +31,11 @@ bool		graph_for_each_2_args(bool (*func)(t_graphic*, void *, void *),
 bool		graph_pose(void *player, void *obj)
   __attribute__ ((nonnull));
 bool		graph_prend(void *player, void *obj)
+  __attribute__ ((nonnull));
+
+bool		graph_incantation(t_list *players)
+  __attribute__ ((nonnull));
+bool		graph_end_incantation(t_player *player, t_list *players, int result)
   __attribute__ ((nonnull));
 
 #endif		/* !GRAPH_PI_H_ */

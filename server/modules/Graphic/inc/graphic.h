@@ -63,5 +63,6 @@ bool		graphic_smg_KO(t_graphic *graphic);
 bool		graphic_ppo2(t_graphic *graphic, void *player);
 bool		graphic_bct2(t_graphic *graphic, void *x, void *y);
 bool		graphic_pin2(t_graphic *graphic, void *player);
+bool		graphic_plv2(t_graphic *graphic, void *player);
 
 #endif			/* GRAPHIC_H_ */

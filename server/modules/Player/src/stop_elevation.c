@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "graph_PI.h"
 #include "print_error.h"
 #include "server.h"
 #include "world.h"
@@ -51,7 +52,9 @@ bool		stop_elevation(void *pl,
   if (check_condition(player, node, pos))
     {
       resource_spreading(pos, player->level - 1);
+      graph_end_incantation(player, &(world->cell[pos].list_player), 1);
       return (send_results_to_players(player, node, true));
     }
+  graph_end_incantation(player, &(world->cell[pos].list_player), 0);
   return (send_results_to_players(player, node, false));
 }

@@ -61,3 +61,17 @@ bool		graphic_pin2(t_graphic *graphic, void *pl)
   free(answer);
   return (success);
 }
+
+bool		graphic_plv2(t_graphic *graphic, void *pl)
+{
+  bool		success;
+  t_player	*player;
+  char		*answer;
+
+  player = (t_player *)pl;
+  if (asprintf(&answer, "plv #%d %d", player->id, player->level) == -1)
+    return (print_error("failed to allocate new graphic message"));
+  success = client_write_to(graphic->client, answer);
+  free(answer);
+  return (success);
+}

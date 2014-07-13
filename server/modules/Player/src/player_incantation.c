@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "graph_PI.h"
 #include "player.h"
 #include "server.h"
 #include "world.h"
@@ -40,7 +41,10 @@ bool		player_incantation(void *pl,
     {
       client_write_to(player->client, "elevation en cours");
       if (player_register_incant_end(player))
-	return (true);
+	{
+	  graph_incantation(&(world->cell[pos].list_player));
+	  return (true);
+	}
     }
   asprintf(&str, "niveau actuel : %u", player->level);
   client_write_to(player->client, str);
