@@ -1,3 +1,13 @@
+/*
+** main.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:12:03 2014 Valentin
+** Last update Sun Jul 13 18:12:06 2014 Valentin
+*/
+
 #include <signal.h>
 #include <stdlib.h>
 

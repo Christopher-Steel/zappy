@@ -1,3 +1,13 @@
+/*
+** check_condition.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Player/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:07:04 2014 Valentin
+** Last update Sun Jul 13 19:07:22 2014 Valentin
+*/
+
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <string.h>
@@ -39,8 +49,8 @@ void		resource_spreading(unsigned int pos, int cond)
     }
 }
 
-bool	check_condition(t_player *player, t_node *node,
-			unsigned int pos)
+bool		check_condition(t_player *player, t_node *node,
+				unsigned int pos)
 {
   t_world	*world;
   uint		lvl;

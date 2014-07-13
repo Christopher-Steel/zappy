@@ -1,3 +1,13 @@
+/*
+** server.h for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/inc
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:11:17 2014 Valentin
+** Last update Sun Jul 13 18:11:24 2014 Valentin
+*/
+
 #ifndef		SERVER_H_
 # define	SERVER_H_
 
@@ -13,7 +23,6 @@
 /*
 ** STRUCTURE
 */
-
 typedef struct	s_world			t_world;
 typedef struct	s_event_manager		t_event_manager;
 typedef struct	s_graphic_manager	t_graphic_manager;

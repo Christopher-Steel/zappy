@@ -1,3 +1,13 @@
+/*
+** socket_pool.h for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Network/inc
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:28:09 2014 Valentin
+** Last update Sun Jul 13 19:28:10 2014 Valentin
+*/
+
 #ifndef		SOCKET_POOL_H_
 # define	SOCKET_POOL_H_
 

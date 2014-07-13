@@ -1,3 +1,13 @@
+/*
+** handshaker_create.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Network/src/handshaker
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:33:42 2014 Valentin
+** Last update Sun Jul 13 19:33:49 2014 Valentin
+*/
+
 #include <stdlib.h>
 #include <string.h>
 
@@ -6,7 +16,6 @@
 #include "print_error.h"
 #include "print_log.h"
 #include "team.h"
-
 #include "print_debug.h"
 
 static void	handshaker_destroy(t_receiver *rec)

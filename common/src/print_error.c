@@ -1,3 +1,13 @@
+/*
+** print_error.c for Common in /home/mougen_v/rendus/PSU_2013_zappy/common/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 17:57:44 2014 Valentin
+** Last update Sun Jul 13 17:58:06 2014 Valentin
+*/
+
 #include <stdarg.h>
 #include <stdio.h>
 
@@ -18,7 +28,7 @@ bool	print_perror(char *err)
   return (false);
 }
 
-bool	printf_error(char *format, ...)
+bool		printf_error(char *format, ...)
 {
   va_list	vargs;
 
@@ -30,7 +40,7 @@ bool	printf_error(char *format, ...)
   return (false);
 }
 
-bool	printf_error_i(bool tag, char *format, ...)
+bool		printf_error_i(bool tag, char *format, ...)
 {
   va_list	vargs;
 

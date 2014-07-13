@@ -5,7 +5,7 @@
 ** Login   <launoi_a@epitech.net>
 ** 
 ** Started on  Sun Jul 13 19:00:36 2014 allyriane.launois
-** Last update Sun Jul 13 19:00:44 2014 allyriane.launois
+** Last update Sun Jul 13 19:19:24 2014 Valentin
 */
 
 #include "team.h"
@@ -17,7 +17,6 @@ void		team_remove_player(t_player *player)
   team = player->team;
   list_remove(team->members, player, false);
   team_update_max_level(team);
-  --(team->free_slots);
 }
 
 void		team_remove_egg(t_egg *egg, bool hatch)

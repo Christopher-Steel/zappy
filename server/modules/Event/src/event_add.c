@@ -1,3 +1,12 @@
+/*
+** event_add.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Event/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:32:31 2014 Valentin
+** Last update Sun Jul 13 18:32:40 2014 Valentin
+*/
 
 #include "event.h"
 #include "server.h"

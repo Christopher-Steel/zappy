@@ -1,3 +1,12 @@
+/*
+** event.h for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Event/inc
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:30:55 2014 Valentin
+** Last update Sun Jul 13 18:30:56 2014 Valentin
+*/
 
 #ifndef		EVENT_H_
 # define	EVENT_H_

@@ -1,3 +1,13 @@
+/*
+** tcp_sock_init.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Network/src/tcp_socket
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:40:35 2014 Valentin
+** Last update Sun Jul 13 19:40:37 2014 Valentin
+*/
+
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <sys/socket.h>

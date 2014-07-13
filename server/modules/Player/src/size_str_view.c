@@ -1,3 +1,13 @@
+/*
+** size_str_view.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Player/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:02:32 2014 Valentin
+** Last update Sun Jul 13 19:03:01 2014 Valentin
+*/
+
 #include "print_error.h"
 #include "server.h"
 #include "world.h"
@@ -78,10 +88,10 @@ static bool	res_present(int i, int *len, int *tab_view, bool is_player)
 
 int	size_str_view(int *tab_view)
 {
-  bool		is_player;
-  bool		is_res;
-  int		i;
-  int		len;
+  bool	is_player;
+  bool	is_res;
+  int	i;
+  int	len;
 
   i = 0;
   len = 4;

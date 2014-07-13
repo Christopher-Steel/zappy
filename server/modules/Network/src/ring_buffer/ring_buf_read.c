@@ -1,3 +1,13 @@
+/*
+** ring_buf_read.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Network/src/ring_buffer
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:35:53 2014 Valentin
+** Last update Sun Jul 13 19:35:54 2014 Valentin
+*/
+
 #include <unistd.h>
 
 #include "ring_buf.h"

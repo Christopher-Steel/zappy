@@ -1,12 +1,22 @@
+/*
+** sockpool_fill_sets.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Network/src/socket_pool
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:39:03 2014 Valentin
+** Last update Sun Jul 13 19:39:13 2014 Valentin
+*/
+
 #include <sys/socket.h>
 
 #include "network_client.h"
 #include "socket_pool.h"
 
-static void		send_broadcast(void *data, void *arg)
+static void	send_broadcast(void *data, void *arg)
 {
-  char			*msg;
-  t_client		*dest;
+  char		*msg;
+  t_client	*dest;
 
   msg = (char *)data;
   dest = (t_client *)arg;

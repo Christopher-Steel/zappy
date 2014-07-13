@@ -1,3 +1,13 @@
+/*
+** inject_buffer.h for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Network/inc
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:30:22 2014 Valentin
+** Last update Sun Jul 13 19:30:23 2014 Valentin
+*/
+
 #ifndef		INJECT_BUFFER_H_
 # define	INJECT_BUFFER_H_
 

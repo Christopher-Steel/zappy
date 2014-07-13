@@ -1,3 +1,12 @@
+/*
+** set_team_name.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Parameters/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:57:15 2014 Valentin
+** Last update Sun Jul 13 18:57:15 2014 Valentin
+*/
 
 #define	 _GNU_SOURCE
 #include <stdio.h>

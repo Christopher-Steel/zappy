@@ -1,3 +1,12 @@
+/*
+** gs_time_update.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:12:28 2014 Valentin
+** Last update Sun Jul 13 18:12:29 2014 Valentin
+*/
 
 #include <sys/time.h>
 

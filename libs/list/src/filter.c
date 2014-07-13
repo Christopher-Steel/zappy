@@ -1,3 +1,13 @@
+/*
+** filter.c for List in /home/mougen_v/rendus/PSU_2013_zappy/libs/list/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:06:17 2014 Valentin
+** Last update Sun Jul 13 18:06:18 2014 Valentin
+*/
+
 #include "list.h"
 
 static void	list_filter_rm_node(t_list *list, t_node *prev,

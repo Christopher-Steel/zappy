@@ -1,3 +1,13 @@
+/*
+** player_event_handler.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Player/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:05:17 2014 Valentin
+** Last update Sun Jul 13 19:05:19 2014 Valentin
+*/
+
 #include "AI_PI.h"
 #include "event.h"
 #include "player.h"

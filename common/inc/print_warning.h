@@ -1,3 +1,13 @@
+/*
+** print_warning.h for Common in /home/mougen_v/rendus/PSU_2013_zappy/common/inc
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 17:51:47 2014 Valentin
+** Last update Sun Jul 13 17:53:50 2014 Valentin
+*/
+
 #ifndef		PRINT_WARNING_H_
 # define	PRINT_WARNING_H_
 

@@ -1,3 +1,13 @@
+/*
+** player_connect_nbr.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Player/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:05:31 2014 Valentin
+** Last update Sun Jul 13 19:05:32 2014 Valentin
+*/
+
 #define _GNU_SOURCE
 #include <stdio.h>
 

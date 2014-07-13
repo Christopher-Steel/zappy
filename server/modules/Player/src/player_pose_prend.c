@@ -1,3 +1,13 @@
+/*
+** player_pose_prend.c for Server in /home/mougen_v/rendus/PSU_2013_zappy
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:26:39 2014 Valentin
+** Last update Sun Jul 13 19:26:40 2014 Valentin
+*/
+
 #include "graph_PI.h"
 #include "print_error.h"
 #include "server.h"

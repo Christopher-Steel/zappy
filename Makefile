@@ -1,3 +1,13 @@
+##
+## Makefile for Makefile in /home/mougen_v/rendus/PSU_2013_zappy
+##
+## Made by Valentin
+## Login   <mougen_v@epitech.net>
+##
+## Started on  Sun Jul 13 18:08:39 2014 Valentin
+## Last update Sun Jul 13 18:08:41 2014 Valentin
+##
+
 AI		=	AI/
 SERVER		=	server/
 

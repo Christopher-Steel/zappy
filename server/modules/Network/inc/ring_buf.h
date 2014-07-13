@@ -1,3 +1,13 @@
+/*
+** ring_buf.h for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Network/inc
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:30:43 2014 Valentin
+** Last update Sun Jul 13 19:30:44 2014 Valentin
+*/
+
 #ifndef		RING_BUF_H_
 # define	RING_BUF_H_
 

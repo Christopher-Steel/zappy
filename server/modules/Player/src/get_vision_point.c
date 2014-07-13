@@ -1,3 +1,13 @@
+/*
+** get_vision_point.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Player/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:08:09 2014 Valentin
+** Last update Sun Jul 13 19:08:10 2014 Valentin
+*/
+
 #include "server.h"
 #include "world.h"
 

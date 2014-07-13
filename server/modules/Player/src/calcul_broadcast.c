@@ -1,3 +1,13 @@
+/*
+** calcul_broadcast.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Player/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:06:26 2014 Valentin
+** Last update Sun Jul 13 19:06:46 2014 Valentin
+*/
+
 #include <math.h>
 #include "vector.h"
 #include "player.h"
@@ -34,7 +44,6 @@ double		calc_angle(t_vector pos_player,
   u.y = pos_player.y - pos_dest.y;
   v.x = 0;
   v.y = 0;
-
   if (dest->ori == NORTH || dest->ori == SOUTH)
     v.y = (dest->ori == NORTH) ? 1 : -1;
   else

@@ -1,3 +1,13 @@
+/*
+** list.h for List in /home/mougen_v/rendus/PSU_2013_zappy/libs/list/inc
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:00:30 2014 Valentin
+** Last update Sun Jul 13 18:00:31 2014 Valentin
+*/
+
 #ifndef		LIST_H_
 # define	LIST_H_
 

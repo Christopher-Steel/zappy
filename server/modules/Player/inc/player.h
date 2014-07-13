@@ -1,3 +1,13 @@
+/*
+** player.h for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Player/inc
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:58:55 2014 Valentin
+** Last update Sun Jul 13 18:59:32 2014 Valentin
+*/
+
 #ifndef		PLAYER_H_
 # define	PLAYER_H_
 
@@ -17,7 +27,6 @@
 /*
 ** TYPEDEF
 */
-
 typedef struct s_egg	t_egg;
 typedef struct s_event	t_event;
 typedef struct s_team	t_team;
@@ -25,7 +34,6 @@ typedef struct s_team	t_team;
 /*
 ** DEFINES
 */
-
 # define	MAX_CLIENT_OUTQ	10
 
 /*
@@ -42,7 +50,6 @@ enum	e_ori
 /*
 ** STRUCTURES
 */
-
 typedef struct	s_vision
 {
   t_vector	start;

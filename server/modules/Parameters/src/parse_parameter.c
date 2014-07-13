@@ -1,3 +1,12 @@
+/*
+** parse_parameter.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Parameters/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:57:59 2014 Valentin
+** Last update Sun Jul 13 18:58:00 2014 Valentin
+*/
 
 #include <stdlib.h>
 

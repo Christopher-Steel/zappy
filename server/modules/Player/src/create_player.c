@@ -1,3 +1,13 @@
+/*
+** create_player.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Player/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:07:34 2014 Valentin
+** Last update Sun Jul 13 19:07:52 2014 Valentin
+*/
+
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <string.h>

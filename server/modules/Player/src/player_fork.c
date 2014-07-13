@@ -1,3 +1,13 @@
+/*
+** player_fork.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Player/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:04:32 2014 Valentin
+** Last update Sun Jul 13 19:05:12 2014 Valentin
+*/
+
 #include "egg.h"
 #include "event.h"
 #include "graph_PI.h"
@@ -21,8 +31,8 @@ static bool	egg_register_hatch(t_egg *egg)
     }
 }
 
-bool		player_fork(void *player,
-			    __attribute__ ((unused))void *unused)
+bool			player_fork(void *player,
+				    __attribute__ ((unused))void *unused)
 {
   t_player		*pl;
   t_event_handler	*handler;

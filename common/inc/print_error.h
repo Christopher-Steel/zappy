@@ -1,3 +1,13 @@
+/*
+** print_error.h for Common in /home/mougen_v/rendus/PSU_2013_zappy/common/inc
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 17:53:58 2014 Valentin
+** Last update Sun Jul 13 17:54:29 2014 Valentin
+*/
+
 #ifndef		PRINT_ERROR_H_
 # define	PRINT_ERROR_H_
 

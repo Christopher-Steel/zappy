@@ -1,3 +1,13 @@
+/*
+** sockpool_handle.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Network/src/socket_pool
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:38:40 2014 Valentin
+** Last update Sun Jul 13 19:38:53 2014 Valentin
+*/
+
 #include "network_client.h"
 #include "print_error.h"
 #include "print_log.h"
@@ -29,9 +39,9 @@ static void	sockpool_handle_node(t_sockpool *pool,
     check_fd_set(pool, node, &pool->write_set, &sockpool_node_write);
 }
 
-void			sockpool_handle(t_sockpool *pool)
+void		sockpool_handle(t_sockpool *pool)
 {
-  t_node		*node;
+  t_node	*node;
 
   if (pool->nbset <= 0)
     return ;

@@ -1,15 +1,25 @@
+/*
+** print_warning.c for Common in /home/mougen_v/rendus/PSU_2013_zappy/common/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 17:56:12 2014 Valentin
+** Last update Sun Jul 13 17:56:36 2014 Valentin
+*/
+
 #include <stdarg.h>
 #include <stdio.h>
 
 #include "print_warning.h"
 
-void		print_warning(char *warning)
+void	print_warning(char *warning)
 {
   fprintf(stderr, "%s", WARNING_TAG);
   fprintf(stderr, "%s\n", warning);
 }
 
-void		print_pwarning(char *warning)
+void	print_pwarning(char *warning)
 {
   fprintf(stderr, "%s", WARNING_TAG);
   perror(warning);

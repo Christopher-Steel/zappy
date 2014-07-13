@@ -1,3 +1,13 @@
+/*
+** egg_create_destroy.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Egg/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:29:15 2014 Valentin
+** Last update Sun Jul 13 18:29:16 2014 Valentin
+*/
+
 #include <stdlib.h>
 
 #include "egg.h"

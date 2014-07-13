@@ -1,3 +1,13 @@
+##
+## Makefile for List in /home/mougen_v/rendus/PSU_2013_zappy/libs/list
+##
+## Made by Valentin
+## Login   <mougen_v@epitech.net>
+##
+## Started on  Sun Jul 13 18:01:08 2014 Valentin
+## Last update Sun Jul 13 18:01:09 2014 Valentin
+##
+
 NAME		=	liblist.a
 
 ROOT		=	../../

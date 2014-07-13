@@ -1,3 +1,13 @@
+/*
+** sockpool_add_client.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Network/src/socket_pool
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:39:29 2014 Valentin
+** Last update Sun Jul 13 19:39:30 2014 Valentin
+*/
+
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <stdlib.h>

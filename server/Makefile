@@ -1,3 +1,13 @@
+##
+## Makefile for Server in /home/mougen_v/rendus/PSU_2013_zappy/server
+##
+## Made by Valentin
+## Login   <mougen_v@epitech.net>
+##
+## Started on  Sun Jul 13 19:31:29 2014 Valentin
+## Last update Sun Jul 13 19:54:52 2014 Valentin
+##
+
 NAME		=	zappy_server
 
 # Directories
@@ -40,6 +50,7 @@ SRC		=	$(COMMON)print_error.c		\
 			$(COMMON)print_warning.c	\
 			$(COMMON)print_log.c		\
 			$(COMMON)print_debug.c		\
+			$(COMMON)printf_debug.c		\
 			$(LOCAL)gs_get_map_height.c	\
 			$(LOCAL)gs_get_map_size.c	\
 			$(LOCAL)gs_get_map_width.c	\

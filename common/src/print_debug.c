@@ -1,54 +1,30 @@
-#include <stdarg.h>
+/*
+** print_debug.c for Common in /home/mougen_v/rendus/PSU_2013_zappy/common/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 17:58:36 2014 Valentin
+** Last update Sun Jul 13 19:53:39 2014 Valentin
+*/
+
 #include <stdio.h>
 
 #include "print_debug.h"
 
 #ifdef		DEBUG
 
-void		print_debug(char *debug)
+void	print_debug(char *debug)
 {
   fprintf(stderr, "%s", DEBUG_TAG);
   fprintf(stderr, "%s\n", debug);
 }
 
-void		printf_debug(char *format, ...)
-{
-  va_list	vargs;
-
-  fprintf(stderr, "%s", DEBUG_TAG);
-  va_start(vargs, format);
-  vfprintf(stderr, format, vargs);
-  va_end(vargs);
-  fprintf(stderr, "\n");
-}
-
-void		printf_debug_i(bool tag, char *format, ...)
-{
-  va_list	vargs;
-
-  if (tag)
-    fprintf(stderr, "%s", DEBUG_TAG);
-  va_start(vargs, format);
-  vfprintf(stderr, format, vargs);
-  va_end(vargs);
-}
-
 #else
 
-void		print_debug(char *debug)
+void	print_debug(char *debug)
 {
   (void)debug;
-}
-
-void		printf_debug(char *format, ...)
-{
-  (void)format;
-}
-
-void		printf_debug_i(bool tag, char *format, ...)
-{
-  (void)tag;
-  (void)format;
 }
 
 #endif

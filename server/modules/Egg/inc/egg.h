@@ -1,3 +1,12 @@
+/*
+** egg.h for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Egg/inc
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 18:28:11 2014 Valentin
+** Last update Sun Jul 13 18:28:13 2014 Valentin
+*/
 
 #ifndef		EGG_H_
 # define	EGG_H_

@@ -1,3 +1,13 @@
+/*
+** player_broadcast.c for Server in /home/mougen_v/rendus/PSU_2013_zappy/server/modules/Player/src
+**
+** Made by Valentin
+** Login   <mougen_v@epitech.net>
+**
+** Started on  Sun Jul 13 19:12:35 2014 Valentin
+** Last update Sun Jul 13 19:12:36 2014 Valentin
+*/
+
 #define _GNU_SOURCE
 
 #include <stdio.h>
@@ -43,7 +53,6 @@ static int	get_k(t_broadcast *broad)
       }
   i = calc_k(calc_angle(broad->pos_player[j],
 			broad->pos_dest[j], broad->dest));
-  printf("k:%d", i);
   return (i);
 }
 
