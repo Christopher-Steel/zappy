@@ -5,7 +5,7 @@
 ** Login   <launoi_a@epitech.net>
 ** 
 ** Started on  Sun Jul 13 19:14:14 2014 allyriane.launois
-** Last update Sun Jul 13 19:14:31 2014 allyriane.launois
+** Last update Sun Jul 13 22:21:21 2014 frederic tan
 */
 
 #ifndef		WORLD_H_
@@ -72,7 +72,7 @@ void		remove_player(const int id, const int position);
 void		delete_player(t_player *player);
 void		get_vision_point(int *tab, t_player *player);
 void		respawn_resource(unsigned int *res);
-void		respawn_food(t_player *uplayer, char *unused);
+void		spawn_food();
 bool		generate_world(const unsigned int height,
 			       const unsigned int width);
 bool		add_player(t_player *player, const int pos);

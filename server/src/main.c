@@ -5,7 +5,7 @@
 ** Login   <mougen_v@epitech.net>
 **
 ** Started on  Sun Jul 13 18:12:03 2014 Valentin
-** Last update Sun Jul 13 18:12:06 2014 Valentin
+** Last update Sun Jul 13 22:21:22 2014 frederic tan
 */
 
 #include <signal.h>
@@ -59,6 +59,7 @@ int	main(int ac, char *av[])
       {
 	gs_time_update();
 	player_life_update();
+	spawn_food();
 	network_update();
 	gs_event_update();
       }
