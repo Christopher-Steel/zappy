@@ -1,6 +1,7 @@
 #!/usr/bin/python3.3
 import socket
 import sys
+import time
 
 def spam_that_fucker(ip, port, team):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -9,10 +10,18 @@ def spam_that_fucker(ip, port, team):
     sock.send((team + "\n").encode())
     while 1 == 1:
         try:
-            sock.send('connect_nbr\n'.encode())
-            print(sock.recv(5).decode())
+            time.sleep(0.0001)
+            sock.send('voir\n'.encode())
+            print(sock.recv(4096).decode())
+            sock.send('prend nourriture\n'.encode())
+            print(sock.recv(4096).decode())
+            sock.send('avance\n'.encode())
+            print(sock.recv(4096).decode())
         except OverflowError:
             print("dammit, i overflowed again")
+        except IOError:
+            print("disconnected")
+            sys.exit(1)
 
 def main(ac, av):
     if (ac == 4):

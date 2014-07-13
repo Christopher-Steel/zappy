@@ -28,9 +28,11 @@ static void	handshaker_receive(t_receiver *rec, char *msg)
   t_client	*client;
 
   client = ((t_handshaker *)rec)->client;
+  client->receiver->destroy(client->receiver);
+  client->receiver = NULL;
   if (strcmp(msg, "GRAPHIC") == 0)
     {
-      print_debug("new graphic income");
+      print_debug("New graphic client connected");
       client->receiver = (t_receiver *)graphic_create(client);
     }
   else if ((client->receiver = (t_receiver *)team_create_player(msg, client))
