@@ -56,25 +56,34 @@ int		Network::Select() const
 void		Network::putmsg(const std::string &msg) const
 {
   std::string	tmp;
+  int		ret;
 
   tmp = msg;
-  if (send(this->fd, tmp.c_str(), tmp.size(), 0) == -1)
-    throw My_Exception("Network: error: can't send message.");
-  std::cout << "\E[33;1mClient: " << tmp << "\E[m";
+  while (!tmp.empty())
+    {
+      if ((ret = send(this->fd, tmp.c_str(), tmp.size(), 0)) == -1)
+	throw My_Exception("Network: error: can't send message.");
+      tmp = tmp.substr(ret);
+    }
+  std::cout << "\E[33;1mClient: " << msg << "\E[m";
 }
 
 std::string	Network::getmsg(void) const
 {
   std::string	str;
   char		buff[2036];
-  int		ret = 2036;
 
-  while (ret == 2036)
+  while (str.empty() || str[str.size() - 1] != '\n')
     {
-      if ((ret = recv(this->fd, buff, 2036, 0)) == -1 || ret == 0)
-	throw My_Exception("Network: error: server close connection.");
-      buff[ret] = '\0';
-      str += buff;
+      int	ret = 2036;
+
+      while (ret == 2036)
+	{
+	  if ((ret = recv(this->fd, buff, 2036, 0)) == -1 || ret == 0)
+	    throw My_Exception("Network: error: server close connection.");
+	  buff[ret] = '\0';
+	  str += buff;
+	}
     }
   std::cout << "\E[34;1mServer: " << str << "\E[m";
   return (str);
