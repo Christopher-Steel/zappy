@@ -5,7 +5,7 @@
 ** Login   <mougen_v@epitech.net>
 **
 ** Started on  Sun Jul 13 18:12:03 2014 Valentin
-** Last update Sun Jul 13 22:21:22 2014 frederic tan
+** Last update Sun Jul 13 23:18:13 2014 frederic tan
 */
 
 #include <signal.h>
@@ -14,6 +14,7 @@
 #include "network.h"
 #include "parse_parameter.h"
 #include "print_error.h"
+#include "world.h"
 #include "server.h"
 #include "player.h"
 #include "time.h"
@@ -59,7 +60,6 @@ int	main(int ac, char *av[])
       {
 	gs_time_update();
 	player_life_update();
-	spawn_food();
 	network_update();
 	gs_event_update();
       }

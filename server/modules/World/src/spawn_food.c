@@ -5,7 +5,7 @@
 ** Login   <launoi_a@epitech.net>
 ** 
 ** Started on  Sun Jul 13 19:18:05 2014 allyriane.launois
-** Last update Sun Jul 13 23:00:43 2014 frederic tan
+** Last update Sun Jul 13 23:19:30 2014 frederic tan
 */
 
 #include "server.h"
@@ -13,8 +13,8 @@
 
 void		spawn_food(void)
 {
-  static double	spawn = 508;
   t_world	*world;
+  static double	spawn = 508;
   unsigned int	quantity;
 
   world = &g_server.world;

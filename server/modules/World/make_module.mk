@@ -11,7 +11,6 @@ WORLD		=	$(SRC_FOLDER)generate_world.c		\
 			$(SRC_FOLDER)spawn_player.c		\
 			$(SRC_FOLDER)delete_player.c		\
 			$(SRC_FOLDER)respawn_ressource.c	\
-			$(SRC_FOLDER)spawn_food.c		\
 			$(SRC_FOLDER)victory_condition.c	\
 			$(SRC_FOLDER)wrap_pos.c
 

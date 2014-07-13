@@ -5,7 +5,7 @@
 ** Login   <mougen_v@epitech.net>
 **
 ** Started on  Sun Jul 13 19:03:34 2014 Valentin
-** Last update Sun Jul 13 19:03:35 2014 Valentin
+** Last update Sun Jul 13 23:19:31 2014 frederic tan
 */
 
 #include "graph_PI.h"
@@ -23,11 +23,14 @@ static void	player_death(t_player *player)
 static void	life_update_by_player(void *pl)
 {
   t_player	*player;
+  t_world	*world;
 
   player = (t_player *)pl;
+  world = &g_server.world;
   player->alive -= g_server.info.dtime;
   if (player->alive <= 0)
     {
+      ++world->cell[rand() % world->size].res[FOOD];
       if (player->inventory[FOOD] <= 0)
 	player_death(player);
       else
