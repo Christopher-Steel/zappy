@@ -20,6 +20,7 @@ static bool	event_node_update(void *data)
   if (event->timestamp <= 0)
     {
       event->data->event_handler(event);
+      free(event->arg);
       return (true);
     }
   else

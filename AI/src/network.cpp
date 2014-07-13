@@ -50,7 +50,7 @@ int		Network::Select() const
     throw My_Exception("Network: error: can't use select.");
   if (FD_ISSET(this->fd, &fd_read))
     ret = 1;
-  return (ret);                                                          
+  return (ret);
 }
 
 void		Network::putmsg(const std::string &msg) const

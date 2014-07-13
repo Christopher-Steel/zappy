@@ -16,7 +16,7 @@ cmd[7]='connect_nbr'
 
 {
 sleep 1
-echo "toto"
+echo "team1"
 sleep 1
 while [ $x -le 1000 ]
 do
@@ -25,5 +25,5 @@ do
     usleep 1
     x=$(($x + 1))
 done
-sleep 100
+sleep 1
 } | telnet 127.0.0.1 $1

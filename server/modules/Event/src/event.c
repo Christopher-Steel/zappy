@@ -8,6 +8,8 @@
 ** Last update Sun Jul 13 18:32:17 2014 Valentin
 */
 
+#include <string.h>
+
 #include "event.h"
 #include "print_error.h"
 
@@ -24,6 +26,6 @@ t_event		*event_create(t_event_handler *data, t_pl_func func,
   event->data = data;
   event->func = func;
   event->timestamp = timestamp;
-  event->arg = arg;
+  event->arg = (arg ? strdup(arg) : NULL);
   return (event);
 }

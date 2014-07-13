@@ -25,11 +25,14 @@ void			player_register_event(t_player *player)
       || (player->current_event = event_create(handler, fn, delay, in_cmd))
       == NULL)
     {
-      client_write_to(player->client, "ko");
       list_pop_front(&player->client->inbound, true);
+      client_write_to(player->client, "ko");
     }
   else
-    gs_event_add(player->current_event);
+    {
+      list_pop_front(&player->client->inbound, true);
+      gs_event_add(player->current_event);
+    }
 }
 
 void		player_event_handler(t_event *event)
@@ -39,7 +42,6 @@ void		player_event_handler(t_event *event)
   player = (t_player *)event->data;
   player->current_event = NULL;
   event->func(player, event->arg);
-  list_pop_front(&player->client->inbound, true);
   if (player->current_event == NULL
       && list_empty(&player->client->inbound) == false)
     player_register_event(player);

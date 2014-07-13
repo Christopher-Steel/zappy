@@ -14,8 +14,10 @@
 
 #include "graph_PI.h"
 #include "player.h"
+#include "print_debug.h"
 #include "print_error.h"
 #include "print_log.h"
+#include "print_warning.h"
 #include "server.h"
 #include "world.h"
 
@@ -26,10 +28,19 @@ static void	player_receive(t_receiver *rec, char *msg)
 
   player = (t_player *)rec;
   inbound = &player->client->inbound;
-  if (list_size(inbound) < MAX_CLIENT_OUTQ)
-    list_push_back(inbound, msg);
+  printf_log("Received message from client %s:%d[%d]: \"%s\"",
+	     player->client->ip, player->client->port,
+	     player->client->socket, msg);
+  if (list_size(inbound) < MAX_CLIENT_OUTQ - (player->current_event ? 1 : 0))
+    {
+      printf_debug("pushing \"%s\" into clients inbound", msg);
+      list_push_back(inbound, msg);
+    }
   else
-    free(msg);
+    {
+      print_warning("Client command queue full, refused new command.");
+      free(msg);
+    }
   if (player->current_event == NULL
       && list_empty(&player->client->inbound) == false)
     player_register_event(player);

@@ -118,7 +118,6 @@ void		Drone::Send(const Action &act, const std::string &str)
 {
   if (this->rep.size() == 10)
     this->clear_rep();
-
   this->rep.push_back(act);
   this->net.putmsg(str + "\n");
 }

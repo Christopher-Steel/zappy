@@ -13,6 +13,7 @@
 #include "inject_buffer.h"
 #include "network_client.h"
 #include "print_error.h"
+#include "print_log.h"
 #include "print_warning.h"
 
 bool		client_write_to(t_client *client, char *message)
@@ -27,6 +28,8 @@ bool		client_write_to(t_client *client, char *message)
       return (false);
     }
   len = strlen(message) + 2;
+  printf_log("Sending message to client %s:%d [%d]: \"%s\"",
+	     client->ip, client->port, client->socket, message);
   if ((data = malloc(sizeof(char) * len)) == NULL
       || strcpy(data, message) == NULL
       || (injector = injectbuf_create(data, len - 1)) == NULL
