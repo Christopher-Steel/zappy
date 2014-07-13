@@ -3,7 +3,6 @@
 #include "player.h"
 #include "server.h"
 
-
 static void	player_death(t_player *player)
 {
   graph_for_each_1_arg(&graphic_pdi, player);
