@@ -1,3 +1,13 @@
+/*
+** team_list_destroy.c for zappy in /home/launoi_a/tmp/PSU_2013_zappy/server/modules/Team
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 19:00:11 2014 allyriane.launois
+** Last update Sun Jul 13 19:00:18 2014 allyriane.launois
+*/
+
 #include "print_log.h"
 #include "server.h"
 #include "team.h"

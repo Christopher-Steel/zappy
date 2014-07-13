@@ -1,3 +1,13 @@
+/*
+** team_list_init.c for zappy in /home/launoi_a/tmp/PSU_2013_zappy/server/modules/Team
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 19:00:23 2014 allyriane.launois
+** Last update Sun Jul 13 19:00:32 2014 allyriane.launois
+*/
+
 #include "set_parameter.h"
 #include "print_warning.h"
 #include "server.h"
