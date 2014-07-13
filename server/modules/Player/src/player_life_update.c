@@ -20,7 +20,6 @@ static void	life_update_by_player(void *pl)
   player->alive -= g_server.info.dtime;
   if (player->alive <= 0)
     {
-      printf("player id = %d\n", player->id);
       if (player->inventory[FOOD] <= 0)
 	player_death(player);
       else
