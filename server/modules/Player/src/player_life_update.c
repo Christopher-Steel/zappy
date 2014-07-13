@@ -25,7 +25,7 @@ static void	life_update_by_player(void *pl)
       else
 	{
 	  --(player->inventory[FOOD]);
-	  player->alive = 126;
+	  player->alive += 126;
 	}
     }
 }
