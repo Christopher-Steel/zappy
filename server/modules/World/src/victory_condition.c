@@ -21,7 +21,7 @@ static bool	write_winner(t_team *team)
 {
   char		*str;
 
-  if (asprintf(&str, "L'equipe %s est vainqueur", team->name) != -1)
+  if (asprintf(&str, "Team %s wins", team->name) != -1)
     {
       print_log(str);
       free(str);
@@ -52,7 +52,7 @@ bool		victory_condition_resolve(void)
     }
   if (!is_play)
     {
-      print_log("The world is died, Game Over !");
+      print_log("Everyone is dead, Game Over !");
       return (true);
     }
   return (false);

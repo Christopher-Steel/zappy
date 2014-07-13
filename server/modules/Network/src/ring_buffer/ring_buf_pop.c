@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "print_debug.h"
 #include "print_error.h"
 #include "ring_buf.h"
 #include "zappy_types.h"
@@ -17,20 +18,22 @@ static uint	seek_endline(t_ring_buf *ring)
 	 && cursor < RING_BUF_SIZE
 	 && ring->buf[cursor] != '\n'; ++cursor)
     ++count;
-  if (ring->buf[cursor] == '\n')
-    return (count);
-  for (cursor = ring->head; cursor < ring->tail
+  if (cursor < RING_BUF_SIZE && cursor >= ring->tail
+      && ring->buf[cursor] == '\n')
+    return ((cursor && ring->buf[cursor - 1] == '\r' ? count - 1 : count));
+  for (cursor = (count ? 0 : ring->head); cursor < ring->tail
 	 && ring->buf[cursor] != '\n'; ++cursor)
     ++count;
-  if (ring->buf[cursor] == '\n')
-    return ((ring->buf[cursor - 1] == '\r' ? count - 1 : count));
+  if (cursor < ring->tail && ring->buf[cursor] == '\n')
+    return ((cursor && ring->buf[cursor - 1] == '\r' ? count - 1 : count));
   else
     return (0);
 }
 
 static void	move_to_next_non_endline(t_ring_buf *ring)
 {
-  while (ring->buf[ring->head] == '\n' || ring->buf[ring->head] == '\r')
+  while ((ring->buf[ring->head] == '\n' || ring->buf[ring->head] == '\r')
+	 && ring->len > 0)
     {
       ++ring->head;
       --ring->len;
@@ -65,7 +68,11 @@ int	ring_buf_pop(t_ring_buf *ring, char *dest)
     {
       move_to_next_non_endline(ring);
       if (ring->len == RING_BUF_SIZE)
-        ring_buf_ctor(ring);
+	{
+	  printf_debug("buffer full and no endlines found, flushing [%s]",
+		       &ring->buf[0]);
+	  ring_buf_ctor(ring);
+	}
       return (0);
     }
   else
@@ -81,7 +88,11 @@ int	ring_buf_pop_alloc(t_ring_buf *ring, char **dest)
     {
       move_to_next_non_endline(ring);
       if (ring->len == RING_BUF_SIZE)
-	ring_buf_ctor(ring);
+	{
+	  printf_debug("buffer full and no endlines found, flushing [%s]",
+		       &ring->buf[0]);
+	  ring_buf_ctor(ring);
+	}
       return (0);
     }
   if ((*dest = malloc((len + 1) * sizeof(char))) == NULL)

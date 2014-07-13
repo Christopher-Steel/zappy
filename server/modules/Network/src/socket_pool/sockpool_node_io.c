@@ -10,11 +10,16 @@ int	sockpool_node_read(t_sockpool_node *node)
   char	*in_cmd;
   int	rc;
 
-  in_cmd = NULL;
+  in_cmd = "";
   rc = ring_buf_read(&node->read, node->socket);
   while (node->closing == false
 	 && ring_buf_pop_alloc(&node->read, &in_cmd) > 0)
-    node->receiver->receive(node->receiver, in_cmd);
+    {
+      printf_debug("read popped [%s][buffer: head:%d tail:%d len:%d data:%s]",
+		   in_cmd, node->read.head, node->read.tail, node->read.len,
+		   &node->read.buf[0]);
+      node->receiver->receive(node->receiver, in_cmd);
+    }
   return (rc);
 }
 

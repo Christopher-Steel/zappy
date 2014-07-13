@@ -59,7 +59,7 @@ DEBUG		?=	false
 
 ifneq		($(DEBUG), false)
 CFLAGS		+=	-DDEBUG
-CFLAGS		+=	-ggdb
+CFLAGS		+=	-g3
 else
 CFLAGS		+=	-O3 -funroll-loops
 endif
