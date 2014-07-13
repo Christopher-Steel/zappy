@@ -1,3 +1,4 @@
+#include "graph_PI.h"
 #include "print_error.h"
 #include "server.h"
 #include "world.h"
@@ -49,9 +50,9 @@ bool		player_pose(void *pl, void *resource)
     {
       ++world->cell[position].res[type_res];
       --player->inventory[type_res];
+      graph_pose(pl, &type_res);
       return (client_write_to(player->client, "ok"));
     }
-  //graph_pose(pl, resource);
   return (client_write_to(player->client, "ko"));
 }
 
@@ -76,6 +77,7 @@ bool		player_prend(void *pl, void *resource)
     {
       --world->cell[position].res[type_res];
       ++player->inventory[type_res];
+      graph_prend(pl, &type_res);
       return (client_write_to(player->client, "ok"));
     }
   return (client_write_to(player->client, "ko"));

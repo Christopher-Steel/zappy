@@ -29,4 +29,9 @@ bool		graph_for_each_2_args(bool (*func)(t_graphic*, void *, void *),
 				      void **args)
   __attribute__ ((nonnull));
 
+bool		graph_pose(void *player, void *obj)
+  __attribute__ ((nonnull));
+bool		graph_prend(void *player, void *obj)
+  __attribute__ ((nonnull));
+
 #endif		/* !GRAPH_PI_H_ */
