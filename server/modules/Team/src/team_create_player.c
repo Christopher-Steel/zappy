@@ -1,5 +1,6 @@
 #include <string.h>
 
+#include "graph_PI.h"
 #include "print_error.h"
 #include "print_log.h"
 #include "server.h"
@@ -30,7 +31,10 @@ static t_player	*spawn_from_egg(t_client *client, t_team *team)
       egg = (t_egg *)list_egg->data;
       if (egg->is_hatches)
 	{
-	  player = spawn_pos_player(client, team, egg);
+	  if (!(player = spawn_pos_player(client, team, egg)))
+	    return (NULL);
+	  graph_for_each_1_arg(&graphic_ebo, egg);
+	  graph_for_each_1_arg(&graphic_pnw, player);
 	  list_remove(team->eggs, list_egg->data, true);
 	  return (player);
 	}
