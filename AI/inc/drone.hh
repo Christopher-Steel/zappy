@@ -5,7 +5,7 @@
 // Login   <cisner_d@epitech.net>
 // 
 // Started on  Sun Jun  1 10:50:50 2014 [D[C[3~[3~[3~
-// Last update Sat Jul 12 16:59:50 2014 [D[C[3~[3~[3~
+// Last update Sun Jul 13 16:59:10 2014 [D[C[3~[3~[3~
 //
 
 #ifndef		DRONE_HH_
@@ -90,7 +90,7 @@ struct		Team
 void		usage();
 
 template<typename T, typename U>
-U		translate(T ori)
+U		translate(const T &ori)
 {
   U	tmp;
   U	ret;
@@ -104,7 +104,7 @@ U		translate(T ori)
 class		Drone
 {
   typedef void (Drone::*fct_dir)();
-  typedef void (Drone::*fct_act)(std::string);
+  typedef void (Drone::*fct_act)(const std::string &);
 
   Network	net;
   Vector	coor;
@@ -134,10 +134,10 @@ public:
   Drone(const std::vector<std::string> &arg);
   ~Drone();
 
-  void		Check_msg(std::string);
+  void		Check_msg(const std::string &);
   void		Recive();
   void		clear_rep();
-  void		Send(Action, std::string);
+  void		Send(const Action &, const std::string &);
   void		Hello();
   void		Play();
 
@@ -183,7 +183,7 @@ public:
   void		Algorithm();
   void		clear_case();
   void		prepare_cast();
-  void		Search_obj(Object obj);
+  void		Search_obj(const Object &obj);
   void		to_case(int y, int x);
   void		hang_around();
 
@@ -193,7 +193,7 @@ public:
 **					**
 \****************************************/
 
-  void		Push_map(int x, int y, std::string str);
+  void		Push_map(int x, int y, const std::string &str);
   void		do_fork();
 
   void		Send_Forward();
@@ -201,26 +201,26 @@ public:
   void		Send_Left();
   void		Send_See();
   void		Send_Inventory();
-  void		Send_Take(std::string);
-  void		Send_Drop(std::string);
+  void		Send_Take(const std::string &);
+  void		Send_Drop(const std::string &);
   void		Send_Expulse();
-  void		Send_Speak(std::string);
+  void		Send_Speak(const std::string &);
   void		Send_Cast();
   void		Send_Fork();
   void		Send_Slots();
 
-  void		Receive_Forward(std::string);
-  void		Receive_Right(std::string);
-  void		Receive_Left(std::string);
-  void		Receive_See(std::string);
-  void		Receive_Inventory(std::string);
-  void		Receive_Take(std::string);
-  void		Receive_Drop(std::string);
-  void		Receive_Expulse(std::string);
-  void		Receive_Speak(std::string);
-  void		Receive_Cast(std::string);
-  void		Receive_Fork(std::string);
-  void		Receive_Slots(std::string);
+  void		Receive_Forward(const std::string &str);
+  void		Receive_Right(const std::string &str);
+  void		Receive_Left(const std::string &str);
+  void		Receive_See(const std::string &str);
+  void		Receive_Inventory(const std::string &str);
+  void		Receive_Take(const std::string &str);
+  void		Receive_Drop(const std::string &str);
+  void		Receive_Expulse(const std::string &str);
+  void		Receive_Speak(const std::string &str);
+  void		Receive_Cast(const std::string &str);
+  void		Receive_Fork(const std::string &str);
+  void		Receive_Slots(const std::string &str);
 };
 
 #endif

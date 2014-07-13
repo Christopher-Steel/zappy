@@ -61,7 +61,7 @@ void		Drone::prepare_cast()
 }
 
 
-void		Drone::Search_obj(Object obj)
+void		Drone::Search_obj(const Object &obj)
 {
   std::list<Object>::iterator	it;
   std::list<Object>		tmp = this->map[this->coor.y][this->coor.x];

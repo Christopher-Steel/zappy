@@ -1,21 +1,21 @@
 #include	"drone.hh"
 #include	<stdlib.h>
 
-void		Drone::Receive_Forward(std::string str)
+void		Drone::Receive_Forward(const std::string &str)
 {
   this->rep.pop_front();
   if (str.empty())
     return;
 }
 
-void		Drone::Receive_Left(std::string str)
+void		Drone::Receive_Left(const std::string &str)
 {
   this->rep.pop_front();
   if (str.empty())
     return;
 }
 
-void		Drone::Receive_Right(std::string str)
+void		Drone::Receive_Right(const std::string &str)
 {
   this->rep.pop_front();
   if (str.empty())
@@ -29,38 +29,43 @@ void		Drone::clear_map()
       this->map[y][x].clear();
 }
 
-void		Drone::Push_map(int x, int y, std::string str)
+void		Drone::Push_map(int x, int y, const std::string &str)
 {
-  while (str.find(" ") != std::string::npos)
-    {
-      std::string	tmp;
+  std::string	tmp = str;
 
-      str = str.substr(str.find(" ") + 1);
-      if (str.find(" ") != std::string::npos)
-	tmp = str.substr(0, str.find(" "));
+  while (tmp.find(" ") != std::string::npos)
+    {
+      std::string	sub;
+
+      tmp = tmp.substr(tmp.find(" ") + 1);
+      if (tmp.find(" ") != std::string::npos)
+	sub = tmp.substr(0, tmp.find(" "));
       else
-	tmp = str;
+	sub = tmp;
       for (int i = FOOD; i <= DRONE; ++i)
-	if (tmp.find(this->obj[(Object)i]) != std::string::npos)
+	if (sub.find(this->obj[(Object)i]) != std::string::npos)
 	  this->map[y][x].push_back((Object)i);
     }
 }
 
-void		Drone::Receive_See(std::string str)
+void		Drone::Receive_See(const std::string &str)
 {
-  int	x = 8;
-  int	y = 0;
-  int	len = 0;
-  int	len_max = 1;
+  int		x = 8;
+  int		y = 0;
+  int		len = 0;
+  int		len_max = 1;
+  std::string	tmp = str;
+  std::string	sub;
 
   this->rep.pop_front();
   this->clear_map();
-  while(str.find(",") != std::string::npos)
-    {
-      std::string	tmp = str.substr(0, str.find(","));
 
-      this->Push_map(x, y, tmp);
-      str = str.substr(str.find(",") + 1);
+  while(tmp.find(",") != std::string::npos)
+    {
+      sub = tmp.substr(0, tmp.find(","));
+
+      this->Push_map(x, y, sub);
+      tmp = tmp.substr(tmp.find(",") + 1);
       ++len;
       ++x;
       if (len == len_max)
@@ -71,10 +76,7 @@ void		Drone::Receive_See(std::string str)
 	  len = 0;
 	}
     }
-  std::string	tmp = str.substr(0, str.find(","));
-  for (int i = FOOD; i <= DRONE; ++i)
-    if (tmp.find(this->obj[(Object)i]) != std::string::npos)
-      this->map[y][x].push_back((Object)i);
+  this->Push_map(x, y, tmp);
 
   this->coor.x = 8;
   this->coor.y = 0;
@@ -82,7 +84,7 @@ void		Drone::Receive_See(std::string str)
   this->is_see = false;
 }
 
-void		Drone::Receive_Inventory(std::string str)
+void		Drone::Receive_Inventory(const std::string &str)
 {
   this->rep.pop_front();
   for (int i = 0; i < DRONE; ++i)
@@ -97,35 +99,35 @@ void		Drone::Receive_Inventory(std::string str)
     }
 }
 
-void		Drone::Receive_Take(std::string str)
+void		Drone::Receive_Take(const std::string &str)
 {
   this->rep.pop_front();
   if (str.empty())
     return;
 }
 
-void		Drone::Receive_Drop(std::string str)
+void		Drone::Receive_Drop(const std::string &str)
 {
   this->rep.pop_front();
   if (str.empty())
     return;
 }
 
-void		Drone::Receive_Expulse(std::string str)
+void		Drone::Receive_Expulse(const std::string &str)
 {
   this->rep.pop_front();
   if (str.empty())
     return;
 }
 
-void		Drone::Receive_Speak(std::string str)
+void		Drone::Receive_Speak(const std::string &str)
 {
   this->rep.pop_front();
   if (str.empty())
     return;
 }
 
-void		Drone::Receive_Cast(std::string str)
+void		Drone::Receive_Cast(const std::string &str)
 {
   if (str == "ok")
     {
@@ -201,14 +203,14 @@ void		Drone::do_fork()
   this->is_fork = false;
 }
 
-void		Drone::Receive_Fork(std::string str)
+void		Drone::Receive_Fork(const std::string &str)
 {
   this->rep.pop_front();
   if (str == "ok")
     return;
 }
 
-void		Drone::Receive_Slots(std::string str)
+void		Drone::Receive_Slots(const std::string &str)
 {
   this->rep.pop_front();
   this->team.slots = translate<std::string, int>(str);

@@ -56,7 +56,7 @@ void		Drone::Send_Inventory()
   this->Send(INVENTORY, "inventaire");
 }
 
-void		Drone::Send_Take(std::string str)
+void		Drone::Send_Take(const std::string &str)
 {
   int		i;
 
@@ -66,7 +66,7 @@ void		Drone::Send_Take(std::string str)
     ++this->inventory[(Object) i];
 }
 
-void		Drone::Send_Drop(std::string str)
+void		Drone::Send_Drop(const std::string &str)
 {
   int		i;
 
@@ -81,7 +81,7 @@ void		Drone::Send_Expulse()
   this->Send(EXPULSE, "expulse");
 }
 
-void		Drone::Send_Speak(std::string str)
+void		Drone::Send_Speak(const std::string &str)
 {
   this->Send(SPEAK, "broadcast " + sypher + str);
 }

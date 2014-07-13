@@ -5,7 +5,7 @@
 // Login   <cisner_d@epitech.net>
 // 
 // Started on  Sun Jun  1 11:41:25 2014 [D[C[3~[3~[3~
-// Last update Sat Jul  5 13:53:16 2014 [D[C[3~[3~[3~
+// Last update Sun Jul 13 16:37:31 2014 [D[C[3~[3~[3~
 //
 
 #ifndef		NETWORK_HH_
@@ -31,9 +31,9 @@ class		Network
   Network();
   ~Network();
 
-  void			init(std::string ip, int port);
+  void			init(const std::string &ip, int port);
   void			connect_sock();
-  int			Select();
+  int			Select() const;
   void			putmsg(const std::string &msg) const;
   std::string		getmsg(void) const;
   const std::string	&Ip() const;

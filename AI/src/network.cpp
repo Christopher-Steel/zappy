@@ -8,7 +8,7 @@ Network::Network()
 
 Network::~Network() {}
 
-void		Network::init(std::string ip, int port)
+void		Network::init(const std::string &ip, int port)
 {
   this->port = port;
   this->ip = ip;
@@ -35,7 +35,7 @@ void		Network::connect_sock()
     }
 }
 
-int		Network::Select()
+int		Network::Select() const
 {
   fd_set        fd_read;
   struct timeval        tv;

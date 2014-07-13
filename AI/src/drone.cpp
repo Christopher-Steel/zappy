@@ -9,6 +9,7 @@ Drone::Drone(const std::vector<std::string> &arg)
   this->init_map();
   this->init_evolve();
   this->is_see = false;
+  this->is_fork = false;
   this->is_cast = false;
   this->is_action = false;
   this->id = 0;
@@ -24,7 +25,7 @@ Drone::Drone(const std::vector<std::string> &arg)
 
 Drone::~Drone() {}
 
-void		Drone::Check_msg(std::string str)
+void		Drone::Check_msg(const std::string &str)
 {
   if (str.find("[team:") == std::string::npos
       || str.find("[id:") == std::string::npos
@@ -113,7 +114,7 @@ void		Drone::clear_rep()
     this->Recive();
 }
 
-void		Drone::Send(Action act, std::string str)
+void		Drone::Send(const Action &act, const std::string &str)
 {
   if (this->rep.size() == 10)
     this->clear_rep();
