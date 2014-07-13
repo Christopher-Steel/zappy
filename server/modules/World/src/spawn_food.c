@@ -5,7 +5,7 @@
 ** Login   <launoi_a@epitech.net>
 ** 
 ** Started on  Sun Jul 13 19:18:05 2014 allyriane.launois
-** Last update Sun Jul 13 22:23:40 2014 frederic tan
+** Last update Sun Jul 13 23:00:43 2014 frederic tan
 */
 
 #include "server.h"
@@ -22,7 +22,6 @@ void		spawn_food(void)
   spawn -= g_server.info.dtime;
   if (spawn <= 0)
     {
-      printf("Spawn\n");
       while (quantity > 0)
 	{
 	  ++world->cell[rand() % world->size].res[FOOD];
