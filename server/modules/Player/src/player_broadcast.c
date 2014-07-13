@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include "graph_PI.h"
 #include "player.h"
 #include "server.h"
 #include "vector.h"
@@ -74,8 +75,9 @@ static void	check_best_way(void *data, t_player *player, char *msg)
     }
 }
 
-bool	player_broadcast(void *play, void *msg)
+bool		player_broadcast(void *play, void *msg)
 {
+  void		*tab;
   t_node	*tmp_list;
   t_node	*tmp_player;
   t_player	*player;
@@ -87,5 +89,7 @@ bool	player_broadcast(void *play, void *msg)
 	 tmp_player; tmp_player = tmp_player->next)
       if (tmp_player->data != player)
 	check_best_way(tmp_player->data, player, msg);
+  tab = mount_args(play, msg);
+  graph_for_each_2_args(&graphic_pbc, tab);
   return (client_write_to(player->client, "ok"));
 }

@@ -7,6 +7,8 @@
 #include "print_log.h"
 #include "team.h"
 
+#include "print_debug.h"
+
 static void	handshaker_destroy(t_receiver *rec)
 {
   free(rec);
@@ -18,7 +20,10 @@ static void	handshaker_receive(t_receiver *rec, char *msg)
 
   client = ((t_handshaker *)rec)->client;
   if (strcmp(msg, "GRAPHIC") == 0)
-    client->receiver = (t_receiver *)graphic_create(client);
+    {
+      print_debug("new graphic income");
+      client->receiver = (t_receiver *)graphic_create(client);
+    }
   else if ((client->receiver = (t_receiver *)team_create_player(msg, client))
 	   == NULL)
     {

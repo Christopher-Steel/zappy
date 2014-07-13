@@ -54,7 +54,8 @@ bool	generate_world(const unsigned int height,
   g_server.world.height = height;
   g_server.world.width = width;
   g_server.world.size = height * width;
-  if ((g_server.world.cell = calloc(g_server.world.size, sizeof(t_cell))) == NULL)
+  if ((g_server.world.cell =
+       calloc(g_server.world.size, sizeof(t_cell))) == NULL)
     return (print_error("World generation failed."));
   init_ressource(g_server.world.cell, g_server.world.size);
   print_log("World generated.");

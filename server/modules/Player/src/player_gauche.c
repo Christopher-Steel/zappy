@@ -1,3 +1,4 @@
+#include "graph_PI.h"
 #include "player.h"
 
 bool			player_gauche(void *pl,
@@ -14,5 +15,6 @@ bool			player_gauche(void *pl,
 
   player = (t_player *)pl;
   player->ori = rot_ori[player->ori];
+  graph_for_each_1_arg(&graphic_ppo2, pl);
   return (client_write_to(player->client, "ok"));
 }

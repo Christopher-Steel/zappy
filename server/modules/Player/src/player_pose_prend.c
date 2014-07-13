@@ -1,3 +1,4 @@
+#include "graph_PI.h"
 #include "print_error.h"
 #include "server.h"
 #include "world.h"
@@ -43,12 +44,13 @@ bool		player_pose(void *pl, void *resource)
   if ((type_res = string_to_res(res)) == -1)
     {
       client_write_to(player->client, "ko");
-      return (printf_error("Unknown resource: [%s[%zu]]", res, strlen(res)));
+      return (printf_error("Unknown resource: \"%s\"", res));
     }
   if (player->inventory[type_res] > 0)
     {
       ++world->cell[position].res[type_res];
       --player->inventory[type_res];
+      graph_pose(pl, &type_res);
       return (client_write_to(player->client, "ok"));
     }
   return (client_write_to(player->client, "ko"));
@@ -69,12 +71,13 @@ bool		player_prend(void *pl, void *resource)
   if ((type_res = string_to_res(res)) == -1)
     {
       client_write_to(player->client, "ko");
-      return (printf_error("Unknown resource: [%s[%zu]]", res, strlen(res)));
+      return (printf_error("Unknown resource: \"%s\"", res));
     }
   if (world->cell[position].res[type_res] > 0)
     {
       --world->cell[position].res[type_res];
       ++player->inventory[type_res];
+      graph_prend(pl, &type_res);
       return (client_write_to(player->client, "ok"));
     }
   return (client_write_to(player->client, "ko"));

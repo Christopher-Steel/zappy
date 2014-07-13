@@ -71,5 +71,6 @@ bool		add_egg(t_egg *egg, const int pos);
 t_vector	wrap_horizontal(t_vector vec);
 t_vector	wrap_vertical(t_vector vec);
 t_player	*spawn_player(t_client *client, t_team *team);
+t_player	*spawn_pos_player(t_client *client, t_team *team, t_egg *egg);
 
 #endif		/* !WORLD_H_ */

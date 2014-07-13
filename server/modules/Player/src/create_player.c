@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "graph_PI.h"
 #include "player.h"
 #include "print_error.h"
 #include "print_log.h"
@@ -55,6 +56,7 @@ static t_player	*inform_client(t_client *client, t_player *pl)
       return (NULL);
     }
   client_write_to(client, str);
+  graph_for_each_1_arg(&graphic_pnw, pl);
   free(str);
   return (pl);
 }

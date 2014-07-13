@@ -1,3 +1,13 @@
+/*
+** graphic_bct.c for zappy in /home/launoi_a/tmp/PSU_2013_zappy/server/modules/Graphic
+** 
+** Made by allyriane.launois
+** Login   <launoi_a@epitech.net>
+** 
+** Started on  Sun Jul 13 18:36:16 2014 allyriane.launois
+** Last update Sun Jul 13 18:36:19 2014 allyriane.launois
+*/
+
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <string.h>
@@ -23,7 +33,7 @@ static bool	get_position(char *cmd, uint *x, uint *y)
   return (true);
 }
 
-static	bool	error_type_sbp(t_graphic *graphic, char *arg)
+static bool	error_type_sbp(t_graphic *graphic, char *arg)
 {
   printf_error("\"%s\" is invalid map position", arg);
   graphic_sbp(graphic);
@@ -43,7 +53,7 @@ bool	graphic_bct(t_graphic *graphic, char *cmd)
   if (x >= gs_get_map_width() || y >= gs_get_map_height())
     return (error_type_sbp(graphic, cmd));
   res = g_server.world.cell[(x + (y * gs_get_map_width()))].res;
-  if (asprintf(&answer, "bct %u %u %u %u %u %u %u %u %u\n", x, y, res[0],
+  if (asprintf(&answer, "bct %u %u %u %u %u %u %u %u %u", x, y, res[0],
 	       res[1], res[2], res[3], res[4], res[5], res[6]) == -1)
     {
       graphic_smg_KO(graphic);

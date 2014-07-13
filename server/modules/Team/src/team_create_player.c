@@ -1,5 +1,6 @@
 #include <string.h>
 
+#include "graph_PI.h"
 #include "print_error.h"
 #include "print_log.h"
 #include "server.h"
@@ -15,6 +16,30 @@ static t_team		*find_team(char *team_name)
     node = node->next;
   if (node)
     return (node->data);
+  return (NULL);
+}
+
+static t_player	*spawn_from_egg(t_client *client, t_team *team)
+{
+  t_player	*player;
+  t_node	*list_egg;
+  t_egg		*egg;
+
+  list_egg = team->eggs->nodes;
+  while (list_egg != NULL)
+    {
+      egg = (t_egg *)list_egg->data;
+      if (egg->is_hatches)
+	{
+	  if (!(player = spawn_pos_player(client, team, egg)))
+	    return (NULL);
+	  graph_for_each_1_arg(&graphic_ebo, egg);
+	  graph_for_each_1_arg(&graphic_pnw, player);
+	  list_remove(team->eggs, list_egg->data, true);
+	  return (player);
+	}
+      list_egg = list_egg->next;
+    }
   return (NULL);
 }
 
@@ -35,7 +60,8 @@ t_player	*team_create_player(char *team_name, t_client *client)
       return (NULL);
     }
   --(team->free_slots);
-  if (!(player = spawn_player(client, team)))
+  if (!(player = spawn_from_egg(client, team)) &&
+      !(player = spawn_player(client, team)))
     return (NULL);
   list_push_front(team->members, player);
   printf_log("Player %d joined team %s", player->id, team_name);

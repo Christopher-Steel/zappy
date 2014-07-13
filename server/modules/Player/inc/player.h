@@ -18,6 +18,7 @@
 ** TYPEDEF
 */
 
+typedef struct s_egg	t_egg;
 typedef struct s_event	t_event;
 typedef struct s_team	t_team;
 
@@ -99,6 +100,7 @@ bool		player_incantation(void *pl, void *cmd);
 bool		player_fork(void *pl, void *cmd);
 bool		player_connect_nbr(void *pl, void *unused);
 
+bool		player_fork_end(void *pl, void *unused);
 bool		stop_elevation(void *pl, void *unused);
 void		player_register_event(t_player *player);
 void		player_event_handler(t_event *event);

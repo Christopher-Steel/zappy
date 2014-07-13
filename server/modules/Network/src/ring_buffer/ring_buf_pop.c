@@ -68,11 +68,7 @@ int	ring_buf_pop(t_ring_buf *ring, char *dest)
     {
       move_to_next_non_endline(ring);
       if (ring->len == RING_BUF_SIZE)
-	{
-	  printf_debug("buffer full and no endlines found, flushing [%s]",
-		       &ring->buf[0]);
-	  ring_buf_ctor(ring);
-	}
+	ring_buf_ctor(ring);
       return (0);
     }
   else
@@ -88,11 +84,7 @@ int	ring_buf_pop_alloc(t_ring_buf *ring, char **dest)
     {
       move_to_next_non_endline(ring);
       if (ring->len == RING_BUF_SIZE)
-	{
-	  printf_debug("buffer full and no endlines found, flushing [%s]",
-		       &ring->buf[0]);
-	  ring_buf_ctor(ring);
-	}
+	ring_buf_ctor(ring);
       return (0);
     }
   if ((*dest = malloc((len + 1) * sizeof(char))) == NULL)

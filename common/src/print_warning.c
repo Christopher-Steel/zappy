@@ -26,7 +26,6 @@ void		printf_warning(char *format, ...)
   fprintf(stderr, "\n");
 }
 
-
 void		printf_warning_i(bool tag, char *format, ...)
 {
   va_list	vargs;

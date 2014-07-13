@@ -61,5 +61,4 @@ void	list_filter(t_list *list, bool (*pred)(void *))
 void	list_filter_arg(t_list *list, bool (*pred)(void *, void *),
 			void *arg) __attribute__ ((nonnull));
 
-
 #endif		/* !LIST_H_ */
